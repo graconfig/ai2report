@@ -37,7 +37,7 @@ entity Reports : cuid, managed {
     DevClass           : String(30); // Development class related to the report
     TrKorr             : String(20); // Transport request number for the report
     jsonPCL            : LargeString; // JSON string containing PCL or structured data for the report
-    fields             : Association to many ReportFields
+    fields             : Composition of many ReportFields
                              on fields.report = $self; // Composition of report fields for detailed data
 }
 
