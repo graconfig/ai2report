@@ -3,7 +3,7 @@
 @auth = Basic pirate:ahoy
 @model = text-davinci-003
 
-DELETE {{host}}/ai2report/Records( ID = 'f0f132c6-a3d3-48ea-be80-ad488fc4c172' ) 
+# DELETE {{host}}/ai2report/Records( ID = 'f0f132c6-a3d3-48ea-be80-ad488fc4c172' ) 
 
 # Call the function to get the list of OpenAI models
 POST {{host}}/ai2report/Chats
