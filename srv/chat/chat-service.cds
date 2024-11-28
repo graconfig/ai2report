@@ -1,6 +1,6 @@
 using {pwc.hand.ai2report as ai} from '../../db/schema';
 
-service ChatService {
+service ChatService @(path:'/ai2report'){
 
     entity Chats        as projection on ai.Chats
         actions {
