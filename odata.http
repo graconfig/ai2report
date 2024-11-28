@@ -1,0 +1,26 @@
+
+@host = http://localhost:4004
+@auth = Basic pirate:ahoy
+@model = text-davinci-003
+
+DELETE {{host}}/ai2report/Records( ID = 'f0f132c6-a3d3-48ea-be80-ad488fc4c172' ) 
+
+# Call the function to get the list of OpenAI models
+POST {{host}}/ai2report/Chats
+Content-Type: application/json
+
+{}
+
+
+### Call the function to get the list of OpenAI models
+#  POST {{host}}/ai2report/Chats(f6c7dd0f-da2d-4e64-9b6a-9956f337d6b8)/newRecord
+#  Content-Type: application/json
+
+# {"content": "test"}
+
+
+ POST {{host}}/ai2report/Records(fcea206d-b8db-4c74-a325-4331b381fe3c)/adopt
+ Content-Type: application/json
+
+
+
