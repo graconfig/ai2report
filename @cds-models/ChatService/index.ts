@@ -25,11 +25,11 @@ export function _ChatAspect<TBase extends new (...args: any[]) => object>(Base: 
     declare static readonly actions: {
       newRecord:  {
         // positional
-        (comment: string | null): Records
+        (content: string | null): Records
         // named
-        ({comment}: {comment?: string | null}): Records
+        ({content}: {content?: string | null}): Records
         // metadata (do not use)
-        __parameters: {comment?: string | null}, __returns: Records
+        __parameters: {content?: string | null}, __returns: Records
         kind: 'action'
       }
     };
