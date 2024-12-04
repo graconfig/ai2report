@@ -13,17 +13,17 @@
 
 
 # ## Call the function to get the list of OpenAI models
- POST {{host}}/ai2report/Chats(6c7438a2-74b5-4e0a-9af0-d651cd8c6dee)/newRecord
- Content-Type: application/json
+#  POST {{host}}/ai2report/Chats(6c7438a2-74b5-4e0a-9af0-d651cd8c6dee)/newRecord
+#  Content-Type: application/json
 
-{"content": "hello"}
+# {"content": "hello"}
 
 
 #  POST {{host}}/ai2report/Records(fcea206d-b8db-4c74-a325-4331b381fe3c)/adopt
 #  Content-Type: application/json
 
 
-#  POST {{host}}/ai2report/Reports(e617b4e2-cb21-40cb-ac5f-adb078094a39)/verify
-#  Content-Type: application/json
+ POST {{host}}/ai2report/Reports(e617b4e2-cb21-40cb-ac5f-adb078094a39)/verify
+ Content-Type: application/json
 
 

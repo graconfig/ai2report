@@ -323,10 +323,10 @@ export default class ChatService extends ApplicationService {
       const { Project } = zye9001.entities;
       const result = await zye9001.run(SELECT(Project));
       // const token = zye9001.run(req.query);
-      // const token = await zye9001.send({
-      //   method: 'GET',
-      //   path: '/0001'
-      // });
+      
+      // zye9001.send({
+      //   event: 'GET'
+      // })
       console.log(result);
     });
     //
