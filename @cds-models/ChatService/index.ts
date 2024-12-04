@@ -136,11 +136,12 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
   };
 }
 /** Represents a report generated for a message. */
-export class Report extends _ReportAspect(__.Entity) {}
+export class Report extends _ReportAspect(__.Entity) {static drafts: __.DraftOf<Report>}
 Object.defineProperty(Report, 'name', { value: 'ChatService.Reports' })
 Object.defineProperty(Report, 'is_singular', { value: true })
 /** Represents a report generated for a message. */
-export class Reports extends Array<Report> {$count?: number}
+export class Reports extends Array<Report> {static drafts: __.DraftsOf<Report>
+$count?: number}
 Object.defineProperty(Reports, 'name', { value: 'ChatService.Reports' })
 
 export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
@@ -173,11 +174,12 @@ export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>
   };
 }
 /** Represents a field within a report, providing metadata and behavior settings. */
-export class ReportField extends _ReportFieldAspect(__.Entity) {}
+export class ReportField extends _ReportFieldAspect(__.Entity) {static drafts: __.DraftOf<ReportField>}
 Object.defineProperty(ReportField, 'name', { value: 'ChatService.ReportFields' })
 Object.defineProperty(ReportField, 'is_singular', { value: true })
 /** Represents a field within a report, providing metadata and behavior settings. */
-export class ReportFields extends Array<ReportField> {$count?: number}
+export class ReportFields extends Array<ReportField> {static drafts: __.DraftsOf<ReportField>
+$count?: number}
 Object.defineProperty(ReportFields, 'name', { value: 'ChatService.ReportFields' })
 
 export function _ParameterAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
@@ -198,12 +200,28 @@ export function _ParameterAspect<TBase extends new (...args: any[]) => object>(B
   };
 }
 /** Represents a parameter with a key-value pair and its description. */
-export class Parameter extends _ParameterAspect(__.Entity) {}
+export class Parameter extends _ParameterAspect(__.Entity) {static drafts: __.DraftOf<Parameter>}
 Object.defineProperty(Parameter, 'name', { value: 'ChatService.Parameters' })
 Object.defineProperty(Parameter, 'is_singular', { value: true })
 /** Represents a parameter with a key-value pair and its description. */
-export class Parameters extends Array<Parameter> {$count?: number}
+export class Parameters extends Array<Parameter> {static drafts: __.DraftsOf<Parameter>
+$count?: number}
 Object.defineProperty(Parameters, 'name', { value: 'ChatService.Parameters' })
+
+export function _SingleCheckAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class SingleCheck extends Base {
+    declare check?: __.Key<string>
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<SingleCheck>;
+    declare static readonly elements: __.ElementsOf<SingleCheck>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class SingleCheck extends _SingleCheckAspect(__.Entity) {}
+Object.defineProperty(SingleCheck, 'name', { value: 'ChatService.SingleCheck' })
+Object.defineProperty(SingleCheck, 'is_singular', { value: true })
+export class SingleCheck_ extends Array<SingleCheck> {$count?: number}
+Object.defineProperty(SingleCheck_, 'name', { value: 'ChatService.SingleCheck' })
 
 
 export declare const newChat:  {

@@ -16,6 +16,9 @@ module.exports.ReportFields = csn.ReportFields
 // Parameters
 module.exports.Parameter = { is_singular: true, __proto__: csn.Parameters }
 module.exports.Parameters = csn.Parameters
+// SingleCheck
+module.exports.SingleCheck = { is_singular: true, __proto__: csn.SingleCheck }
+module.exports.SingleCheck_ = csn.SingleCheck
 // events
 // actions
 // enums

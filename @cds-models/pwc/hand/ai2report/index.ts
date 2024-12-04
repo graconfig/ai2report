@@ -116,3 +116,18 @@ Object.defineProperty(Parameter, 'is_singular', { value: true })
 /** Represents a parameter with a key-value pair and its description. */
 export class Parameters extends Array<Parameter> {$count?: number}
 Object.defineProperty(Parameters, 'name', { value: 'pwc.hand.ai2report.Parameters' })
+
+export function _SingleCheckAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class SingleCheck extends Base {
+    declare check?: __.Key<string>
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<SingleCheck>;
+    declare static readonly elements: __.ElementsOf<SingleCheck>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class SingleCheck extends _SingleCheckAspect(__.Entity) {}
+Object.defineProperty(SingleCheck, 'name', { value: 'pwc.hand.ai2report.SingleCheck' })
+Object.defineProperty(SingleCheck, 'is_singular', { value: true })
+export class SingleCheck_ extends Array<SingleCheck> {$count?: number}
+Object.defineProperty(SingleCheck_, 'name', { value: 'pwc.hand.ai2report.SingleCheck' })
