@@ -49,6 +49,17 @@
         "credentials": {
           "url": "db/chat.sqlite"
         }
+      },
+      "zui_zye9001_001": {
+        "kind": "odata",
+        "model": "srv/external/zui_zye9001_001",
+        "csrf": true,
+        "[production]": {
+          "credentials": {
+            "path": "/sap/opu/odata4/sap/zui_zye9001_001/srvd/sap/zui_zye9001_001/0001",
+            "destination": "S4A_280_HTTPS"
+          }
+        }
       }
     },
     "sql": {

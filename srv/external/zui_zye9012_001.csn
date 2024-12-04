@@ -1,0 +1,1410 @@
+{
+ "meta": {
+  "creator": "cds-dk 8.4.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "zui_zye9012_001.SAP__Message": {
+   "kind": "type",
+   "@cds.external": true,
+   "elements": {
+    "code": {
+     "type": "cds.LargeString",
+     "notNull": true
+    },
+    "message": {
+     "type": "cds.LargeString",
+     "notNull": true
+    },
+    "target": {
+     "type": "cds.LargeString"
+    },
+    "additionalTargets": {
+     "items": {
+      "type": "cds.LargeString",
+      "notNull": true
+     }
+    },
+    "transition": {
+     "type": "cds.Boolean",
+     "notNull": true
+    },
+    "numericSeverity": {
+     "type": "cds.Integer",
+     "@odata.Type": "Edm.Byte",
+     "notNull": true
+    },
+    "longtextUrl": {
+     "type": "cds.LargeString"
+    }
+   }
+  },
+  "zui_zye9012_001": {
+   "kind": "service",
+   "@cds.external": true,
+   "@Aggregation.ApplySupported": {
+    "Transformations": [
+     "aggregate",
+     "groupby",
+     "filter"
+    ],
+    "Rollup": {
+     "#": "None"
+    }
+   },
+   "@Common.ApplyMultiUnitBehaviorForSortingAndFiltering": true,
+   "@Capabilities.FilterFunctions": [
+    "eq",
+    "ne",
+    "gt",
+    "ge",
+    "lt",
+    "le",
+    "and",
+    "or",
+    "contains",
+    "startswith",
+    "endswith",
+    "any",
+    "all"
+   ],
+   "@Capabilities.SupportedFormats": [
+    "application/json",
+    "application/pdf"
+   ],
+   "@PDF.Features": {
+    "DocumentDescriptionReference": "../../../../default/iwbep/common/0001/$metadata",
+    "DocumentDescriptionCollection": "MyDocumentDescriptions",
+    "ArchiveFormat": true,
+    "Border": true,
+    "CoverPage": true,
+    "FitToPage": true,
+    "FontName": true,
+    "FontSize": true,
+    "Margin": true,
+    "Padding": true,
+    "Signature": true,
+    "HeaderFooter": true,
+    "ResultSizeDefault": 20000,
+    "ResultSizeMaximum": 20000
+   },
+   "@Capabilities.KeyAsSegmentSupported": true,
+   "@Capabilities.AsynchronousRequestsSupported": true
+  },
+  "zui_zye9012_001.I_DraftAdministrativeData": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "DraftUUID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Common.Label": "Draft (Technical ID)"
+    },
+    "DraftEntityType": {
+     "key": true,
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Draft Entity ID"
+    },
+    "CreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Draft Created On"
+    },
+    "CreatedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "CreatedByUserDescription"
+     },
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Draft Created By"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Draft Last Changed On"
+    },
+    "LastChangedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "LastChangedByUserDescription"
+     },
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Draft Last Changed By"
+    },
+    "DraftAccessType": {
+     "type": "cds.String",
+     "length": 1,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Draft Access Type"
+    },
+    "ProcessingStartDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Draft In Process Since"
+    },
+    "InProcessByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.Text": {
+      "=": "InProcessByUserDescription"
+     },
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Draft In Process By"
+    },
+    "DraftIsKeptByUser": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Common.Label": "Draft Is Kept By User"
+    },
+    "EnqueueStartDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Draft Locked Since"
+    },
+    "DraftIsCreatedByMe": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Common.Label": "Draft Created By Me"
+    },
+    "DraftIsLastChangedByMe": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Common.Label": "Draft Last Changed By Me"
+    },
+    "DraftIsProcessedByMe": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Common.Label": "Draft In Process By Me"
+    },
+    "CreatedByUserDescription": {
+     "type": "cds.String",
+     "length": 80,
+     "notNull": true,
+     "@Common.Label": "Draft Created By (Description)"
+    },
+    "LastChangedByUserDescription": {
+     "type": "cds.String",
+     "length": 80,
+     "notNull": true,
+     "@Common.Label": "Draft Last Changed By (Description)"
+    },
+    "InProcessByUserDescription": {
+     "type": "cds.String",
+     "length": 80,
+     "notNull": true,
+     "@Common.Label": "Draft In Process By (Description)"
+    }
+   },
+   "@Common.Label": "Draft Administration Data",
+   "@Capabilities.SearchRestrictions.Searchable": true,
+   "@Capabilities.SearchRestrictions.UnsupportedExpressions": {
+    "#": "phrase"
+   },
+   "@Capabilities.FilterRestrictions.Filterable": true,
+   "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+    {
+     "Property": {
+      "=": "CreationDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    },
+    {
+     "Property": {
+      "=": "LastChangeDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    }
+   ],
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.DeleteRestrictions.Deletable": false,
+   "@Capabilities.UpdateRestrictions.Updatable": false,
+   "@Capabilities.UpdateRestrictions.QueryOptions.SelectSupported": true
+  },
+  "zui_zye9012_001.ZC_ZYE9012_001": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "CheckID": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "CreationTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "CreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Created On",
+     "@Common.QuickInfo": "Creation Date Time"
+    },
+    "CreationUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Created By",
+     "@Common.QuickInfo": "Created By User"
+    },
+    "CreationRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "LastChangeTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Last Change Date Time"
+    },
+    "LastChangeUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Changed By",
+     "@Common.QuickInfo": "Last Changed By User"
+    },
+    "LastChangeRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LocinstLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Local Instance Last Change Date Time"
+    },
+    "HasDraftEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has Draft",
+     "@Common.QuickInfo": "Draft - Indicator - Has draft document"
+    },
+    "DraftEntityCreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Created On"
+    },
+    "DraftEntityLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Last Changed On"
+    },
+    "HasActiveEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has active",
+     "@Common.QuickInfo": "Draft - Indicator - Has active document"
+    },
+    "IsActiveEntity": {
+     "key": true,
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Is active",
+     "@Common.QuickInfo": "Draft - Indicator - Is active document"
+    },
+    "SAP__Messages": {
+     "items": {
+      "type": "zui_zye9012_001.SAP__Message",
+      "notNull": true
+     }
+    },
+    "DraftAdministrativeData": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.I_DraftAdministrativeData",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "SiblingEntity": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_001",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "_HeaderField": {
+     "type": "cds.Composition",
+     "target": "zui_zye9012_001.ZC_ZYE9012_005",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": [],
+     "@Common.Composition": true
+    },
+    "_ItemField": {
+     "type": "cds.Composition",
+     "target": "zui_zye9012_001.ZC_ZYE9012_006",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": [],
+     "@Common.Composition": true
+    },
+    "_ListField": {
+     "type": "cds.Composition",
+     "target": "zui_zye9012_001.ZC_ZYE9012_004",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": [],
+     "@Common.Composition": true
+    },
+    "_Selection": {
+     "type": "cds.Composition",
+     "target": "zui_zye9012_001.ZC_ZYE9012_003",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": [],
+     "@Common.Composition": true
+    }
+   },
+   "actions": {
+    "Edit": {
+     "kind": "action",
+     "params": {
+      "_it": {
+       "type": "$self",
+       "notNull": true
+      },
+      "PreserveChanges": {
+       "type": "cds.Boolean",
+       "notNull": true,
+       "@Common.Label": "TRUE",
+       "@Common.QuickInfo": "Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"
+      }
+     },
+     "returns": {
+      "type": "zui_zye9012_001.ZC_ZYE9012_001",
+      "notNull": true
+     }
+    },
+    "Resume": {
+     "kind": "action",
+     "params": {
+      "_it": {
+       "type": "$self",
+       "notNull": true
+      }
+     }
+    },
+    "Discard": {
+     "kind": "action",
+     "params": {
+      "_it": {
+       "type": "$self",
+       "notNull": true
+      }
+     }
+    },
+    "Activate": {
+     "kind": "action",
+     "params": {
+      "_it": {
+       "type": "$self",
+       "notNull": true
+      }
+     },
+     "returns": {
+      "type": "zui_zye9012_001.ZC_ZYE9012_001",
+      "notNull": true
+     }
+    },
+    "Prepare": {
+     "kind": "action",
+     "params": {
+      "_it": {
+       "type": "$self",
+       "notNull": true
+      }
+     }
+    }
+   },
+   "@Common.Label": "Check object exists",
+   "@Common.Messages": {
+    "=": "SAP__Messages"
+   },
+   "@Capabilities.NavigationRestrictions.RestrictedProperties": [
+    {
+     "NavigationProperty": {
+      "=": "_HeaderField"
+     },
+     "InsertRestrictions": {
+      "Insertable": true
+     }
+    },
+    {
+     "NavigationProperty": {
+      "=": "_ItemField"
+     },
+     "InsertRestrictions": {
+      "Insertable": true
+     }
+    },
+    {
+     "NavigationProperty": {
+      "=": "_ListField"
+     },
+     "InsertRestrictions": {
+      "Insertable": true
+     }
+    },
+    {
+     "NavigationProperty": {
+      "=": "_Selection"
+     },
+     "InsertRestrictions": {
+      "Insertable": true
+     }
+    }
+   ],
+   "@Common.DraftRoot": {
+    "EditAction": "zui_zye9012_001.Edit",
+    "DiscardAction": "zui_zye9012_001.Discard",
+    "ActivationAction": "zui_zye9012_001.Activate",
+    "PreparationAction": "zui_zye9012_001.Prepare"
+   },
+   "@Capabilities.SearchRestrictions.Searchable": false,
+   "@Capabilities.FilterRestrictions.Filterable": true,
+   "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+    {
+     "Property": {
+      "=": "DraftEntityCreationDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    },
+    {
+     "Property": {
+      "=": "DraftEntityLastChangeDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    }
+   ],
+   "@Capabilities.UpdateRestrictions.QueryOptions.SelectSupported": true
+  },
+  "zui_zye9012_001.ZC_ZYE9012_003": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ItemCheckId": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "CheckId": {
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "TabFdPos": {
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.IsDigitSequence": true
+    },
+    "ToEntity": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ToField": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ReturnCode": {
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Return Code",
+     "@Common.Heading": "RC",
+     "@Common.QuickInfo": "ABAP System Field: Return Code of ABAP Statements"
+    },
+    "ReturnMessage": {
+     "type": "cds.String",
+     "length": 220,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Message Text"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "CreationTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "CreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Created On",
+     "@Common.QuickInfo": "Creation Date Time"
+    },
+    "CreationUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Created By",
+     "@Common.QuickInfo": "Created By User"
+    },
+    "CreationRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "LastChangeTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Last Change Date Time"
+    },
+    "LastChangeUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Changed By",
+     "@Common.QuickInfo": "Last Changed By User"
+    },
+    "LastChangeRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LocinstLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Local Instance Last Change Date Time"
+    },
+    "HasDraftEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has Draft",
+     "@Common.QuickInfo": "Draft - Indicator - Has draft document"
+    },
+    "DraftEntityCreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Created On"
+    },
+    "DraftEntityLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Last Changed On"
+    },
+    "HasActiveEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has active",
+     "@Common.QuickInfo": "Draft - Indicator - Has active document"
+    },
+    "IsActiveEntity": {
+     "key": true,
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Is active",
+     "@Common.QuickInfo": "Draft - Indicator - Is active document"
+    },
+    "SAP__Messages": {
+     "items": {
+      "type": "zui_zye9012_001.SAP__Message",
+      "notNull": true
+     }
+    },
+    "DraftAdministrativeData": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.I_DraftAdministrativeData",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "SiblingEntity": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_003",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "_Project": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_001",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    }
+   },
+   "@Common.Label": "Check object exists_selection section",
+   "@Common.Messages": {
+    "=": "SAP__Messages"
+   },
+   "@Common.DraftActivationVia": [
+    "SAP__self.Container/ZC_ZYE9012_001"
+   ],
+   "@Capabilities.SearchRestrictions.Searchable": false,
+   "@Capabilities.FilterRestrictions.Filterable": true,
+   "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+    {
+     "Property": {
+      "=": "DraftEntityCreationDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    },
+    {
+     "Property": {
+      "=": "DraftEntityLastChangeDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    }
+   ],
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.QueryOptions.SelectSupported": true
+  },
+  "zui_zye9012_001.ZC_ZYE9012_004": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ItemCheckId": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "CheckId": {
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "TabFdPos": {
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.IsDigitSequence": true
+    },
+    "ToEntity": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ToField": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ReturnCode": {
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Return Code",
+     "@Common.Heading": "RC",
+     "@Common.QuickInfo": "ABAP System Field: Return Code of ABAP Statements"
+    },
+    "ReturnMessage": {
+     "type": "cds.String",
+     "length": 220,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Message Text"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "CreationTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "CreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Created On",
+     "@Common.QuickInfo": "Creation Date Time"
+    },
+    "CreationUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Created By",
+     "@Common.QuickInfo": "Created By User"
+    },
+    "CreationRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "LastChangeTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Last Change Date Time"
+    },
+    "LastChangeUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Changed By",
+     "@Common.QuickInfo": "Last Changed By User"
+    },
+    "LastChangeRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LocinstLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Local Instance Last Change Date Time"
+    },
+    "HasDraftEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has Draft",
+     "@Common.QuickInfo": "Draft - Indicator - Has draft document"
+    },
+    "DraftEntityCreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Created On"
+    },
+    "DraftEntityLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Last Changed On"
+    },
+    "HasActiveEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has active",
+     "@Common.QuickInfo": "Draft - Indicator - Has active document"
+    },
+    "IsActiveEntity": {
+     "key": true,
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Is active",
+     "@Common.QuickInfo": "Draft - Indicator - Is active document"
+    },
+    "SAP__Messages": {
+     "items": {
+      "type": "zui_zye9012_001.SAP__Message",
+      "notNull": true
+     }
+    },
+    "DraftAdministrativeData": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.I_DraftAdministrativeData",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "SiblingEntity": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_004",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "_Project": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_001",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    }
+   },
+   "@Common.Label": "Check object exists_list field section",
+   "@Common.Messages": {
+    "=": "SAP__Messages"
+   },
+   "@Common.DraftActivationVia": [
+    "SAP__self.Container/ZC_ZYE9012_001"
+   ],
+   "@Capabilities.SearchRestrictions.Searchable": false,
+   "@Capabilities.FilterRestrictions.Filterable": true,
+   "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+    {
+     "Property": {
+      "=": "DraftEntityCreationDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    },
+    {
+     "Property": {
+      "=": "DraftEntityLastChangeDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    }
+   ],
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.QueryOptions.SelectSupported": true
+  },
+  "zui_zye9012_001.ZC_ZYE9012_005": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ItemCheckId": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "CheckId": {
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "TabFdPos": {
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.IsDigitSequence": true
+    },
+    "ToEntity": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ToField": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ReturnCode": {
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Return Code",
+     "@Common.Heading": "RC",
+     "@Common.QuickInfo": "ABAP System Field: Return Code of ABAP Statements"
+    },
+    "ReturnMessage": {
+     "type": "cds.String",
+     "length": 220,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Message Text"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "CreationTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "CreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Created On",
+     "@Common.QuickInfo": "Creation Date Time"
+    },
+    "CreationUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Created By",
+     "@Common.QuickInfo": "Created By User"
+    },
+    "CreationRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "LastChangeTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Last Change Date Time"
+    },
+    "LastChangeUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Changed By",
+     "@Common.QuickInfo": "Last Changed By User"
+    },
+    "LastChangeRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LocinstLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Local Instance Last Change Date Time"
+    },
+    "HasDraftEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has Draft",
+     "@Common.QuickInfo": "Draft - Indicator - Has draft document"
+    },
+    "DraftEntityCreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Created On"
+    },
+    "DraftEntityLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Last Changed On"
+    },
+    "HasActiveEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has active",
+     "@Common.QuickInfo": "Draft - Indicator - Has active document"
+    },
+    "IsActiveEntity": {
+     "key": true,
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Is active",
+     "@Common.QuickInfo": "Draft - Indicator - Is active document"
+    },
+    "SAP__Messages": {
+     "items": {
+      "type": "zui_zye9012_001.SAP__Message",
+      "notNull": true
+     }
+    },
+    "DraftAdministrativeData": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.I_DraftAdministrativeData",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "SiblingEntity": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_005",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "_Project": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_001",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    }
+   },
+   "@Common.Label": "Check object exists_item header section",
+   "@Common.Messages": {
+    "=": "SAP__Messages"
+   },
+   "@Common.DraftActivationVia": [
+    "SAP__self.Container/ZC_ZYE9012_001"
+   ],
+   "@Capabilities.SearchRestrictions.Searchable": false,
+   "@Capabilities.FilterRestrictions.Filterable": true,
+   "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+    {
+     "Property": {
+      "=": "DraftEntityCreationDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    },
+    {
+     "Property": {
+      "=": "DraftEntityLastChangeDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    }
+   ],
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.QueryOptions.SelectSupported": true
+  },
+  "zui_zye9012_001.ZC_ZYE9012_006": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "ItemCheckId": {
+     "key": true,
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "CheckId": {
+     "type": "cds.UUID",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@Common.Label": "UUID",
+     "@Common.QuickInfo": "16 Byte UUID in 16 Bytes (Raw Format)"
+    },
+    "TabFdPos": {
+     "type": "cds.String",
+     "length": 4,
+     "notNull": true,
+     "@Common.IsDigitSequence": true
+    },
+    "ToEntity": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ToField": {
+     "type": "cds.String",
+     "length": 30,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "ReturnCode": {
+     "type": "cds.Integer",
+     "notNull": true,
+     "@Common.Label": "Return Code",
+     "@Common.Heading": "RC",
+     "@Common.QuickInfo": "ABAP System Field: Return Code of ABAP Statements"
+    },
+    "ReturnMessage": {
+     "type": "cds.String",
+     "length": 220,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Message Text"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "CreationTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "CreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Created On",
+     "@Common.QuickInfo": "Creation Date Time"
+    },
+    "CreationUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Created By",
+     "@Common.QuickInfo": "Created By User"
+    },
+    "CreationRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@Common.Label": "Date"
+    },
+    "LastChangeTime": {
+     "type": "cds.Time",
+     "notNull": true,
+     "@Common.Label": "Time"
+    },
+    "LastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Last Change Date Time"
+    },
+    "LastChangeUser": {
+     "type": "cds.String",
+     "length": 12,
+     "notNull": true,
+     "@Common.IsUpperCase": true,
+     "@Common.Label": "Changed By",
+     "@Common.QuickInfo": "Last Changed By User"
+    },
+    "LastChangeRicefId": {
+     "type": "cds.String",
+     "length": 20,
+     "notNull": true,
+     "@Common.IsUpperCase": true
+    },
+    "LocinstLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Common.Label": "Changed On",
+     "@Common.QuickInfo": "Local Instance Last Change Date Time"
+    },
+    "HasDraftEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has Draft",
+     "@Common.QuickInfo": "Draft - Indicator - Has draft document"
+    },
+    "DraftEntityCreationDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Created On"
+    },
+    "DraftEntityLastChangeDateTime": {
+     "type": "cds.Timestamp",
+     "@odata.Precision": 7,
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Draft Last Changed On"
+    },
+    "HasActiveEntity": {
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Has active",
+     "@Common.QuickInfo": "Draft - Indicator - Has active document"
+    },
+    "IsActiveEntity": {
+     "key": true,
+     "type": "cds.Boolean",
+     "notNull": true,
+     "@Core.Computed": true,
+     "@UI.HiddenFilter": true,
+     "@Common.Label": "Is active",
+     "@Common.QuickInfo": "Draft - Indicator - Is active document"
+    },
+    "SAP__Messages": {
+     "items": {
+      "type": "zui_zye9012_001.SAP__Message",
+      "notNull": true
+     }
+    },
+    "DraftAdministrativeData": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.I_DraftAdministrativeData",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "SiblingEntity": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_006",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    },
+    "_Project": {
+     "type": "cds.Association",
+     "target": "zui_zye9012_001.ZC_ZYE9012_001",
+     "cardinality": {
+      "max": 1
+     },
+     "keys": []
+    }
+   },
+   "@Common.Label": "Check object exists_item field section",
+   "@Common.Messages": {
+    "=": "SAP__Messages"
+   },
+   "@Common.DraftActivationVia": [
+    "SAP__self.Container/ZC_ZYE9012_001"
+   ],
+   "@Capabilities.SearchRestrictions.Searchable": false,
+   "@Capabilities.FilterRestrictions.Filterable": true,
+   "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+    {
+     "Property": {
+      "=": "DraftEntityCreationDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    },
+    {
+     "Property": {
+      "=": "DraftEntityLastChangeDateTime"
+     },
+     "AllowedExpressions": "SingleRange"
+    }
+   ],
+   "@Capabilities.InsertRestrictions.Insertable": false,
+   "@Capabilities.UpdateRestrictions.QueryOptions.SelectSupported": true
+  }
+ }
+}

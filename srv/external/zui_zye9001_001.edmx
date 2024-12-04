@@ -1,0 +1,3490 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm" Version="4.0">
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+</edmx:Reference>
+<edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+<edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+</edmx:Reference>
+<edmx:DataServices>
+<Schema Namespace="com.sap.gateway.srvd.zui_zye9001_001.v0001" Alias="SAP__self">
+<Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+<EntityType Name="CDSSourceType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="CDSType"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="CDSType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="TypeText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="CDSName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+<Property Name="CDSDescription" Type="Edm.String" Nullable="false" MaxLength="40"/>
+<Property Name="CDSSource" Type="Edm.String" Nullable="false"/>
+<Property Name="CDSGenerated" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="CDSStatusCrit" Type="Edm.Int32" Nullable="false"/>
+<Property Name="CDSStatusText" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="CreationDate" Type="Edm.Date"/>
+<Property Name="CreationTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="CreationUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="CreationRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LastChangeDate" Type="Edm.Date"/>
+<Property Name="LastChangeTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangeUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LocinstLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceOperationControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType"/>
+<NavigationProperty Name="_Project" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false" Partner="_CDSSource">
+<ReferentialConstraint Property="ProjectId" ReferencedProperty="ProjectId"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="ProjectType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="SrvdName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="SrvdDescription" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="SrvbName" Type="Edm.String" Nullable="false" MaxLength="26"/>
+<Property Name="SrvbDescription" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="SrvdStatusCrit" Type="Edm.Int32" Nullable="false"/>
+<Property Name="SrvdGenerated" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="SrvdStatusText" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="DevClass" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="Trkorr" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="CreationDate" Type="Edm.Date"/>
+<Property Name="CreationTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="CreationUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="CreationRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LastChangeDate" Type="Edm.Date"/>
+<Property Name="LastChangeTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangeUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LocinstLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__CreateByAssociationControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCbAControl"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectOperationControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType"/>
+<NavigationProperty Name="_CDSSource" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType)" Partner="_Project">
+<OnDelete Action="Cascade"/>
+</NavigationProperty>
+<NavigationProperty Name="_HeaderField" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.HeaderFieldType)" Partner="_Project">
+<OnDelete Action="Cascade"/>
+</NavigationProperty>
+<NavigationProperty Name="_ItemField" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.ItemFieldType)" Partner="_Project">
+<OnDelete Action="Cascade"/>
+</NavigationProperty>
+<NavigationProperty Name="_ListField" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.ListFieldType)" Partner="_Project">
+<OnDelete Action="Cascade"/>
+</NavigationProperty>
+<NavigationProperty Name="_Selection" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SelectionType)" Partner="_Project">
+<OnDelete Action="Cascade"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="CDSTypeType">
+<Key>
+<PropertyRef Name="value_position"/>
+</Key>
+<Property Name="value_position" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="value_low" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="text" Type="Edm.String" Nullable="false" MaxLength="60"/>
+</EntityType>
+<EntityType Name="LogType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="LogNumber"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="LogNumber" Type="Edm.Int32" Nullable="false"/>
+<Property Name="MessageType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Criticality" Type="Edm.Int32" Nullable="false"/>
+<Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.LogType"/>
+<NavigationProperty Name="_Project" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false" Partner="_Log">
+<ReferentialConstraint Property="ProjectId" ReferencedProperty="ProjectId"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="ListFieldType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="TabFdPos"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="TabFdPos" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="ParamText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="FieldType" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="Display" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="Enterable" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="Obligatory" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="ValueHelp" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="ToEntityText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="ToEntity" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="ToFieldText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="ToField" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="CreationDate" Type="Edm.Date"/>
+<Property Name="CreationTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="CreationUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="CreationRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LastChangeDate" Type="Edm.Date"/>
+<Property Name="LastChangeTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangeUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LocinstLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ListFieldType"/>
+<NavigationProperty Name="_Project" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false" Partner="_ListField">
+<ReferentialConstraint Property="ProjectId" ReferencedProperty="ProjectId"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="HeaderFieldType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="TabFdPos"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="TabFdPos" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="DummyField1" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ParamText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField11" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField12" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField13" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField14" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField15" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField16" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField17" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField18" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField19" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="FieldType" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField21" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField22" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField23" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField24" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField25" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField26" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField67" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Display" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField31" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Enterable" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField41" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Obligatory" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField51" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ValueHelp" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField61" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToEntityText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField71" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField72" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField73" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField74" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField75" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToEntity" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="DummyField81" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField82" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField83" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField84" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField85" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToFieldText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField91" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField92" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField93" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField94" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField95" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToField" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="LastChangeDate" Type="Edm.Date"/>
+<Property Name="LastChangeTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangeUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LocinstLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.HeaderFieldType"/>
+<NavigationProperty Name="_Project" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false" Partner="_HeaderField">
+<ReferentialConstraint Property="ProjectId" ReferencedProperty="ProjectId"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="ProjectCommonType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="ProjectType" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="TypeText" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="TableName" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="__FieldControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonControl"/>
+<Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonOperationControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType"/>
+<NavigationProperty Name="_Log" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.LogType)" Partner="_Project">
+<OnDelete Action="Cascade"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="I_DraftAdministrativeDataType">
+<Key>
+<PropertyRef Name="DraftUUID"/>
+<PropertyRef Name="DraftEntityType"/>
+</Key>
+<Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+<Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="CreatedByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangedByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="DraftAccessType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="InProcessByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="DraftIsKeptByUser" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="CreatedByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+<Property Name="LastChangedByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+<Property Name="InProcessByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+</EntityType>
+<EntityType Name="ItemFieldType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="TabFdPos"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="TabFdPos" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="DummyField1" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ParamText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField11" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField12" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField13" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField14" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField15" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField16" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField17" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField18" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField19" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="FieldType" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField21" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField22" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField23" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField24" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField25" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField26" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField67" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Display" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField31" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Enterable" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField41" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Obligatory" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField51" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ValueHelp" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="DummyField61" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToEntityText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField71" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField72" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField73" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField74" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField75" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToEntity" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="DummyField81" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField82" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField83" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField84" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField85" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToFieldText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="DummyField91" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField92" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField93" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField94" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="DummyField95" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="ToField" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="CreationDate" Type="Edm.Date"/>
+<Property Name="CreationTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="CreationUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="CreationRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LastChangeDate" Type="Edm.Date"/>
+<Property Name="LastChangeTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangeUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LocinstLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ItemFieldType"/>
+<NavigationProperty Name="_Project" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false" Partner="_ItemField">
+<ReferentialConstraint Property="ProjectId" ReferencedProperty="ProjectId"/>
+</NavigationProperty>
+</EntityType>
+<EntityType Name="SelectionType">
+<Key>
+<PropertyRef Name="ProjectId"/>
+<PropertyRef Name="TabFdPos"/>
+<PropertyRef Name="IsActiveEntity"/>
+</Key>
+<Property Name="ProjectId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="TabFdPos" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="ParamText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="FieldType" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="Display" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="Enterable" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="Obligatory" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="ValueHelp" Type="Edm.String" Nullable="false" MaxLength="2"/>
+<Property Name="ToEntityText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="ToEntity" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="ToFieldText" Type="Edm.String" Nullable="false" MaxLength="60"/>
+<Property Name="ToField" Type="Edm.String" Nullable="false" MaxLength="30"/>
+<Property Name="CreationDate" Type="Edm.Date"/>
+<Property Name="CreationTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="CreationUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="CreationRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LastChangeDate" Type="Edm.Date"/>
+<Property Name="LastChangeTime" Type="Edm.TimeOfDay" Nullable="false"/>
+<Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="LastChangeUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+<Property Name="LastChangeRicefId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+<Property Name="LocinstLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+<Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.EntityControl"/>
+<Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_zye9001_001.v0001.SAP__Message)" Nullable="false"/>
+<NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.SelectionType"/>
+<NavigationProperty Name="_Project" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false" Partner="_Selection">
+<ReferentialConstraint Property="ProjectId" ReferencedProperty="ProjectId"/>
+</NavigationProperty>
+</EntityType>
+<ComplexType Name="ProjectCommonControl">
+<Property Name="ProjectType" Type="Edm.Byte" Nullable="false"/>
+</ComplexType>
+<ComplexType Name="ProjectCbAControl">
+<Property Name="_HeaderField" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="_ItemField" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="_ListField" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="_Selection" Type="Edm.Boolean" Nullable="false"/>
+</ComplexType>
+<ComplexType Name="CDSSourceOperationControl">
+<Property Name="activateCDS" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="genCDSSource" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="saveCDSSource" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="triggerValidateCDS" Type="Edm.Boolean" Nullable="false"/>
+</ComplexType>
+<ComplexType Name="ProjectOperationControl">
+<Property Name="Edit" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="generateService" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="requestCDSEntry" Type="Edm.Boolean" Nullable="false"/>
+</ComplexType>
+<ComplexType Name="ProjectCommonOperationControl">
+<Property Name="Edit" Type="Edm.Boolean" Nullable="false"/>
+</ComplexType>
+<ComplexType Name="EntityControl">
+<Property Name="Updatable" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="Deletable" Type="Edm.Boolean" Nullable="false"/>
+</ComplexType>
+<ComplexType Name="SAP__Message">
+<Property Name="code" Type="Edm.String" Nullable="false"/>
+<Property Name="message" Type="Edm.String" Nullable="false"/>
+<Property Name="target" Type="Edm.String"/>
+<Property Name="additionalTargets" Type="Collection(Edm.String)" Nullable="false"/>
+<Property Name="transition" Type="Edm.Boolean" Nullable="false"/>
+<Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
+<Property Name="longtextUrl" Type="Edm.String"/>
+</ComplexType>
+<Action Name="Edit" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+<Parameter Name="PreserveChanges" Type="Edm.Boolean" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+</Action>
+<Action Name="Discard" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+</Action>
+<Action Name="saveCDSSource" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+</Action>
+<Action Name="Activate" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+</Action>
+<Action Name="genCDSSource" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+</Action>
+<Action Name="Resume" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+</Action>
+<Action Name="generateService" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="requestCDSEntry" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="Discard" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="triggerValidateCDS" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+</Action>
+<Action Name="Edit" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+<Parameter Name="PreserveChanges" Type="Edm.Boolean" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="Prepare" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType" Nullable="false"/>
+</Action>
+<Action Name="Prepare" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="Activate" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="Resume" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType" Nullable="false"/>
+</Action>
+<Action Name="activateCDS" EntitySetPath="_it" IsBound="true">
+<Parameter Name="_it" Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+<ReturnType Type="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType" Nullable="false"/>
+</Action>
+<EntityContainer Name="Container">
+<EntitySet Name="CDSSource" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="CDSSource"/>
+<NavigationPropertyBinding Path="_Project" Target="Project"/>
+</EntitySet>
+<EntitySet Name="CDSType" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSTypeType"/>
+<EntitySet Name="HeaderField" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.HeaderFieldType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="HeaderField"/>
+<NavigationPropertyBinding Path="_Project" Target="Project"/>
+</EntitySet>
+<EntitySet Name="ItemField" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.ItemFieldType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="ItemField"/>
+<NavigationPropertyBinding Path="_Project" Target="Project"/>
+</EntitySet>
+<EntitySet Name="I_DraftAdministrativeData" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.I_DraftAdministrativeDataType"/>
+<EntitySet Name="ListField" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.ListFieldType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="ListField"/>
+<NavigationPropertyBinding Path="_Project" Target="Project"/>
+</EntitySet>
+<EntitySet Name="Log" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.LogType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="Log"/>
+<NavigationPropertyBinding Path="_Project" Target="ProjectCommon"/>
+</EntitySet>
+<EntitySet Name="Project" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="Project"/>
+<NavigationPropertyBinding Path="_CDSSource" Target="CDSSource"/>
+<NavigationPropertyBinding Path="_HeaderField" Target="HeaderField"/>
+<NavigationPropertyBinding Path="_ItemField" Target="ItemField"/>
+<NavigationPropertyBinding Path="_ListField" Target="ListField"/>
+<NavigationPropertyBinding Path="_Selection" Target="Selection"/>
+</EntitySet>
+<EntitySet Name="ProjectCommon" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectCommonType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="ProjectCommon"/>
+<NavigationPropertyBinding Path="_Log" Target="Log"/>
+</EntitySet>
+<EntitySet Name="Selection" EntityType="com.sap.gateway.srvd.zui_zye9001_001.v0001.SelectionType">
+<NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+<NavigationPropertyBinding Path="SiblingEntity" Target="Selection"/>
+<NavigationPropertyBinding Path="_Project" Target="Project"/>
+</EntitySet>
+</EntityContainer>
+<Annotations Target="SAP__self.CDSSourceType/ProjectId">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CDSType">
+<Annotation Term="SAP__common.Label" String="#"/>
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.QuickInfo" String="Single-Character Flag"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/TypeText">
+<Annotation Term="SAP__common.Label" String="CDS種別"/>
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.Heading" String="Short Description"/>
+<Annotation Term="SAP__common.QuickInfo" String="Short Text for Fixed Values"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CDSName">
+<Annotation Term="SAP__common.Label" String="CDSビュー名称"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CDSDescription">
+<Annotation Term="SAP__common.Label" String="CDSビュー内容説明"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CDSGenerated">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CDSStatusCrit">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CDSStatusText">
+<Annotation Term="SAP__common.Label" String="生成状況"/>
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CreationUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Created By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CreationRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/LastChangeUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Changed By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/LastChangeRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__OperationControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/CDSSource">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Project"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftNode">
+<Record/>
+</Annotation>
+<Annotation Term="SAP__common.DraftActivationVia">
+<Collection>
+<String>SAP__self.Container/Project</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="CDSSource"/>
+<PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+<PropertyPath>__OperationControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>CDSSource</PropertyPath>
+<PropertyPath>__EntityControl</PropertyPath>
+<PropertyPath>__OperationControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection>
+<PropertyPath>LocinstLastChangeDateTime</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.saveCDSSource(SAP__self.CDSSourceType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/saveCDSSource"/>
+</Annotations>
+<Annotations Target="SAP__self.genCDSSource(SAP__self.CDSSourceType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/genCDSSource"/>
+</Annotations>
+<Annotations Target="SAP__self.triggerValidateCDS(SAP__self.CDSSourceType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/triggerValidateCDS"/>
+</Annotations>
+<Annotations Target="SAP__self.activateCDS(SAP__self.CDSSourceType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/activateCDS"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：レポート用oDataサービスCDSソースコード"/>
+<Annotation Term="SAP__UI.HeaderFacets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="CDSビュー"/>
+<PropertyValue Property="ID" String="GenerateHeader"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#GenerateHeader"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.FieldGroup" Qualifier="GenerateHeader">
+<Record>
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDSビュー名称"/>
+<PropertyValue Property="Value" Path="CDSName"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDSビュー内容説明"/>
+<PropertyValue Property="Value" Path="CDSDescription"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDSビュー生成状況"/>
+<PropertyValue Property="Criticality" Path="CDSStatusCrit"/>
+<PropertyValue Property="Value" Path="CDSStatusText"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="CDSソースコード"/>
+<PropertyValue Property="TypeNamePlural" String="CDSソースコード"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDSソースコード"/>
+<PropertyValue Property="Value" Path="ProjectId"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="CDSType"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="TypeText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="CDSName"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="CDSDescription"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="CDSStatusText"/>
+</Record>
+<Record Type="SAP__UI.DataFieldForAction">
+<PropertyValue Property="Label" String="CDSソースコード生成"/>
+<PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.genCDSSource(com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType)"/>
+<PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+</Record>
+<Record Type="SAP__UI.DataFieldForAction">
+<PropertyValue Property="Label" String="CDSビューチェック"/>
+<PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.triggerValidateCDS(com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType)"/>
+<PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+</Record>
+<Record Type="SAP__UI.DataFieldForAction">
+<PropertyValue Property="Label" String="CDSビュー保存"/>
+<PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.saveCDSSource(com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType)"/>
+<PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+</Record>
+<Record Type="SAP__UI.DataFieldForAction">
+<PropertyValue Property="Label" String="CDSビュー有効化"/>
+<PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.activateCDS(com.sap.gateway.srvd.zui_zye9001_001.v0001.CDSSourceType)"/>
+<PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="#"/>
+<PropertyValue Property="Value" Path="CDSType"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDS種別"/>
+<PropertyValue Property="Value" Path="TypeText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDSビュー名称"/>
+<PropertyValue Property="Value" Path="CDSName"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="CDSビュー内容説明"/>
+<PropertyValue Property="Value" Path="CDSDescription"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="生成状況"/>
+<PropertyValue Property="Value" Path="CDSStatusText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/ProjectId">
+<Annotation Term="SAP__common.Label" String="プロジェクトID"/>
+<Annotation Term="SAP__core.Immutable"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/Text">
+<Annotation Term="SAP__core.Immutable"/>
+<Annotation Term="SAP__common.Label" String="Description"/>
+<Annotation Term="SAP__common.QuickInfo" String="Text (20 Characters)"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvdName">
+<Annotation Term="SAP__common.Label" String="Service Definition 名称"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Heading" String="Service definition object name"/>
+<Annotation Term="SAP__common.QuickInfo" String="XCO Service definition: Object name"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvdDescription">
+<Annotation Term="SAP__common.Label" String="Service Definition 内容説明"/>
+<Annotation Term="SAP__common.Heading" String="Short description"/>
+<Annotation Term="SAP__common.QuickInfo" String="XCO ABAP Repository: Short description"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvbName">
+<Annotation Term="SAP__common.Label" String="Service Binding 名称"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.QuickInfo" String="XCO SRVB: Object name"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvbDescription">
+<Annotation Term="SAP__common.Label" String="Service Binding 内容説明"/>
+<Annotation Term="SAP__common.Heading" String="Short description"/>
+<Annotation Term="SAP__common.QuickInfo" String="XCO ABAP Repository: Short description"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvdStatusCrit">
+<Annotation Term="SAP__core.Immutable"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvdGenerated">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/SrvdStatusText">
+<Annotation Term="SAP__core.Immutable"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/DevClass">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Package"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/Trkorr">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Request/Task"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/CreationUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Created By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/CreationRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/LastChangeUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Changed By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/LastChangeRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__CreateByAssociationControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__OperationControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/_CDSSource">
+<Annotation Term="SAP__common.Composition"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/Project">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_CDSSource"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_HeaderField"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_HeaderField"/>
+</Record>
+</PropertyValue>
+</Record>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_ItemField"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_ItemField"/>
+</Record>
+</PropertyValue>
+</Record>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_ListField"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_ListField"/>
+</Record>
+</PropertyValue>
+</Record>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Selection"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_Selection"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftRoot">
+<Record>
+<PropertyValue Property="DiscardAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Discard"/>
+<PropertyValue Property="EditAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Edit"/>
+<PropertyValue Property="PreparationAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Prepare"/>
+<PropertyValue Property="ActivationAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Activate"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__CreateByAssociationControl</PropertyPath>
+<PropertyPath>__EntityControl</PropertyPath>
+<PropertyPath>__OperationControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>__CreateByAssociationControl</PropertyPath>
+<PropertyPath>__EntityControl</PropertyPath>
+<PropertyPath>__OperationControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection>
+<PropertyPath>LocinstLastChangeDateTime</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/_HeaderField">
+<Annotation Term="SAP__common.Composition"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/_ItemField">
+<Annotation Term="SAP__common.Composition"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/_ListField">
+<Annotation Term="SAP__common.Composition"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/_Selection">
+<Annotation Term="SAP__common.Composition"/>
+</Annotations>
+<Annotations Target="SAP__self.generateService(SAP__self.ProjectType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/generateService"/>
+</Annotations>
+<Annotations Target="SAP__self.requestCDSEntry(SAP__self.ProjectType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/requestCDSEntry"/>
+</Annotations>
+<Annotations Target="SAP__self.Edit(SAP__self.ProjectType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/Edit"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：レポート用oDataサービス"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="情報"/>
+<PropertyValue Property="ID" String="ProjectInfo"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#ProjectInfo"/>
+</Record>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="選択項目"/>
+<PropertyValue Property="ID" String="Selection"/>
+<PropertyValue Property="Target" AnnotationPath="_Selection/@SAP__UI.LineItem"/>
+</Record>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="一覧項目"/>
+<PropertyValue Property="ID" String="ListField"/>
+<PropertyValue Property="Target" AnnotationPath="_ListField/@SAP__UI.LineItem"/>
+</Record>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="詳細画面ヘッダ項目"/>
+<PropertyValue Property="ID" String="HeaderField"/>
+<PropertyValue Property="Target" AnnotationPath="_HeaderField/@SAP__UI.LineItem"/>
+</Record>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="詳細画面明細項目"/>
+<PropertyValue Property="ID" String="ItemField"/>
+<PropertyValue Property="Target" AnnotationPath="_ItemField/@SAP__UI.LineItem"/>
+</Record>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="CDSソースコード"/>
+<PropertyValue Property="ID" String="CDSInfo"/>
+<PropertyValue Property="Target" AnnotationPath="_CDSSource/@SAP__UI.LineItem"/>
+</Record>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="サービス情報"/>
+<PropertyValue Property="ID" String="ServiceInfo"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#ServiceInfo"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.FieldGroup" Qualifier="ProjectInfo">
+<Record>
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ProjectId"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="内容説明"/>
+<PropertyValue Property="Value" Path="Text"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.FieldGroup" Qualifier="ServiceInfo">
+<Record>
+<PropertyValue Property="Data">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="SrvdName"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="SrvdDescription"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="SrvbName"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="SrvbDescription"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="パッケージ"/>
+<PropertyValue Property="Value" Path="DevClass"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="依頼/タスク"/>
+<PropertyValue Property="Value" Path="Trkorr"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="サービス生成状況"/>
+<PropertyValue Property="Criticality" Path="SrvdStatusCrit"/>
+<PropertyValue Property="Value" Path="SrvdStatusText"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="プロジェクト"/>
+<PropertyValue Property="TypeNamePlural" String="プロジェクト"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="プロジェクト"/>
+<PropertyValue Property="Value" Path="ProjectId"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="プロジェクトID"/>
+<PropertyValue Property="Value" Path="ProjectId"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="内容説明"/>
+<PropertyValue Property="Value" Path="Text"/>
+</Record>
+<Record Type="SAP__UI.DataFieldForAction">
+<PropertyValue Property="Label" String="CDS種別エントリ作成"/>
+<PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.requestCDSEntry(com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType)"/>
+<PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+</Record>
+<Record Type="SAP__UI.DataFieldForAction">
+<PropertyValue Property="Label" String="oDataサービス生成"/>
+<PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.generateService(com.sap.gateway.srvd.zui_zye9001_001.v0001.ProjectType)"/>
+<PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="プロジェクトID"/>
+<PropertyValue Property="Value" Path="ProjectId"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="内容説明"/>
+<PropertyValue Property="Value" Path="Text"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.SelectionFields">
+<Collection>
+<PropertyPath>ProjectId</PropertyPath>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSTypeType/value_position">
+<Annotation Term="SAP__common.IsDigitSequence"/>
+<Annotation Term="SAP__common.Label" String="Value key"/>
+<Annotation Term="SAP__common.QuickInfo" String="Domain value key"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSTypeType/value_low">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Lower Value"/>
+<Annotation Term="SAP__common.Heading" String="Fixed"/>
+<Annotation Term="SAP__common.QuickInfo" String="Values for Domains: Single Value/Lower Limit"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSTypeType">
+<Annotation Term="SAP__common.Label" String="テーブル生成プロジェクト：更新許可値ヘルプ"/>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="value_position"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="value_low"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="text"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.SelectionFields">
+<Collection>
+<PropertyPath>value_low</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.Container/CDSType">
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Bool="false"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection/>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.LogType/ProjectId">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Project ID"/>
+<Annotation Term="SAP__common.Heading" String="ProjectID"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/LogNumber">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.Label" String="SeqNo."/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/MessageType">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Message Type"/>
+<Annotation Term="SAP__common.Heading" String="Type"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/Criticality">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/Message">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Message Text"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.LogType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/Log">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Project"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftNode">
+<Record/>
+</Annotation>
+<Annotation Term="SAP__common.DraftActivationVia">
+<Collection>
+<String>SAP__self.Container/Project</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Bool="false"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection/>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.LogType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：生成ログ"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="生成ログ"/>
+<PropertyValue Property="ID" String="log"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="生成ログ"/>
+<PropertyValue Property="TypeNamePlural" String="生成ログ"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="生成ログ"/>
+<PropertyValue Property="Value" Path="LogNumber"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="LogNumber"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Criticality"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Message"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="LogNumber"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Criticality"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Criticality" Path="Criticality"/>
+<PropertyValue Property="Value" Path="Message"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.SelectionFields">
+<Collection>
+<PropertyPath>ProjectId</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/ProjectId">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/TabFdPos">
+<Annotation Term="SAP__core.Immutable"/>
+<Annotation Term="SAP__common.IsDigitSequence"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/Display">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/Enterable">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/Obligatory">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/ValueHelp">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/ToEntity">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/ToField">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/CreationUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Created By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/CreationRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/LastChangeUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Changed By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/LastChangeRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/ListField">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Project"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftNode">
+<Record/>
+</Annotation>
+<Annotation Term="SAP__common.DraftActivationVia">
+<Collection>
+<String>SAP__self.Container/Project</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection>
+<PropertyPath>LocinstLastChangeDateTime</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：レポート用oDataサービス一覧項目"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="一覧項目"/>
+<PropertyValue Property="ID" String="mapping"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="一覧項目"/>
+<PropertyValue Property="TypeNamePlural" String="一覧項目"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="一覧項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="TabFdPos"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ParamText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="FieldType"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Display"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Enterable"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Obligatory"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ValueHelp"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntityText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntity"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToFieldText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="#"/>
+<PropertyValue Property="Value" Path="TabFdPos"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目名称"/>
+<PropertyValue Property="Value" Path="ParamText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目種類"/>
+<PropertyValue Property="Value" Path="FieldType"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="表示"/>
+<PropertyValue Property="Value" Path="Display"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="入力"/>
+<PropertyValue Property="Value" Path="Enterable"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="必須"/>
+<PropertyValue Property="Value" Path="Obligatory"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="検索ヘルプ"/>
+<PropertyValue Property="Value" Path="ValueHelp"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ内容説明"/>
+<PropertyValue Property="Value" Path="ToEntityText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ"/>
+<PropertyValue Property="Value" Path="ToEntity"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目説明"/>
+<PropertyValue Property="Value" Path="ToFieldText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/ProjectId">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/TabFdPos">
+<Annotation Term="SAP__core.Immutable"/>
+<Annotation Term="SAP__common.IsDigitSequence"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/Display">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/Enterable">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/Obligatory">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/ValueHelp">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/ToEntity">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/ToField">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/LastChangeUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Changed By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/LastChangeRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/HeaderField">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Project"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftNode">
+<Record/>
+</Annotation>
+<Annotation Term="SAP__common.DraftActivationVia">
+<Collection>
+<String>SAP__self.Container/Project</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection>
+<PropertyPath>LocinstLastChangeDateTime</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：レポート用oDataサービス詳細画面ヘッダ項目"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="詳細画面ヘッダ項目"/>
+<PropertyValue Property="ID" String="mapping"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="詳細画面ヘッダ項目"/>
+<PropertyValue Property="TypeNamePlural" String="詳細画面ヘッダ項目"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="詳細画面ヘッダ項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="TabFdPos"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ParamText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="FieldType"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Display"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Enterable"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Obligatory"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ValueHelp"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntityText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntity"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToFieldText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="#"/>
+<PropertyValue Property="Value" Path="TabFdPos"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目名称"/>
+<PropertyValue Property="Value" Path="ParamText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目種類"/>
+<PropertyValue Property="Value" Path="FieldType"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="表示"/>
+<PropertyValue Property="Value" Path="Display"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="入力"/>
+<PropertyValue Property="Value" Path="Enterable"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="必須"/>
+<PropertyValue Property="Value" Path="Obligatory"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="検索ヘルプ"/>
+<PropertyValue Property="Value" Path="ValueHelp"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ内容説明"/>
+<PropertyValue Property="Value" Path="ToEntityText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ"/>
+<PropertyValue Property="Value" Path="ToEntity"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目説明"/>
+<PropertyValue Property="Value" Path="ToFieldText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/ProjectId">
+<Annotation Term="SAP__common.FieldControl" EnumMember="SAP__common.FieldControlType/Mandatory"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Project ID"/>
+<Annotation Term="SAP__common.Heading" String="ProjectID"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/ProjectType">
+<Annotation Term="SAP__common.FieldControl" Path="__FieldControl/ProjectType"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.ValueListReferences">
+<Collection>
+<String>../../../../srvd_f4/sap/zc_ge_projecttype/0001;ps='srvd-zui_zye9001_001-0001';va='com.sap.gateway.srvd.zui_zye9001_001.v0001.et-zc_ge_project.projecttype'/$metadata</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Label" String="Project Type"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/TypeText">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.Label" String="Description"/>
+<Annotation Term="SAP__common.QuickInfo" String="Text (20 Characters)"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/TableName">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Table Name"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__FieldControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__OperationControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/_Log">
+<Annotation Term="SAP__common.Composition"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/ProjectCommon">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Log"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftRoot">
+<Record>
+<PropertyValue Property="EditAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Edit"/>
+<PropertyValue Property="DiscardAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Discard"/>
+<PropertyValue Property="ActivationAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Activate"/>
+<PropertyValue Property="PreparationAction" String="com.sap.gateway.srvd.zui_zye9001_001.v0001.Prepare"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+<PropertyPath>__FieldControl</PropertyPath>
+<PropertyPath>__OperationControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+<PropertyPath>__FieldControl</PropertyPath>
+<PropertyPath>__OperationControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection/>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.Edit(SAP__self.ProjectCommonType)">
+<Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/Edit"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType">
+<Annotation Term="SAP__common.Label" String="Project"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="Information"/>
+<PropertyValue Property="ID" String="header"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="Projects"/>
+<PropertyValue Property="TypeNamePlural" String="Project"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="Project"/>
+<PropertyValue Property="Value" Path="ProjectId"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ProjectId"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ProjectType"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Text"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ProjectId"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ProjectType"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="TypeText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Text"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.SelectionFields">
+<Collection>
+<PropertyPath>ProjectId</PropertyPath>
+<PropertyPath>ProjectType</PropertyPath>
+<PropertyPath>Text</PropertyPath>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftEntityType">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Entity ID"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreatedByUser">
+<Annotation Term="SAP__common.Text" Path="CreatedByUserDescription"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.ValueListReferences">
+<Collection>
+<String>../../../../srvd_f4/sap/i_draftadministrativeuservh/0001;ps='srvd-zui_zye9001_001-0001';va='com.sap.gateway.srvd.zui_zye9001_001.v0001.et-i_draftadministrativedata.createdbyuser'/$metadata</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Label" String="Draft Created By"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangedByUser">
+<Annotation Term="SAP__common.Text" Path="LastChangedByUserDescription"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.ValueListReferences">
+<Collection>
+<String>../../../../srvd_f4/sap/i_draftadministrativeuservh/0001;ps='srvd-zui_zye9001_001-0001';va='com.sap.gateway.srvd.zui_zye9001_001.v0001.et-i_draftadministrativedata.lastchangedbyuser'/$metadata</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed By"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftAccessType">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Access Type"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/InProcessByUser">
+<Annotation Term="SAP__common.Text" Path="InProcessByUserDescription"/>
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft In Process By"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType">
+<Annotation Term="SAP__common.Label" String="Draft Administration Data"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/I_DraftAdministrativeData">
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Bool="false"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection/>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/ProjectId">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/TabFdPos">
+<Annotation Term="SAP__core.Immutable"/>
+<Annotation Term="SAP__common.IsDigitSequence"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/Display">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/Enterable">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/Obligatory">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/ValueHelp">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/ToEntity">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/ToField">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/CreationUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Created By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/CreationRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/LastChangeUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Changed By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/LastChangeRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/ItemField">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Project"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftNode">
+<Record/>
+</Annotation>
+<Annotation Term="SAP__common.DraftActivationVia">
+<Collection>
+<String>SAP__self.Container/Project</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection>
+<PropertyPath>LocinstLastChangeDateTime</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：レポート用oDataサービス詳細画面明細項目"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="詳細画面明細項目"/>
+<PropertyValue Property="ID" String="mapping"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="詳細画面明細項目"/>
+<PropertyValue Property="TypeNamePlural" String="詳細画面明細項目"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="詳細画面明細項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="TabFdPos"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ParamText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="FieldType"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Display"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Enterable"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Obligatory"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ValueHelp"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntityText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntity"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToFieldText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="#"/>
+<PropertyValue Property="Value" Path="TabFdPos"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目名称"/>
+<PropertyValue Property="Value" Path="ParamText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目種類"/>
+<PropertyValue Property="Value" Path="FieldType"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="表示"/>
+<PropertyValue Property="Value" Path="Display"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="入力"/>
+<PropertyValue Property="Value" Path="Enterable"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="必須"/>
+<PropertyValue Property="Value" Path="Obligatory"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="検索ヘルプ"/>
+<PropertyValue Property="Value" Path="ValueHelp"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ内容説明"/>
+<PropertyValue Property="Value" Path="ToEntityText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ"/>
+<PropertyValue Property="Value" Path="ToEntity"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目説明"/>
+<PropertyValue Property="Value" Path="ToFieldText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/ProjectId">
+<Annotation Term="SAP__core.Computed"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/TabFdPos">
+<Annotation Term="SAP__core.Immutable"/>
+<Annotation Term="SAP__common.IsDigitSequence"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/Display">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/Enterable">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/Obligatory">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/ValueHelp">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/ToEntity">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/ToField">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/CreationUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Created By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Created By User"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/CreationRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/LastChangeUser">
+<Annotation Term="SAP__common.IsUpperCase"/>
+<Annotation Term="SAP__common.Label" String="Changed By"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Changed By User"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/LastChangeRicefId">
+<Annotation Term="SAP__common.IsUpperCase"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/HasDraftEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has Draft"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has draft document"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/DraftEntityCreationDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/DraftEntityLastChangeDateTime">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/HasActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Has active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Has active document"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/IsActiveEntity">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Is active"/>
+<Annotation Term="SAP__common.QuickInfo" String="Draft - Indicator - Is active document"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/__EntityControl">
+<Annotation Term="SAP__core.Computed"/>
+<Annotation Term="SAP__UI.HiddenFilter"/>
+<Annotation Term="SAP__UI.Hidden"/>
+</Annotations>
+<Annotations Target="SAP__self.Container/Selection">
+<Annotation Term="SAP__capabilities.NavigationRestrictions">
+<Record>
+<PropertyValue Property="RestrictedProperties">
+<Collection>
+<Record>
+<PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Project"/>
+<PropertyValue Property="InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</PropertyValue>
+</Record>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.DraftNode">
+<Record/>
+</Annotation>
+<Annotation Term="SAP__common.DraftActivationVia">
+<Collection>
+<String>SAP__self.Container/Project</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SearchRestrictions">
+<Record>
+<PropertyValue Property="Searchable" Bool="true"/>
+<PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.FilterRestrictions">
+<Record>
+<PropertyValue Property="Filterable" Bool="true"/>
+<PropertyValue Property="FilterExpressionRestrictions">
+<Collection>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+<Record>
+<PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+<PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+</Record>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="NonFilterableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.SortRestrictions">
+<Record>
+<PropertyValue Property="NonSortableProperties">
+<Collection>
+<PropertyPath>__EntityControl</PropertyPath>
+</Collection>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.InsertRestrictions">
+<Record>
+<PropertyValue Property="Insertable" Bool="false"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.DeleteRestrictions">
+<Record>
+<PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.UpdateRestrictions">
+<Record>
+<PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+<PropertyValue Property="QueryOptions">
+<Record>
+<PropertyValue Property="SelectSupported" Bool="true"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__core.OptimisticConcurrency">
+<Collection>
+<PropertyPath>LocinstLastChangeDateTime</PropertyPath>
+</Collection>
+</Annotation>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType">
+<Annotation Term="SAP__common.Label" String="アドオン生成プロジェクト：レポート用oDataサービス選択項目"/>
+<Annotation Term="SAP__UI.Facets">
+<Collection>
+<Record Type="SAP__UI.ReferenceFacet">
+<PropertyValue Property="Label" String="選択項目"/>
+<PropertyValue Property="ID" String="mapping"/>
+<PropertyValue Property="Target" AnnotationPath="@SAP__UI.Identification"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.HeaderInfo">
+<Record>
+<PropertyValue Property="TypeName" String="選択項目"/>
+<PropertyValue Property="TypeNamePlural" String="選択項目"/>
+<PropertyValue Property="Title">
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="選択項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</PropertyValue>
+</Record>
+</Annotation>
+<Annotation Term="SAP__UI.Identification">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="TabFdPos"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ParamText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="FieldType"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Display"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Enterable"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="Obligatory"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ValueHelp"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntityText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToEntity"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToFieldText"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Value" Path="ToField"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__UI.LineItem">
+<Collection>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="#"/>
+<PropertyValue Property="Value" Path="TabFdPos"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目名称"/>
+<PropertyValue Property="Value" Path="ParamText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="項目種類"/>
+<PropertyValue Property="Value" Path="FieldType"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="表示"/>
+<PropertyValue Property="Value" Path="Display"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="入力"/>
+<PropertyValue Property="Value" Path="Enterable"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="必須"/>
+<PropertyValue Property="Value" Path="Obligatory"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="検索ヘルプ"/>
+<PropertyValue Property="Value" Path="ValueHelp"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ内容説明"/>
+<PropertyValue Property="Value" Path="ToEntityText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先エンティティ"/>
+<PropertyValue Property="Value" Path="ToEntity"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目説明"/>
+<PropertyValue Property="Value" Path="ToFieldText"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+<Record Type="SAP__UI.DataField">
+<PropertyValue Property="Label" String="マッピング先項目"/>
+<PropertyValue Property="Value" Path="ToField"/>
+<Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/Medium"/>
+</Record>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+</Annotations>
+<Annotations Target="SAP__self.Container">
+<Annotation Term="SAP__aggregation.ApplySupported">
+<Record>
+<PropertyValue Property="Transformations">
+<Collection>
+<String>aggregate</String>
+<String>groupby</String>
+<String>filter</String>
+</Collection>
+</PropertyValue>
+<PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+<Annotation Term="SAP__capabilities.FilterFunctions">
+<Collection>
+<String>eq</String>
+<String>ne</String>
+<String>gt</String>
+<String>ge</String>
+<String>lt</String>
+<String>le</String>
+<String>and</String>
+<String>or</String>
+<String>contains</String>
+<String>startswith</String>
+<String>endswith</String>
+<String>any</String>
+<String>all</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__capabilities.SupportedFormats">
+<Collection>
+<String>application/json</String>
+<String>application/pdf</String>
+</Collection>
+</Annotation>
+<Annotation Term="SAP__PDF.Features">
+<Record>
+<PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+<PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+<PropertyValue Property="ArchiveFormat" Bool="true"/>
+<PropertyValue Property="Border" Bool="true"/>
+<PropertyValue Property="CoverPage" Bool="true"/>
+<PropertyValue Property="FitToPage" Bool="true"/>
+<PropertyValue Property="FontName" Bool="true"/>
+<PropertyValue Property="FontSize" Bool="true"/>
+<PropertyValue Property="Margin" Bool="true"/>
+<PropertyValue Property="Padding" Bool="true"/>
+<PropertyValue Property="Signature" Bool="true"/>
+<PropertyValue Property="HeaderFooter" Bool="true"/>
+<PropertyValue Property="ResultSizeDefault" Int="20000"/>
+<PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+</Record>
+</Annotation>
+<Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+<Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftUUID">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft (Technical ID)"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/ProcessingStartDateTime">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft In Process Since"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsKeptByUser">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Is Kept By User"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/EnqueueStartDateTime">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Locked Since"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created By Me"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed By Me"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft In Process By Me"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreatedByUserDescription">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Created By (Description)"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft Last Changed By (Description)"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/InProcessByUserDescription">
+<Annotation Term="SAP__UI.Hidden"/>
+<Annotation Term="SAP__common.Label" String="Draft In Process By (Description)"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CreationDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CreationTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/CreationDateTime">
+<Annotation Term="SAP__common.Label" String="Created On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/LastChangeDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/LastChangeTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/LocinstLastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__OperationControl/activateCDS">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__OperationControl/genCDSSource">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__OperationControl/saveCDSSource">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceType/__OperationControl/triggerValidateCDS">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/CreationDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/CreationTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/CreationDateTime">
+<Annotation Term="SAP__common.Label" String="Created On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/LastChangeDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/LastChangeTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/LocinstLastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__CreateByAssociationControl/_HeaderField">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__CreateByAssociationControl/_ItemField">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__CreateByAssociationControl/_ListField">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__CreateByAssociationControl/_Selection">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__OperationControl/Edit">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__OperationControl/generateService">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectType/__OperationControl/requestCDSEntry">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSTypeType/text">
+<Annotation Term="SAP__common.Label" String="Short Description"/>
+<Annotation Term="SAP__common.QuickInfo" String="Short Text for Fixed Values"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/CreationDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/CreationTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/CreationDateTime">
+<Annotation Term="SAP__common.Label" String="Created On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/LastChangeDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/LastChangeTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/LocinstLastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ListFieldType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/LastChangeDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/LastChangeTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/LocinstLastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.HeaderFieldType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/Text">
+<Annotation Term="SAP__common.Label" String="Description"/>
+<Annotation Term="SAP__common.QuickInfo" String="Text (20 Characters)"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__FieldControl/ProjectType">
+<Annotation Term="SAP__common.Label" String="Dyn. Field Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Field Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Field Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonType/__OperationControl/Edit">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreationDateTime">
+<Annotation Term="SAP__common.Label" String="Draft Created On"/>
+</Annotations>
+<Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Draft Last Changed On"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/CreationDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/CreationTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/CreationDateTime">
+<Annotation Term="SAP__common.Label" String="Created On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/LastChangeDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/LastChangeTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/LocinstLastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ItemFieldType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/CreationDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/CreationTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/CreationDateTime">
+<Annotation Term="SAP__common.Label" String="Created On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Creation Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/LastChangeDate">
+<Annotation Term="SAP__common.Label" String="Date"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/LastChangeTime">
+<Annotation Term="SAP__common.Label" String="Time"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/LastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/LocinstLastChangeDateTime">
+<Annotation Term="SAP__common.Label" String="Changed On"/>
+<Annotation Term="SAP__common.QuickInfo" String="Local Instance Last Change Date Time"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/__EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.SelectionType/__EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonControl/ProjectType">
+<Annotation Term="SAP__common.Label" String="Dyn. Field Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Field Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Field Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCbAControl/_HeaderField">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCbAControl/_ItemField">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCbAControl/_ListField">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCbAControl/_Selection">
+<Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceOperationControl/activateCDS">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceOperationControl/genCDSSource">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceOperationControl/saveCDSSource">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.CDSSourceOperationControl/triggerValidateCDS">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectOperationControl/Edit">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectOperationControl/generateService">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectOperationControl/requestCDSEntry">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.ProjectCommonOperationControl/Edit">
+<Annotation Term="SAP__common.Label" String="Dyn. Action Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Action Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Action Property"/>
+</Annotations>
+<Annotations Target="SAP__self.EntityControl/Updatable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.EntityControl/Deletable">
+<Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+<Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+<Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+</Annotations>
+<Annotations Target="SAP__self.Edit(SAP__self.ProjectCommonType)/PreserveChanges">
+<Annotation Term="SAP__common.Label" String="TRUE"/>
+<Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+</Annotations>
+<Annotations Target="SAP__self.Edit(SAP__self.ProjectType)/PreserveChanges">
+<Annotation Term="SAP__common.Label" String="TRUE"/>
+<Annotation Term="SAP__common.QuickInfo" String="Data element for domain BOOLE: TRUE (='X') and FALSE (=' ')"/>
+</Annotations>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>

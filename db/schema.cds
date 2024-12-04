@@ -3,11 +3,15 @@ using {
     managed
 } from '@sap/cds/common';
 
+// using {  zui_zye9001_001 as zye } from '../srv/external/zui_zye9001_001';
+
 namespace pwc.hand.ai2report;
 
 /**
  * Represents a chat session containing multiple messages.
  */
+// entity Order as projection on zye.CDSType;
+
 entity Chats : cuid, managed {
     title   : String; // Title of chat
     records : Composition of many Records
@@ -17,6 +21,7 @@ entity Chats : cuid, managed {
 /**
  * Represents a record in a chat.
  */
+
 entity Records : cuid, managed {
     chat      : Association to Chats; // Reference to the associated chat
     role      : String; // user, assistant

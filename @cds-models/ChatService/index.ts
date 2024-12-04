@@ -136,12 +136,11 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
   };
 }
 /** Represents a report generated for a message. */
-export class Report extends _ReportAspect(__.Entity) {static drafts: __.DraftOf<Report>}
+export class Report extends _ReportAspect(__.Entity) {}
 Object.defineProperty(Report, 'name', { value: 'ChatService.Reports' })
 Object.defineProperty(Report, 'is_singular', { value: true })
 /** Represents a report generated for a message. */
-export class Reports extends Array<Report> {static drafts: __.DraftsOf<Report>
-$count?: number}
+export class Reports extends Array<Report> {$count?: number}
 Object.defineProperty(Reports, 'name', { value: 'ChatService.Reports' })
 
 export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
@@ -174,12 +173,11 @@ export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>
   };
 }
 /** Represents a field within a report, providing metadata and behavior settings. */
-export class ReportField extends _ReportFieldAspect(__.Entity) {static drafts: __.DraftOf<ReportField>}
+export class ReportField extends _ReportFieldAspect(__.Entity) {}
 Object.defineProperty(ReportField, 'name', { value: 'ChatService.ReportFields' })
 Object.defineProperty(ReportField, 'is_singular', { value: true })
 /** Represents a field within a report, providing metadata and behavior settings. */
-export class ReportFields extends Array<ReportField> {static drafts: __.DraftsOf<ReportField>
-$count?: number}
+export class ReportFields extends Array<ReportField> {$count?: number}
 Object.defineProperty(ReportFields, 'name', { value: 'ChatService.ReportFields' })
 
 export function _ParameterAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
