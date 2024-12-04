@@ -1,5 +1,0 @@
-ID,isProgramGenerated,isPCLGenerated,ProjectId,Text,DevClass,TrKorr,jsonPCL,createdAt,createdBy,modifiedAt,modifiedBy
-c271a489-1ce0-4951-8938-94834522b4a4,true,false,1001,report desc1,DevClass1,TrKorr1,jsonPCL1,2024-11-28T00:00:00,anonymous,2024-11-28T00:00:00,anonymous
-c271a489-1ce0-4951-8938-94834522b4a5,false,true,1002,report desc2,DevClass2,TrKorr2,jsonPCL2,2024-11-28T02:00:00,anonymous,2024-11-28T00:00:00,anonymous
-c271a489-1ce0-4951-8938-94834522b4a6,true,true,1003,report desc3,DevClass3,TrKorr3,jsonPCL3,2024-11-28T03:00:00,anonymous,2024-11-28T00:00:00,anonymous
-c271a489-1ce0-4951-8938-94834522b4a7,true,true,1004,report desc4,DevClass4,TrKorr4,jsonPCL4,2024-11-28T04:00:00,anonymous,2024-11-28T00:00:00,anonymous
