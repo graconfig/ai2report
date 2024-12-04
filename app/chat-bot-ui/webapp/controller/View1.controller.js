@@ -218,7 +218,7 @@ function (Controller, JSONModel, library) {
         },
         _apigetChatwins: async function (chat_id) {
             const oUiModel = this.getView().getModel("ui");
-            const filter = "?$filter=" + "chat_ID eq '" + chat_id + "'" + "&$orderby=createdAt";
+            const filter = "?$filter=" + "chat_ID eq '" + chat_id + "'" + "&$orderby=createdAt,role desc";
             const url = '/ai2report/Records' + filter;
             const res = await fetch(
                 url, {
@@ -261,14 +261,7 @@ function (Controller, JSONModel, library) {
             const sPath = oEvent.getSource().mBindingInfos.visible.binding.oContext.getPath();
             const line = sPath.split("/")[3];
             //const txtSummary = await this._apiChatCompletion(oMessages);
-            const txtSummary = await this._apiChatAdopt(oMessages,line);
-            oUiModel.setProperty("/busy1", false);
-
-            oMessages.push({
-                role: "assistant",
-                content: txtSummary.content
-            });
-            oUiModel.setProperty("/chatbot/messages", oMessages);
+             this._apiChatAdopt(oMessages,line);
 
         },
         _apiChatAdopt:async function(oMessages,line){
@@ -291,15 +284,18 @@ function (Controller, JSONModel, library) {
                 oMessages[line].visible0 = false;
                 oMessages[line].visible1 = true;
             // }
+            oUiModel.setProperty("/busy1", false);
             oUiModel.setProperty("/chatbot/messages", oMessages);
+            this.onBtnDisplayPress();
+
         },
         onBtnDisplayPress:async function(oEvent){
             const oUiModel = this.getView().getModel("ui");
+            const Report_ID = oUiModel.getProperty("/Report_ID");
+            if (Report_ID === undefined) {
             const oMessages = oUiModel.getProperty("/chatbot/messages");
             const sPath = oEvent.getSource().mBindingInfos.visible.binding.oContext.getPath();
             const line = sPath.split("/")[3];
-            const Report_ID = oUiModel.getProperty("/Report_ID");
-            if (Report_ID === undefined) {
                 await this._apigetReportID(oMessages[line].message_id);
             }else{
             const url = window.location.origin + '/reports/webapp/index.html#/Reports(ID='+Report_ID+',IsActiveEntity=true)';
