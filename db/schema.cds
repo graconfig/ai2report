@@ -73,3 +73,7 @@ entity Parameters : managed {
         value       : LargeString; // Parameter value
         description : String(1000); // Description of the parameter
 }
+
+entity SingleCheck{
+  key check : String(1);
+}
