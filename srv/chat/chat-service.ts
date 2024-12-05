@@ -46,7 +46,7 @@ export default class ChatService extends ApplicationService {
         if (!para) {
           req.reject(404, 'Maintain_Parameter', [prompt_report]);
         }
-        
+
         messages = [
           {
             role: Sender.User,
@@ -82,8 +82,8 @@ export default class ChatService extends ApplicationService {
           .from(Parameters)
           .columns('value')
           .where({ name: prompt_repname });
-        
-        let func_json
+
+        let func_json;
 
         if (!para) {
           func_json = {
@@ -128,25 +128,23 @@ export default class ChatService extends ApplicationService {
               .arguments;
 
           let Title = JSON.parse(Reportjson).ReportName;
-          console.log(Title);
+          // console.log(Title);
 
-          const succeeded = await UPDATE(req.subject).with({
+          await UPDATE(req.subject).with({
             title: Title
           });
 
-          console.log(succeeded);
+          // console.log(succeeded);
         }
       }
 
       Newrecord = {
         chat_ID: chat.ID,
         role: Sender.Assistant,
-        content: response.getContent()//?.trim().replace(/\n/g, ' ')
+        content: response.getContent() //?.trim().replace(/\n/g, ' ')
       };
       console.log(Newrecord);
 
-      // let insertrecord = await INSERT.into(Records).entries(Newrecord);
-      // return insertrecord
       return await this.run(INSERT(Newrecord).into(Records));
     });
 

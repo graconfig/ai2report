@@ -84,6 +84,7 @@ export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>
     declare ToEntity?: string | null
     declare ToFieldText?: string | null
     declare ToField?: string | null
+    declare Seq?: number | null
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<ReportField> & typeof _.cuid.keys;
     declare static readonly elements: __.ElementsOf<ReportField>;
