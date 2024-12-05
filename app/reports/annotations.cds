@@ -8,6 +8,32 @@ annotate ChatService.Reports {
 };
 
 annotate ChatService.ReportFields {
+    category @Common : { 
+        ValueListWithFixedValues,
+        ValueList: {
+            CollectionPath: 'Category',
+            Parameters: [
+                {
+                    $Type: 'Common.ValueListParameterInOut',
+                    LocalDataProperty: 'category_code',
+                    ValueListProperty: 'code'
+                }
+            ]
+        }
+    };
+    FieldType @Common : { 
+        ValueListWithFixedValues,
+        ValueList: {
+            CollectionPath: 'FieldType',
+            Parameters: [
+                {
+                    $Type: 'Common.ValueListParameterInOut',
+                    LocalDataProperty: 'FieldType_code',
+                    ValueListProperty: 'code'
+                }
+            ]
+        }
+    };
     Display @Common : {
         ValueListWithFixedValues,
         ValueList: {
@@ -68,6 +94,7 @@ annotate ChatService.Reports with @UI: {
         isPCLGenerated,
         isProgramGenerated,
     ],
+    
 
     HeaderInfo : {
         Title : {
@@ -85,10 +112,10 @@ annotate ChatService.Reports with @UI: {
 
         {
             ID    : 'Fields',
-            Target: 'fields/@UI.LineItem',
+            Target: 'fields/@UI.PresentationVariant',
             $Type : 'UI.ReferenceFacet',
             Label : '{i18n>Fields}',
-        },
+        }
     ],
     LineItem      : [
         {
@@ -191,7 +218,34 @@ annotate ChatService.Reports with @UI: {
     ],
 };
 
+annotate ChatService.ReportFields with @(
+    UI.PresentationVariant: {
+        SortOrder : [
+            {
+                Property : category_code,
+                Descending : true
+            },
+            {
+                Property : TabFdPos,
+                Descending : false
+            }
+        ],
+        Visualizations : [
+            '@UI.LineItem'
+        ]
+    },
+);
+
+
+
 annotate ChatService.ReportFields with @UI: {
+
+    HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : TabFdPos 
+        }
+    },
 
     Facets        : [
         {
@@ -205,7 +259,7 @@ annotate ChatService.ReportFields with @UI: {
     Identification: [
         {
             $Type: 'UI.DataField',
-            Value: category,
+            Value: category_code,
             Label: '{i18n>Category}',
         },
         {
@@ -263,7 +317,7 @@ annotate ChatService.ReportFields with @UI: {
     [
         {
             $Type: 'UI.DataField',
-            Value: category,
+            Value: category_code,
             Label: '{i18n>Category}',
         },
         {
@@ -278,7 +332,7 @@ annotate ChatService.ReportFields with @UI: {
         },
         {
             $Type: 'UI.DataField',
-            Value: FieldType,
+            Value: FieldType_code,
             Label: '{i18n>FieldType}',
         },
         {

@@ -51,10 +51,10 @@ entity Reports : cuid, managed {
  */
 entity ReportFields : cuid, managed {
     report       : Association to Reports; // Reference to the associated report
-    category     : String(100); // Category of the field (e.g., input, output)
+    category     : Association to Category; // Category of the field (e.g., input, output)
     TabFdPos     : Integer; // Position of the field in a tabular layout
     ParamText    : String(255); // Parameter description or explanation
-    FieldType    : String(20); // Type of the field (e.g., text, number)
+    FieldType    : Association to FieldType; // Type of the field (e.g., text, number)
     Display      : String(1); // Indicates if the field is visible in the report
     Enterable    : String(1); // Indicates if the field is editable
     Obligatory   : String(1); // Indicates if the field is mandatory
@@ -77,4 +77,12 @@ entity Parameters : managed {
 
 entity SingleCheck{
   key check : String(1);
+}
+
+entity FieldType {
+    key code : String(20);
+}
+
+entity Category {
+    key code : String(20);
 }

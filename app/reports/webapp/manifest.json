@@ -94,6 +94,11 @@
           "pattern": "Reports({key}):?query:",
           "name": "ReportsObjectPage",
           "target": "ReportsObjectPage"
+        },
+        {
+          "pattern": "Reports({key})/fields({key2}):?query:",
+          "name": "ReportFieldsObjectPage",
+          "target": "ReportFieldsObjectPage"
         }
       ],
       "targets": {
@@ -104,7 +109,7 @@
           "options": {
             "settings": {
               "contextPath": "/Reports",
-              "variantManagement": "Page",
+              "variantManagement": "None",
               "initialLoad": "Enabled",
               "navigation": {
                 "Reports": {
@@ -122,8 +127,37 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
+              "variantManagement": "None",
               "editableHeaderContent": false,
-              "contextPath": "/Reports"
+              "contextPath": "/Reports",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+										"personalization": {
+                            "column": true,
+                            "sort" : true
+                        }
+									}
+                }
+              },
+              "navigation": {
+                "fields": {
+                  "detail": {
+                    "route": "ReportFieldsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ReportFieldsObjectPage": {
+          "type": "Component",
+          "id": "ReportFieldsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Reports/fields"
             }
           }
         }

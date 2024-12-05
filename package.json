@@ -39,6 +39,11 @@
     "lint:fix": "eslint . --fix && prettier . --config ../.prettierrc --ignore-path ../.prettierignore -w --log-level error"
   },
   "cds": {
+    "query": {
+      "limit": {
+        "reliablePaging": true
+      }
+    },
     "requires": {
       "[production]": {
         "auth": "xsuaa",
