@@ -70,8 +70,8 @@ entity ReportFields : cuid, managed {
  */
 entity Parameters : managed {
     key name        : String(60); // Parameter key or name
-        value       : LargeString; // Parameter value
-        description : String(1000); // Description of the parameter
+        value       : LargeString @UI.MultiLineText; // Parameter value
+        description : String(1000) @UI.MultiLineText; // Description of the parameter
 }
 
 entity SingleCheck{

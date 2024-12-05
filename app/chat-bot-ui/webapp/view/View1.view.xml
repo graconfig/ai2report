@@ -10,21 +10,21 @@
 			</f:DynamicPageTitle>
 		</f:title> -->
 		<f:content>
-			<l:Splitter >
+			<l:Splitter busy="{ui>/busy1}" busyIndicatorDelay="0"  >
 				<VBox>
 					<l:HorizontalLayout class="sapUiContentPadding">
 						<Text width="6em"/>
 						<Button class="sapUiTinyMarginBegin" width="8em" type="Emphasized" icon="sap-icon://create" text="{i18n>Button01}" press="onNewChat"/>
 					</l:HorizontalLayout>
 					<List items="{ui>/chatbot/chatlist}" headerText="Chat History" growing="true" growingThreshold="10" growingScrollToLoad="false">
-						<StandardListItem title="{ui>createdAt}" press="onStandardListItemPress" type="Navigation"/>
+						<StandardListItem title="{ui>createdAt}" description="{ui>title}" press="onStandardListItemPress" type="Navigation"/>
 					</List>
 					<layoutData>
 						<l:SplitterLayoutData size="250px" resizable="false"/>
 					</layoutData>
 				</VBox>
 				
-				<VBox class="chat-bot-ui" visible="{ui>/visible2}">
+				<VBox class="chat-bot-ui" visible="{ui>/visible2}" >
 					<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
 						<MessageStrip text="{i18n>Text01}" type="Success" showIcon="true" showCloseButton="false"
 							class="sapUiMediumMarginBottom"></MessageStrip>

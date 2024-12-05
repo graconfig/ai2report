@@ -36,7 +36,9 @@ export default class ChatService extends ApplicationService {
           content: record.content.trim().replace(/\n/g, ' ')
         }));
       } else {
+        const prompt_report = 'prompt_report_' + req.locale;
 
+<<<<<<< HEAD
         const prompt_report = 'prompt_report_' + req.locale;
         
         const prompt = await SELECT.one
@@ -45,11 +47,21 @@ export default class ChatService extends ApplicationService {
 
         if (!prompt) {
            req.reject(404, 'Maintain_Parameter', [ prompt_report ]);
+=======
+        const para = await SELECT.one
+          .from(Parameters)
+          .columns('value')
+          .where({ name: prompt_report });
+
+        if (!para) {
+          req.reject(404, 'Maintain_Parameter', [prompt_report]);
+>>>>>>> origin/master
         }
+        
         messages = [
           {
             role: Sender.User,
-            content: prompt
+            content: para.value.trim().replace(/\n/g, ' ')
           }
         ];
       }
@@ -73,16 +85,18 @@ export default class ChatService extends ApplicationService {
       });
 
       if (!chat.title) {
-
         const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
         const prompt_repname = 'prompt_repname' + req.locale;
 
-        let func_json = await SELECT.one
+        const para = await SELECT.one
           .from(Parameters)
+          .columns('value')
           .where({ name: prompt_repname });
         
-        if(!func_json){
+        let func_json
+
+        if (!para) {
           func_json = {
             name: 'get_report_name',
             description:
@@ -96,8 +110,9 @@ export default class ChatService extends ApplicationService {
                 }
               }
             }
-          }
-        }else{
+          };
+        } else {
+          func_json = para.value.trim().replace(/\n/g, ' ');
           func_json = JSON.parse(func_json);
         }
         const tools = [
@@ -137,7 +152,7 @@ export default class ChatService extends ApplicationService {
       Newrecord = {
         chat_ID: chat.ID,
         role: Sender.Assistant,
-        content: response.getContent()?.trim().replace(/\n/g, ' ')
+        content: response.getContent()//?.trim().replace(/\n/g, ' ')
       };
       console.log(Newrecord);
 
@@ -145,7 +160,7 @@ export default class ChatService extends ApplicationService {
       // return insertrecord
       return await this.run(INSERT(Newrecord).into(Records));
     });
-    
+
     //
     // Action adopt
     //
@@ -153,12 +168,14 @@ export default class ChatService extends ApplicationService {
     this.on(adopt, async req => {
       const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
-      const prompt_json = 'prompt_json' + req.locale;
+      const prompt_json = 'prompt_json_' + req.locale;
 
-      let func_json = await SELECT.one
+      const para = await SELECT.one
         .from(Parameters)
+        .columns('value')
         .where({ name: prompt_json });
 
+<<<<<<< HEAD
       if (!func_json) {
         // req.reject(404, 'Maintain_Parameter', [ prompt_json ]);
         func_json = {
@@ -247,8 +264,15 @@ export default class ChatService extends ApplicationService {
             }
           }
         };
+=======
+      let func_json;
+
+      if (!para) {
+        req.reject(404, 'Maintain_Parameter', [prompt_json]);
+>>>>>>> origin/master
       } else {
-        func_json = JSON.parse(func_json);
+        const func_string = para.value.trim().replace(/\n/g, ' ');
+        func_json = JSON.parse(func_string);
       }
       const tools = [
         {
@@ -323,7 +347,7 @@ export default class ChatService extends ApplicationService {
       const { Project } = zye9001.entities;
       const result = await zye9001.run(SELECT(Project));
       // const token = zye9001.run(req.query);
-      
+
       // zye9001.send({
       //   event: 'GET'
       // })

@@ -5,25 +5,24 @@
 
 # DELETE {{host}}/ai2report/Records( ID = 'f0f132c6-a3d3-48ea-be80-ad488fc4c172' ) 
 
-# Call the function to get the list of OpenAI models
+# # Call the function to get the list of OpenAI models
 # POST {{host}}/ai2report/Chats
 # Content-Type: application/json
 
-# {}
 
 
-# ## Call the function to get the list of OpenAI models
-#  POST {{host}}/ai2report/Chats(6c7438a2-74b5-4e0a-9af0-d651cd8c6dee)/newRecord
+# # Call the function to get the list of OpenAI models
+#  POST {{host}}/ai2report/Chats(56a00dc2-8ea2-44a4-b636-c87c337b9266)/newRecord
 #  Content-Type: application/json
 
-# {"content": "hello"}
+# {"content": "设计一张销售订单报表"}
 
 
-#  POST {{host}}/ai2report/Records(fcea206d-b8db-4c74-a325-4331b381fe3c)/adopt
-#  Content-Type: application/json
-
-
- POST {{host}}/ai2report/Reports(e617b4e2-cb21-40cb-ac5f-adb078094a39)/verify
+ POST {{host}}/ai2report/Records(6032d796-2c20-4ea3-bb9a-04c0f761adc0)/adopt
  Content-Type: application/json
+
+
+#  POST {{host}}/ai2report/Reports(e617b4e2-cb21-40cb-ac5f-adb078094a39)/verify
+#  Content-Type: application/json
 
 
