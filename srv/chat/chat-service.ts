@@ -141,7 +141,7 @@ export default class ChatService extends ApplicationService {
       Newrecord = {
         chat_ID: chat.ID,
         role: Sender.Assistant,
-        content: response.getContent//()?.trim().replace(/\n/g, ' ')
+        content: response.getContent()//?.trim().replace(/\n/g, ' ')
       };
       console.log(Newrecord);
 
