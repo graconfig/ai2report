@@ -38,16 +38,6 @@ export default class ChatService extends ApplicationService {
       } else {
         const prompt_report = 'prompt_report_' + req.locale;
 
-<<<<<<< HEAD
-        const prompt_report = 'prompt_report_' + req.locale;
-        
-        const prompt = await SELECT.one
-          .from(Parameters)
-          .where({ name: prompt_report });
-
-        if (!prompt) {
-           req.reject(404, 'Maintain_Parameter', [ prompt_report ]);
-=======
         const para = await SELECT.one
           .from(Parameters)
           .columns('value')
@@ -55,9 +45,8 @@ export default class ChatService extends ApplicationService {
 
         if (!para) {
           req.reject(404, 'Maintain_Parameter', [prompt_report]);
->>>>>>> origin/master
         }
-        
+
         messages = [
           {
             role: Sender.User,
@@ -93,8 +82,8 @@ export default class ChatService extends ApplicationService {
           .from(Parameters)
           .columns('value')
           .where({ name: prompt_repname });
-        
-        let func_json
+
+        let func_json;
 
         if (!para) {
           func_json = {
@@ -139,20 +128,20 @@ export default class ChatService extends ApplicationService {
               .arguments;
 
           let Title = JSON.parse(Reportjson).ReportName;
-          console.log(Title);
+          // console.log(Title);
 
-          const succeeded = await UPDATE(req.subject).with({
+          await UPDATE(req.subject).with({
             title: Title
           });
 
-          console.log(succeeded);
+          // console.log(succeeded);
         }
       }
 
       Newrecord = {
         chat_ID: chat.ID,
         role: Sender.Assistant,
-        content: response.getContent()//?.trim().replace(/\n/g, ' ')
+        content: response.getContent() //?.trim().replace(/\n/g, ' ')
       };
       console.log(Newrecord);
 
@@ -175,101 +164,10 @@ export default class ChatService extends ApplicationService {
         .columns('value')
         .where({ name: prompt_json });
 
-<<<<<<< HEAD
-      if (!func_json) {
-        // req.reject(404, 'Maintain_Parameter', [ prompt_json ]);
-        func_json = {
-          name: 'get_report_fields',
-          description:
-            '总结信息以填充 `Reports` 实体的一条数据和 `ReportFields` 实体的多条数据表,只调用一次',
-          parameters: {
-            type: 'object',
-            properties: {
-              Reports: {
-                type: 'object',
-                properties: {
-                  Text: {
-                    type: 'string',
-                    description: '报表名称'
-                  }
-                }
-              },
-              fields: {
-                type: 'array',
-                items: {
-                  type: 'object',
-                  properties: {
-                    category: {
-                      enum: ['_Selection', '_ListField', '_ItemField'],
-                      description:
-                        '<字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)>'
-                    },
-                    TabFdPos: {
-                      type: 'number',
-                      description: '<字段在相应区域中的位置，整数>'
-                    },
-                    ParamText: {
-                      type: 'string',
-                      description: '<报表上的字段名称>'
-                    },
-                    FieldType: {
-                      enum: [
-                        'TextBox',
-                        'Checkbox',
-                        'RadioButtion',
-                        'DatePicker',
-                        'TextArea',
-                        'Currency'
-                      ],
-                      description:
-                        '<项目种类，值包括TextBox，Checkbox，RadioButtion、DatePicker、TextArea、Currency>'
-                    },
-                    Display: {
-                      enum: ['X', ''],
-                      description:
-                        '<字段是否在报告中可见，可见为X, 不可见为空格>'
-                    },
-                    Enterable: {
-                      enum: ['X', ''],
-                      description: '<字段是否可输入选择参数，值为X或者空格>'
-                    },
-                    Obligatory: {
-                      enum: ['X', ''],
-                      description: '<字段是否为必填项，值为X或者空格>'
-                    },
-                    ValueHelp: {
-                      enum: ['X', ''],
-                      description:
-                        '<字段是否支持值帮助或搜索帮助，值为X或者空格>'
-                    },
-                    ToEntityText: {
-                      type: 'string',
-                      description: '<目标实体的描述（相关实体的文本描述）>'
-                    },
-                    ToEntity: {
-                      type: 'string',
-                      description: '<目标实体的ID>'
-                    },
-                    ToFieldText: {
-                      type: 'string',
-                      description: '<目标实体的字段的文本描述>'
-                    },
-                    ToField: {
-                      type: 'string',
-                      description: '<目标实体字段名>'
-                    }
-                  }
-                }
-              }
-            }
-          }
-        };
-=======
       let func_json;
 
       if (!para) {
         req.reject(404, 'Maintain_Parameter', [prompt_json]);
->>>>>>> origin/master
       } else {
         const func_string = para.value.trim().replace(/\n/g, ' ');
         func_json = JSON.parse(func_string);
