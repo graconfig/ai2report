@@ -7,8 +7,15 @@ annotate ChatService.Reports {
     isProgramGenerated @Common.Label: '{i18n>isProgramGenerated}';
 };
 
+annotate ChatService.Category {
+    code @Common : { Text : desc, TextArrangement : #TextOnly,}
+};
+
+
 annotate ChatService.ReportFields {
-    category @Common : { 
+    category @Common : {
+        Text : categoryNav.desc,
+        TextArrangement : #TextOnly,
         ValueListWithFixedValues,
         ValueList: {
             CollectionPath: 'Category',
@@ -16,7 +23,7 @@ annotate ChatService.ReportFields {
                 {
                     $Type: 'Common.ValueListParameterInOut',
                     LocalDataProperty: 'category',
-                    ValueListProperty: 'desc'
+                    ValueListProperty: 'code'
                 }
             ]
         }
