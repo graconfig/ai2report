@@ -63,6 +63,7 @@ entity ReportFields : cuid, managed {
     ToEntity     : String(30); // Name of the related entity
     ToFieldText  : String(60); // Textual description of the related field
     ToField      : String(30); // Name of the related field
+    Seq          : Integer; // Sort field
 }
 
 /**
@@ -76,4 +77,14 @@ entity Parameters : managed {
 
 entity SingleCheck{
   key check : String(1);
+}
+
+entity FieldType {
+    key code : String(20);
+        desc : localized String(20);
+}
+
+entity Category {
+    key code : String(20);
+        desc : localized String(100);
 }
