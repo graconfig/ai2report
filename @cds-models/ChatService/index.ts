@@ -155,6 +155,7 @@ export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>
     declare modifiedBy?: _.User | null
     declare report?: __.Association.to<Report> | null
     declare report_ID?: __.Key<string> | null
+    declare categoryNav?: __.Association.to<Category> | null
     declare category?: string | null
     declare TabFdPos?: number | null
     declare ParamText?: string | null
