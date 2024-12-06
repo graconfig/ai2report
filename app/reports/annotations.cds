@@ -316,6 +316,12 @@ annotate ChatService.ReportFields with @UI: {
     ],
     LineItem: 
     [
+
+        {
+            $Type : 'UI.DataField',
+            Value : Seq,
+            Label : '{i18n>Seq}'
+        },
         {
             $Type: 'UI.DataField',
             Value: category,
@@ -375,11 +381,6 @@ annotate ChatService.ReportFields with @UI: {
             $Type: 'UI.DataField',
             Value: ToField,
             Label: '{i18n>ToField}',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : Seq,
-            Label : '{i18n>Seq}'
         }
     ],
 
