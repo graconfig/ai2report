@@ -66,7 +66,7 @@ function (Controller, JSONModel, library) {
             oUiModel.setProperty("/busy", false);
             oMessages.push({
                 role: "assistant",
-                content: txtSummary.content,
+                content: txtSummary.content.replace(/\n/g, '\r\n'),
                 message_id :txtSummary.ID,
                 visible0 : true,
                 visible1 : false

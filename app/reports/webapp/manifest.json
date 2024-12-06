@@ -104,7 +104,7 @@
           "options": {
             "settings": {
               "contextPath": "/Reports",
-              "variantManagement": "Page",
+              "variantManagement": "None",
               "initialLoad": "Enabled",
               "navigation": {
                 "Reports": {
@@ -122,8 +122,17 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
+              "variantManagement": "None",
               "editableHeaderContent": false,
-              "contextPath": "/Reports"
+              "contextPath": "/Reports",
+              "controlConfiguration": {
+                "fields/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "maxItems": 20
+									}
+                }
+              }
             }
           }
         }

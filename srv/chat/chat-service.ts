@@ -251,7 +251,7 @@ export default class ChatService extends ApplicationService {
           response.data.choices[0].message?.tool_calls?.[0].function.arguments;
 
         let Report = JSON.parse(Reportjson);
-
+        console.log(Report);
         // let newFields = Report.fields.map( (item: any)=> ({ ...item, report_ID: newReport.ID }));
         let newReport = await this.run(
           INSERT.into(Reports).entries({
