@@ -1,5 +1,5 @@
-code
-TextBox
-DatePicker
-TextArea
-Currency
+code,desc
+TEXTBOX,TextBox
+DATEPICKER,DatePicker
+TEXTAREA,TextArea
+CURRENCY,Currency

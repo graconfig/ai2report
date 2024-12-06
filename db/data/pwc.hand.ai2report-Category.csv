@@ -1,5 +1,5 @@
-code
-选择项目
-一览项目
-详细画面Header项目
-详细画面明细项目
+code,desc
+SELECT_ITEM,选择项目
+VIEW_ITEM,一览项目
+DETAIL_HEADER_ITEM,详细画面Header项目
+DETAIL_ITEM,详细画面明细项目

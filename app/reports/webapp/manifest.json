@@ -94,11 +94,6 @@
           "pattern": "Reports({key}):?query:",
           "name": "ReportsObjectPage",
           "target": "ReportsObjectPage"
-        },
-        {
-          "pattern": "Reports({key})/fields({key2}):?query:",
-          "name": "ReportFieldsObjectPage",
-          "target": "ReportFieldsObjectPage"
         }
       ],
       "targets": {
@@ -131,33 +126,13 @@
               "editableHeaderContent": false,
               "contextPath": "/Reports",
               "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
+                "fields/@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-										"personalization": {
-                            "column": true,
-                            "sort" : true
-                        }
+                    "type": "GridTable",
+                    "maxItems": 20
 									}
                 }
-              },
-              "navigation": {
-                "fields": {
-                  "detail": {
-                    "route": "ReportFieldsObjectPage"
-                  }
-                }
               }
-            }
-          }
-        },
-        "ReportFieldsObjectPage": {
-          "type": "Component",
-          "id": "ReportFieldsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Reports/fields"
             }
           }
         }

@@ -1,4 +1,4 @@
-ID,category_code,TabFdPos,ParamText,FieldType_code,Display,Enterable,Obligatory,ValueHelp,ToEntityText,ToEntity,ToFieldText,ToField,report_ID,createdAt,createdBy,modifiedAt,modifiedBy
+ID,category,TabFdPos,ParamText,FieldType,Display,Enterable,Obligatory,ValueHelp,ToEntityText,ToEntity,ToFieldText,ToField,report_ID,createdAt,createdBy,modifiedAt,modifiedBy
 3d3dfc6e-45fd-49a2-b739-505e7c5855b3,选择项目,1,采购组织,TextBox,X,X,X,X,采购组织数据,I_PURCHASEORGANIZATION,采购组织,PURCHASE_ORG,c271a489-1ce0-4951-8938-94834522b4a4,2024-11-28T00:00:00,anonymous,2024-11-28T00:00:00,anonymous
 3d3dfc6e-45fd-49a2-b739-505e7c5855b4,选择项目,2,采购组,TextBox,X,X,,X,采购组数据,I_PURCHASINGGROUP,采购组,PURCH_GROUP,c271a489-1ce0-4951-8938-94834522b4a4,2024-11-28T00:00:00,anonymous,2024-11-28T00:00:00,anonymous
 3d3dfc6e-45fd-49a2-b739-505e7c5855b5,选择项目,3,供应商编号,TextBox,X,X,,X,供应商主数据,I_SUPPLIER,供应商编号,SUPPLIER,c271a489-1ce0-4951-8938-94834522b4a4,2024-11-28T00:00:00,anonymous,2024-11-28T00:00:00,anonymous

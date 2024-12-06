@@ -15,8 +15,8 @@ annotate ChatService.ReportFields {
             Parameters: [
                 {
                     $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'category_code',
-                    ValueListProperty: 'code'
+                    LocalDataProperty: 'category',
+                    ValueListProperty: 'desc'
                 }
             ]
         }
@@ -28,8 +28,8 @@ annotate ChatService.ReportFields {
             Parameters: [
                 {
                     $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'FieldType_code',
-                    ValueListProperty: 'code'
+                    LocalDataProperty: 'FieldType',
+                    ValueListProperty: 'desc'
                 }
             ]
         }
@@ -222,7 +222,7 @@ annotate ChatService.ReportFields with @(
     UI.PresentationVariant: {
         SortOrder : [
             {
-                Property : category_code,
+                Property : category,
                 Descending : true
             },
             {
@@ -317,7 +317,7 @@ annotate ChatService.ReportFields with @UI: {
     [
         {
             $Type: 'UI.DataField',
-            Value: category_code,
+            Value: category,
             Label: '{i18n>Category}',
         },
         {
@@ -332,7 +332,7 @@ annotate ChatService.ReportFields with @UI: {
         },
         {
             $Type: 'UI.DataField',
-            Value: FieldType_code,
+            Value: FieldType,
             Label: '{i18n>FieldType}',
         },
         {
