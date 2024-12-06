@@ -132,3 +132,35 @@ Object.defineProperty(SingleCheck, 'name', { value: 'pwc.hand.ai2report.SingleCh
 Object.defineProperty(SingleCheck, 'is_singular', { value: true })
 export class SingleCheck_ extends Array<SingleCheck> {$count?: number}
 Object.defineProperty(SingleCheck_, 'name', { value: 'pwc.hand.ai2report.SingleCheck' })
+
+export function _FieldTypeAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class FieldType extends Base {
+    declare code?: __.Key<string>
+    declare desc?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<FieldType>;
+    declare static readonly elements: __.ElementsOf<FieldType>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class FieldType extends _FieldTypeAspect(__.Entity) {}
+Object.defineProperty(FieldType, 'name', { value: 'pwc.hand.ai2report.FieldType' })
+Object.defineProperty(FieldType, 'is_singular', { value: true })
+export class FieldType_ extends Array<FieldType> {$count?: number}
+Object.defineProperty(FieldType_, 'name', { value: 'pwc.hand.ai2report.FieldType' })
+
+export function _CategoryAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class Category extends Base {
+    declare code?: __.Key<string>
+    declare desc?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<Category>;
+    declare static readonly elements: __.ElementsOf<Category>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class Category extends _CategoryAspect(__.Entity) {}
+Object.defineProperty(Category, 'name', { value: 'pwc.hand.ai2report.Category' })
+Object.defineProperty(Category, 'is_singular', { value: true })
+export class Category_ extends Array<Category> {$count?: number}
+Object.defineProperty(Category_, 'name', { value: 'pwc.hand.ai2report.Category' })

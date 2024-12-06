@@ -23,6 +23,12 @@ module.exports.Parameters = csn.Parameters
 // SingleCheck
 module.exports.SingleCheck = { is_singular: true, __proto__: csn.SingleCheck }
 module.exports.SingleCheck_ = csn.SingleCheck
+// Category
+module.exports.Category = { is_singular: true, __proto__: csn.Category }
+module.exports.Category_ = csn.Category
+// FieldType
+module.exports.FieldType = { is_singular: true, __proto__: csn.FieldType }
+module.exports.FieldType_ = csn.FieldType
 // events
 // actions
 module.exports.newChat = 'newChat'
