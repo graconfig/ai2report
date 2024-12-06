@@ -33,7 +33,7 @@ export default class ChatService extends ApplicationService {
         messages = records.map((record: { role: string; content: string }) => ({
           role:
             record.role === Sender.Assistant ? Sender.Assistant : Sender.User,
-          content: record.content.trim().replace(/\n/g, ' ')
+          content: record.content 
         }));
       } else {
         const prompt_report = 'prompt_report_' + req.locale;
