@@ -259,7 +259,7 @@ annotate ChatService.ReportFields with @UI: {
     Identification: [
         {
             $Type: 'UI.DataField',
-            Value: category_code,
+            Value: category,
             Label: '{i18n>Category}',
         },
         {
@@ -311,6 +311,11 @@ annotate ChatService.ReportFields with @UI: {
             $Type: 'UI.DataField',
             Value: ToField,
             Label: '{i18n>ToField}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : Seq,
+            Label : '{i18n>Seq}'
         }
     ],
     LineItem: 
@@ -374,6 +379,11 @@ annotate ChatService.ReportFields with @UI: {
             $Type: 'UI.DataField',
             Value: ToField,
             Label: '{i18n>ToField}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : Seq,
+            Label : '{i18n>Seq}'
         }
     ],
 
