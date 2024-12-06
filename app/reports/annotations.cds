@@ -222,11 +222,7 @@ annotate ChatService.ReportFields with @(
     UI.PresentationVariant: {
         SortOrder : [
             {
-                Property : category,
-                Descending : true
-            },
-            {
-                Property : TabFdPos,
+                Property : Seq,
                 Descending : false
             }
         ],
