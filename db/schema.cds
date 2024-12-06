@@ -51,6 +51,7 @@ entity Reports : cuid, managed {
  */
 entity ReportFields : cuid, managed {
     report       : Association to Reports; // Reference to the associated report
+    categoryNav  : Association to Category on categoryNav.code = category; // Category of the field (e.g., input, output)
     category     : String(100); // Category of the field (e.g., input, output)
     TabFdPos     : Integer; // Position of the field in a tabular layout
     ParamText    : String(255); // Parameter description or explanation
@@ -85,6 +86,6 @@ entity FieldType {
 }
 
 entity Category {
-    key code : String(20);
+    key code : String(100);
         desc : localized String(100);
 }
