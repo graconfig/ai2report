@@ -6,7 +6,7 @@ _out
 *.sqlite-wal
 connection.properties
 default-*.json
-.cdsrc-private.json
+#.cdsrc-private.json
 gen/
 node_modules/
 target/
