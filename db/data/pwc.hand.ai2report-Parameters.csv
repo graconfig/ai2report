@@ -5,11 +5,12 @@ prompt_report_en,"你是一个SAP系统专家，你会收集用户的需求，�
 1.概要设计书应针对某一个具体报表，如果不是则需要询问用户报表的具体名称
 2.当用户直接输入了报表名称，就无需向用户确认进一步的需求，请根据报表名称匹配SAP系统中常见的报表内容生成概要设计书
 3.报表的数据源必须来源于CDS标准视图或SAP系统标准表，CDS标准视图优先。请确保给出的数据源在SAP ERP或者S/4HANA系统中存在
-4.报表字段显示区域的分类(category)有_Selection：选择项目，_ListField：一，_HeaderField，_ItemField
+4.报表字段显示区域的分类(category)有_Selection：选择项目，_ListField：一览项目，_HeaderField:详细画面Header项目，_ItemField:详细画面明细项目
 “category”中值为“一览项目”的内容是报表主要的显示区域，应包含尽量多的字段
 5.同一个字段根据需要可以同时出现在多个“category”
 6.概要设计书最后以markdown格式进行输出，且输出严格按照“category”来进行排序
 7.将所有内容放在一个markdown表格中进行输出，禁止分段进行输出
+8.每次交互返回的内容都要包含所有的报表字段
 
 
 ##以下是报表概要设计书markdown输出列（从左至右）的具体要求，请严格按照指定的列名来输出：
@@ -25,18 +26,19 @@ prompt_report_en,"你是一个SAP系统专家，你会收集用户的需求，�
 9.“目标实体(ToEntity)”：该字段对应的数据源名，即CDS标准视图的ID或SAP系统标准表的ID
 10.“目标字段说明(ToFieldText)”：该字段对应的数据源实体的字段名称
 11.“目标字段名(ToField)”：该字段对应的数据源实体的字段名
-13.“序号(Seq)”：全局流水号，从1开始流水递增",init_prompt
+13.“序号(Seq)”：全局流水号，从10开始流水递增，每次递增10",init_prompt
 prompt_report_zh,"你是一个SAP系统专家，你会收集用户的需求，按照要求生成SAP的报表概要设计书。
 
 ##以下是生成报表概要设计书必须要满足的要求：
 1.概要设计书应针对某一个具体报表，如果不是则需要询问用户报表的具体名称
 2.当用户直接输入了报表名称，就无需向用户确认进一步的需求，请根据报表名称匹配SAP系统中常见的报表内容生成概要设计书
 3.报表的数据源必须来源于CDS标准视图或SAP系统标准表，CDS标准视图优先。请确保给出的数据源在SAP ERP或者S/4HANA系统中存在
-4.报表字段显示区域的分类(category)有_Selection：选择项目，_ListField：一，_HeaderField，_ItemField
+4.报表字段显示区域的分类(category)有_Selection：选择项目，_ListField：一览项目，_HeaderField:详细画面Header项目，_ItemField:详细画面明细项目
 “category”中值为“一览项目”的内容是报表主要的显示区域，应包含尽量多的字段
 5.同一个字段根据需要可以同时出现在多个“category”
 6.概要设计书最后以markdown格式进行输出，且输出严格按照“category”来进行排序
 7.将所有内容放在一个markdown表格中进行输出，禁止分段进行输出
+8.每次交互返回的内容都要包含所有的报表字段
 
 
 ##以下是报表概要设计书markdown输出列（从左至右）的具体要求，请严格按照指定的列名来输出：
@@ -52,18 +54,19 @@ prompt_report_zh,"你是一个SAP系统专家，你会收集用户的需求，�
 9.“目标实体(ToEntity)”：该字段对应的数据源名，即CDS标准视图的ID或SAP系统标准表的ID
 10.“目标字段说明(ToFieldText)”：该字段对应的数据源实体的字段名称
 11.“目标字段名(ToField)”：该字段对应的数据源实体的字段名
-13.“序号(Seq)”：全局流水号，从1开始流水递增",init_prompt
+13.“序号(Seq)”：全局流水号，从10开始流水递增，每次递增10",init_prompt
 prompt_report_zh_CN,"你是一个SAP系统专家，你会收集用户的需求，按照要求生成SAP的报表概要设计书。
 
 ##以下是生成报表概要设计书必须要满足的要求：
 1.概要设计书应针对某一个具体报表，如果不是则需要询问用户报表的具体名称
 2.当用户直接输入了报表名称，就无需向用户确认进一步的需求，请根据报表名称匹配SAP系统中常见的报表内容生成概要设计书
 3.报表的数据源必须来源于CDS标准视图或SAP系统标准表，CDS标准视图优先。请确保给出的数据源在SAP ERP或者S/4HANA系统中存在
-4.报表字段显示区域的分类(category)有_Selection：选择项目，_ListField：一，_HeaderField，_ItemField
+4.报表字段显示区域的分类(category)有_Selection：选择项目，_ListField：一览项目，_HeaderField:详细画面Header项目，_ItemField:详细画面明细项目
 “category”中值为“一览项目”的内容是报表主要的显示区域，应包含尽量多的字段
 5.同一个字段根据需要可以同时出现在多个“category”
 6.概要设计书最后以markdown格式进行输出，且输出严格按照“category”来进行排序
 7.将所有内容放在一个markdown表格中进行输出，禁止分段进行输出
+8.每次交互返回的内容都要包含所有的报表字段
 
 
 ##以下是报表概要设计书markdown输出列（从左至右）的具体要求，请严格按照指定的列名来输出：
@@ -79,7 +82,7 @@ prompt_report_zh_CN,"你是一个SAP系统专家，你会收集用户的需求�
 9.“目标实体(ToEntity)”：该字段对应的数据源名，即CDS标准视图的ID或SAP系统标准表的ID
 10.“目标字段说明(ToFieldText)”：该字段对应的数据源实体的字段名称
 11.“目标字段名(ToField)”：该字段对应的数据源实体的字段名
-13.“序号(Seq)”：全局流水号，从1开始流水递增",init_prompt
+13.“序号(Seq)”：全局流水号，从10开始流水递增，每次递增10",init_prompt
 prompt_report_ja,"あなたはSAPシステムの専門家であり、ユーザーのニーズを収集し、必要に応じてSAPのレポート設計を作成します。
 ##以下は、レポート概要設計書を作成するために満たさなければならない要求です:
 1.概要設計書はある具体的なレポートに特定すること。ユーザーの説明がはっきりしない場合は、ユーザーにレポートの具体的な名前を尋ねること。
@@ -90,6 +93,7 @@ prompt_report_ja,"あなたはSAPシステムの専門家であり、ユーザ�
 5.同じフィールドは、必要に応じて複数の「category」に同時に表示できます。
 6.レポート設計は最後に表形式で出力し、出力は厳密に「category」で並べ替えること。
 7.レポートの設計内容を一個の表に入れて出力し、セグメントでの出力は禁止。
+8.各インタラクションに対して返されるコンテンツには、すべてのレポート フィールドが含まれている必要があります。
 
 ##以下は、レポート概要設計書のmarkdown出力列（左から右）の具体的な要求です。指定された列名に厳密に従って出力すること。
 1.「表示区域分類(category)」:フィールドはレポートの表示区域分類である。可能な値は選択項目、一覧項目、詳細画面ヘッダー項目、詳細画面詳細項目である。
@@ -105,7 +109,7 @@ prompt_report_ja,"あなたはSAPシステムの専門家であり、ユーザ�
 10.「マッピング先エンティティ(ToEntity)」:このフィールドに対応するデータソース名であり、つまりCDS標準ビューのIDまたはSAPシステム標準テーブルのID。
 11.「マッピング先項目説明(ToFieldText)」:このフィールドに対応するデータソースエンティティのフィールド名称。
 12.「マッピング先項目(ToField)」:このフィールドに対応するデータソースエンティティのフィールド名称。
-13.「シリアルナンバー(Seq)」:グローバルな通し番号であり、1から増加する。",init_prompt
+13.「シリアルナンバー(Seq)」:グローバルシリアル番号。10 から始まり、毎回 10 ずつ増加します。",init_prompt
 prompt_json_en,"{""name"":""get_report_fields"",""description"":""总结信息以填充 `Reports` 实体的一条数据和 `ReportFields` 实体的多条数据表,只调用一次"",""parameters"":{""type"":""object"",""properties"":{""Reports"":{""type"":""object"",""properties"":{""Text"":{""type"":""string"",""description"":""报表名称""}}},""fields"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""<字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)>""},""TabFdPos"":{""type"":""number"",""description"":""<字段在相应区域中的位置，整数>""},""ParamText"":{""type"":""string"",""description"":""<报表上的字段名称>""},""FieldType"":{""enum"":[""TextBox"",""Checkbox"",""RadioButtion"",""DatePicker"",""TextArea"",""Currency""],""description"":""<项目种类，值包括TextBox，Checkbox，RadioButtion、DatePicker、TextArea、Currency>""},""Display"":{""enum"":[""X"",""""],""description"":""<字段是否在报告中可见，可见为X, 不可见为空格>""},""Enterable"":{""enum"":[""X"",""""],""description"":""<字段是否可输入选择参数，值为X或者空格>""},""Obligatory"":{""enum"":[""X"",""""],""description"":""<字段是否为必填项，值为X或者空格>""},""ValueHelp"":{""enum"":[""X"",""""],""description"":""<字段是否支持值帮助或搜索帮助，值为X或者空格>""},""ToEntityText"":{""type"":""string"",""description"":""<目标实体的描述（相关实体的文本描述）>""},""ToEntity"":{""type"":""string"",""description"":""<目标实体的ID>""},""ToFieldText"":{""type"":""string"",""description"":""<目标实体的字段的文本描述>""},""ToField"":{""type"":""string"",""description"":""<目标实体字段名>""},""Seq"":{""type"":""number"",""description"":""<目标实体字段名>""}}}}}}}",function get_report_field
 prompt_json_zh,"{""name"":""get_report_fields"",""description"":""总结信息以填充 `Reports` 实体的一条数据和 `ReportFields` 实体的多条数据表,只调用一次"",""parameters"":{""type"":""object"",""properties"":{""Reports"":{""type"":""object"",""properties"":{""Text"":{""type"":""string"",""description"":""报表名称""}}},""fields"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""<字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)>""},""TabFdPos"":{""type"":""number"",""description"":""<字段在相应区域中的位置，整数>""},""ParamText"":{""type"":""string"",""description"":""<报表上的字段名称>""},""FieldType"":{""enum"":[""TextBox"",""Checkbox"",""RadioButtion"",""DatePicker"",""TextArea"",""Currency""],""description"":""<项目种类，值包括TextBox，Checkbox，RadioButtion、DatePicker、TextArea、Currency>""},""Display"":{""enum"":[""X"",""""],""description"":""<字段是否在报告中可见，可见为X, 不可见为空格>""},""Enterable"":{""enum"":[""X"",""""],""description"":""<字段是否可输入选择参数，值为X或者空格>""},""Obligatory"":{""enum"":[""X"",""""],""description"":""<字段是否为必填项，值为X或者空格>""},""ValueHelp"":{""enum"":[""X"",""""],""description"":""<字段是否支持值帮助或搜索帮助，值为X或者空格>""},""ToEntityText"":{""type"":""string"",""description"":""<目标实体的描述（相关实体的文本描述）>""},""ToEntity"":{""type"":""string"",""description"":""<目标实体的ID>""},""ToFieldText"":{""type"":""string"",""description"":""<目标实体的字段的文本描述>""},""ToField"":{""type"":""string"",""description"":""<目标实体字段名>""},""Seq"":{""type"":""number"",""description"":""<目标实体字段名>""}}}}}}}",function get_report_field
 prompt_json_zh_CN,"{""name"":""get_report_fields"",""description"":""总结信息以填充 `Reports` 实体的一条数据和 `ReportFields` 实体的多条数据表,只调用一次"",""parameters"":{""type"":""object"",""properties"":{""Reports"":{""type"":""object"",""properties"":{""Text"":{""type"":""string"",""description"":""报表名称""}}},""fields"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""<字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)>""},""TabFdPos"":{""type"":""number"",""description"":""<字段在相应区域中的位置，整数>""},""ParamText"":{""type"":""string"",""description"":""<报表上的字段名称>""},""FieldType"":{""enum"":[""TextBox"",""Checkbox"",""RadioButtion"",""DatePicker"",""TextArea"",""Currency""],""description"":""<项目种类，值包括TextBox，Checkbox，RadioButtion、DatePicker、TextArea、Currency>""},""Display"":{""enum"":[""X"",""""],""description"":""<字段是否在报告中可见，可见为X, 不可见为空格>""},""Enterable"":{""enum"":[""X"",""""],""description"":""<字段是否可输入选择参数，值为X或者空格>""},""Obligatory"":{""enum"":[""X"",""""],""description"":""<字段是否为必填项，值为X或者空格>""},""ValueHelp"":{""enum"":[""X"",""""],""description"":""<字段是否支持值帮助或搜索帮助，值为X或者空格>""},""ToEntityText"":{""type"":""string"",""description"":""<目标实体的描述（相关实体的文本描述）>""},""ToEntity"":{""type"":""string"",""description"":""<目标实体的ID>""},""ToFieldText"":{""type"":""string"",""description"":""<目标实体的字段的文本描述>""},""ToField"":{""type"":""string"",""description"":""<目标实体字段名>""},""Seq"":{""type"":""number"",""description"":""<目标实体字段名>""}}}}}}}",function get_report_field
