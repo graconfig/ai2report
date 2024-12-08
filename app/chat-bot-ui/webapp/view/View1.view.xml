@@ -2,13 +2,6 @@
 	displayBlock="true" xmlns="sap.m" xmlns:l="sap.ui.layout">
 		<Page title="{i18n>Title01}">
 	<f:DynamicPage stickySubheaderProvider="iconTabBar" class="sapUiNoContentPadding">
-		<!-- <f:title>
-			<f:DynamicPageTitle>
-				<f:heading>
-					<Title text="AI with Fiori"/>
-				</f:heading>
-			</f:DynamicPageTitle>
-		</f:title> -->
 		<f:content>
 			<l:Splitter busy="{ui>/busy1}" busyIndicatorDelay="0"  >
 				<VBox>
@@ -25,7 +18,7 @@
 				</VBox>
 				
 				<VBox class="chat-bot-ui" visible="{ui>/visible2}" >
-					<ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
+					<ScrollContainer vertical="true" focusable="true">
 						<MessageStrip text="{i18n>Text01}" type="Success" showIcon="true" showCloseButton="false"
 							class="sapUiMediumMarginBottom"></MessageStrip>
 						<VBox items="{ui>/chatbot/messages}">
@@ -33,7 +26,8 @@
 								<HBox visible="{= ${ui>role} === 'assistant'}" direction="Row" class="sapUiSmallMarginTopBottom">
 									<HBox backgroundDesign="Solid" class="chatBubble sapUiResponsivePadding">
 										<core:Icon decorative="true" src="sap-icon://ai" class="sapUiTinyMarginEnd"/>
-										<Text text="{ui>content}"/>
+										<!-- <Text text="{path: 'ui>content', formatter: '.convertToHTML'}" /> -->
+										<core:HTML content="{path: 'ui>content', formatter: '.convertToHTML'}" preferDOM="false" sanitizeContent="true"/>
 										<Text width="2rem"/>
 										<Button class="sapUiTinyMarginBegin" type="Emphasized" icon="sap-icon://thumb-up" text="{i18n>Button03}" press="onBtnAdoptPress"
 											busyIndicatorDelay="0" visible="{ui>visible0}"/>
