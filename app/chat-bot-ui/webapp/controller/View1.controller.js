@@ -26,6 +26,7 @@ function (Controller, JSONModel, library) {
                         // }
                     ],
                 },
+                showHTMLContent: false,
             });
 
             this.getView().setModel(oUiModel, "ui");
@@ -325,5 +326,8 @@ function (Controller, JSONModel, library) {
             const url = window.location.origin + '/parameters/webapp/index.html';
             window.location.href = url;
         },
+        convertToHTML: function (content) {
+            return marked.parse(content);
+        }
     });
 });
