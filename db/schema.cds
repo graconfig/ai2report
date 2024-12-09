@@ -14,6 +14,7 @@ namespace pwc.hand.ai2report;
 
 entity Chats : cuid, managed {
     title   : String; // Title of chat
+    prompt  : LargeString; //prompt
     records : Composition of many Records
                   on records.chat = $self; // Composition of messages within the chat
 }
@@ -25,7 +26,6 @@ entity Chats : cuid, managed {
 entity Records : cuid, managed {
     chat      : Association to Chats; // Reference to the associated chat
     role      : String; // user, assistant
-    prompt    : LargeString; //prompt
     content   : LargeString; // message content
     isAdopted : Boolean; // Indicates if the record was adopted
 }
@@ -41,7 +41,7 @@ entity Reports : cuid, managed {
     Text               : String(255); // Summary or textual description of the report
     DevClass           : String(30); // Development class related to the report
     TrKorr             : String(20); // Transport request number for the report
-    jsonPCL            : LargeString; // JSON string containing PCL or structured data for the report
+    // jsonPCL            : LargeString; // JSON string containing PCL or structured data for the report
     fields             : Composition of many ReportFields
                              on fields.report = $self; // Composition of report fields for detailed data
 }

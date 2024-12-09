@@ -5,6 +5,7 @@ import * as __ from './../../../_';
 export function _ChatAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
   return class Chat extends _._cuidAspect(_._managedAspect(Base)) {
     declare title?: string | null
+    declare prompt?: string | null
     declare records?: __.Composition.of.many<Records>
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Chat> & typeof _.cuid.keys;
@@ -25,7 +26,6 @@ export function _RecordAspect<TBase extends new (...args: any[]) => object>(Base
     declare chat?: __.Association.to<Chat> | null
     declare chat_ID?: __.Key<string> | null
     declare role?: string | null
-    declare prompt?: string | null
     declare content?: string | null
     declare isAdopted?: boolean | null
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
@@ -52,7 +52,6 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare Text?: string | null
     declare DevClass?: string | null
     declare TrKorr?: string | null
-    declare jsonPCL?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report> & typeof _.cuid.keys;
