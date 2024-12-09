@@ -37,26 +37,12 @@ annotate ChatService.Parameters with @(
             }
         ],
     },
-    UI.FieldGroup #GeneratedGroup2: {
-        $Type: 'UI.FieldGroupType',
-        Data : [{
-            $Type: 'UI.DataField',
-            Label: 'value',
-            Value: value
-        }],
-    },
     UI.Facets                     : [
         {
             $Type : 'UI.ReferenceFacet',
             ID    : 'GeneratedFacet1',
             Label : 'Description Information',
             Target: '@UI.FieldGroup#GeneratedGroup1'
-        },
-        {
-            $Type : 'UI.ReferenceFacet',
-            ID    : 'GeneratedFacet2',
-            Label : 'Value Information',
-            Target: '@UI.FieldGroup#GeneratedGroup2'
         }
     ]
 );
