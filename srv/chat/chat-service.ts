@@ -93,8 +93,11 @@ export default class ChatService extends ApplicationService {
       if (!chat.title) {
         const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
-        const prompt_repname = 'prompt_repname' + req.locale;
+        let prompt_repname = 'prompt_repname' + req.locale;
 
+        if (req.locale == 'zh_CN') {
+          prompt_repname = 'prompt_repname_zh';
+        }
         const para = await SELECT.one
           .from(Parameters)
           .columns('value')
@@ -172,7 +175,11 @@ export default class ChatService extends ApplicationService {
     this.on(adopt, async req => {
       const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
-      const prompt_json = 'prompt_json_' + req.locale;
+      let prompt_json = 'prompt_json_' + req.locale;
+
+      if (req.locale == 'zh_CN') {
+        prompt_json = 'prompt_json_zh';
+      }
 
       const para = await SELECT.one
         .from(Parameters)
