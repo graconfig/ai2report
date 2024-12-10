@@ -14,8 +14,9 @@ export default class ChatService extends ApplicationService {
     //
     const { Records, Reports, ReportFields, Parameters } = this.entities;
     const { newRecord } = Chat.actions;
-                                              
-    this.on(newRecord, async (req,res) => {
+    const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
+
+    this.on(newRecord, async (req, res) => {
       //   const chatId:any = req.data.chatid
 
       const chat = await SELECT.one.from(req.subject);
@@ -70,7 +71,6 @@ export default class ChatService extends ApplicationService {
 
       console.log(messages);
 
-
       // const controller = new AbortController();
       // try {
 
@@ -80,48 +80,48 @@ export default class ChatService extends ApplicationService {
       //   controller
       // );
 
-    //     // Set headers for event stream.
-    //     res.setHeader('Content-Type', 'text/event-stream');
-    //     res.setHeader('Connection', 'keep-alive');
-    //     res.flushHeaders();
-    
-    //     let connectionAlive = true;
-    
-    //     // Abort the stream if the client connection is closed.
-    //     res.on('close', () => {
-    //       controller.abort();
-    //       connectionAlive = false;
-    //       res.end();
-    //     });
-    
-    //     // Stream the delta content.
-    //     for await (const chunk of response.stream.toContentStream()) {
-    //       if (!connectionAlive) {
-    //         break;
-    //       }
-    //       res.write(chunk);
-    //     }
-    
-    //     // Write the finish reason and token usage after the stream ends.
-    //     if (connectionAlive) {
-    //       const finishReason = response.getFinishReason();
-    //       const tokenUsage = response.getTokenUsage()!;
-    //       res.write('\n\n---------------------------\n');
-    //       res.write(`Finish reason: ${finishReason}\n`);
-    //       res.write('Token usage:\n');
-    //       res.write(`  - Completion tokens: ${tokenUsage.completion_tokens}\n`);
-    //       res.write(`  - Prompt tokens: ${tokenUsage.prompt_tokens}\n`);
-    //       res.write(`  - Total tokens: ${tokenUsage.total_tokens}\n`);
-    //     }
-    //   } catch (error: any) {
-    //     console.error(error);
-    //     res
-    //       .status(500)
-    //       .send('Yikes, vibes are off apparently 😬 -> ' + error.message);
-    //   } finally {
-    //     res.end();
-    //   }
-    // });
+      //     // Set headers for event stream.
+      //     res.setHeader('Content-Type', 'text/event-stream');
+      //     res.setHeader('Connection', 'keep-alive');
+      //     res.flushHeaders();
+
+      //     let connectionAlive = true;
+
+      //     // Abort the stream if the client connection is closed.
+      //     res.on('close', () => {
+      //       controller.abort();
+      //       connectionAlive = false;
+      //       res.end();
+      //     });
+
+      //     // Stream the delta content.
+      //     for await (const chunk of response.stream.toContentStream()) {
+      //       if (!connectionAlive) {
+      //         break;
+      //       }
+      //       res.write(chunk);
+      //     }
+
+      //     // Write the finish reason and token usage after the stream ends.
+      //     if (connectionAlive) {
+      //       const finishReason = response.getFinishReason();
+      //       const tokenUsage = response.getTokenUsage()!;
+      //       res.write('\n\n---------------------------\n');
+      //       res.write(`Finish reason: ${finishReason}\n`);
+      //       res.write('Token usage:\n');
+      //       res.write(`  - Completion tokens: ${tokenUsage.completion_tokens}\n`);
+      //       res.write(`  - Prompt tokens: ${tokenUsage.prompt_tokens}\n`);
+      //       res.write(`  - Total tokens: ${tokenUsage.total_tokens}\n`);
+      //     }
+      //   } catch (error: any) {
+      //     console.error(error);
+      //     res
+      //       .status(500)
+      //       .send('Yikes, vibes are off apparently 😬 -> ' + error.message);
+      //   } finally {
+      //     res.end();
+      //   }
+      // });
       // for await (const chunk of response) {
       //   process.stdout.write(chunk.choices[0]?.delta?.content || '')
       // }
@@ -132,8 +132,7 @@ export default class ChatService extends ApplicationService {
       //   content: response.getContent() //?.trim().replace(/\n/g, ' ')
       // };
       console.log(Newrecord);
-      
-      
+
       if (!chat.title) {
         const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
@@ -207,8 +206,6 @@ export default class ChatService extends ApplicationService {
     //
     const { adopt } = Record.actions;
     this.on(adopt, async req => {
-      const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
-
       const prompt_json = 'prompt_json_' + req.locale;
 
       const para = await SELECT.one
@@ -288,7 +285,39 @@ export default class ChatService extends ApplicationService {
     //
     // Action generatePCL
     //
-    this.on(generatePCL, async req => {});
+    this.on(generatePCL, async req => {
+      const para = await SELECT.from(Parameters)
+        .columns(['name', 'value'])
+        .where({ name: ['pcl_test', 'prompt_pcl'] });
+        
+      const pcl = para.filter((para: any) => (para.name = 'prompt_pcl'));
+
+
+      const func_string = pcl[0].value.trim().replace(/\n/g, ' ');
+      const func_json = JSON.parse(func_string);
+
+      const tools = [
+        {
+          type: Tooltype,
+          function: func_json
+        }
+      ];
+
+      const test = para.filter((para: any) => (para.name = 'pcl_test'));
+
+      let messages: any = [
+        {
+          role: Sender.User,
+          content: test[0].value.trim().replace(/\n/g, ' ')
+        }
+      ];
+
+      const response = await new AzureOpenAiChatClient('gpt-4o').run({
+        messages,
+        tools
+      });
+    });
+
     return super.init();
   }
 

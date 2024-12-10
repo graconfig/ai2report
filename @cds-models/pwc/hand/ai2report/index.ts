@@ -5,6 +5,7 @@ import * as __ from './../../../_';
 export function _ChatAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
   return class Chat extends _._cuidAspect(_._managedAspect(Base)) {
     declare title?: string | null
+    declare prompt?: string | null
     declare records?: __.Composition.of.many<Records>
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Chat> & typeof _.cuid.keys;
@@ -25,7 +26,6 @@ export function _RecordAspect<TBase extends new (...args: any[]) => object>(Base
     declare chat?: __.Association.to<Chat> | null
     declare chat_ID?: __.Key<string> | null
     declare role?: string | null
-    declare prompt?: string | null
     declare content?: string | null
     declare isAdopted?: boolean | null
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
@@ -52,7 +52,6 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare Text?: string | null
     declare DevClass?: string | null
     declare TrKorr?: string | null
-    declare jsonPCL?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report> & typeof _.cuid.keys;
@@ -72,6 +71,7 @@ export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>
   return class ReportField extends _._cuidAspect(_._managedAspect(Base)) {
     declare report?: __.Association.to<Report> | null
     declare report_ID?: __.Key<string> | null
+    declare categoryNav?: __.Association.to<Category> | null
     declare category?: string | null
     declare TabFdPos?: number | null
     declare ParamText?: string | null
@@ -132,3 +132,35 @@ Object.defineProperty(SingleCheck, 'name', { value: 'pwc.hand.ai2report.SingleCh
 Object.defineProperty(SingleCheck, 'is_singular', { value: true })
 export class SingleCheck_ extends Array<SingleCheck> {$count?: number}
 Object.defineProperty(SingleCheck_, 'name', { value: 'pwc.hand.ai2report.SingleCheck' })
+
+export function _FieldTypeAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class FieldType extends Base {
+    declare code?: __.Key<string>
+    declare desc?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<FieldType>;
+    declare static readonly elements: __.ElementsOf<FieldType>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class FieldType extends _FieldTypeAspect(__.Entity) {}
+Object.defineProperty(FieldType, 'name', { value: 'pwc.hand.ai2report.FieldType' })
+Object.defineProperty(FieldType, 'is_singular', { value: true })
+export class FieldType_ extends Array<FieldType> {$count?: number}
+Object.defineProperty(FieldType_, 'name', { value: 'pwc.hand.ai2report.FieldType' })
+
+export function _CategoryAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class Category extends Base {
+    declare code?: __.Key<string>
+    declare desc?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<Category>;
+    declare static readonly elements: __.ElementsOf<Category>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class Category extends _CategoryAspect(__.Entity) {}
+Object.defineProperty(Category, 'name', { value: 'pwc.hand.ai2report.Category' })
+Object.defineProperty(Category, 'is_singular', { value: true })
+export class Category_ extends Array<Category> {$count?: number}
+Object.defineProperty(Category_, 'name', { value: 'pwc.hand.ai2report.Category' })

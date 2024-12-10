@@ -123,7 +123,18 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Parameters"
+              "contextPath": "/Parameters",
+              "content": {
+                "body": {
+                  "sections": {
+                    "ValueInformationSection": {
+                      "type": "XMLFragment",
+                      "template": "parameters.ext.ValueInformationSection",
+                      "title": "{i18n>valueInformation}"
+                    }
+                  }
+                }
+              }
             }
           }
         }
