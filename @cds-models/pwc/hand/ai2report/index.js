@@ -13,6 +13,9 @@ module.exports.Reports = csn.Reports
 // ReportFields
 module.exports.ReportField = { is_singular: true, __proto__: csn.ReportFields }
 module.exports.ReportFields = csn.ReportFields
+// PCLs
+module.exports.PCL = { is_singular: true, __proto__: csn.PCLs }
+module.exports.PCLs = csn.PCLs
 // Parameters
 module.exports.Parameter = { is_singular: true, __proto__: csn.Parameters }
 module.exports.Parameters = csn.Parameters
