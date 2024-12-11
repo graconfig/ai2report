@@ -329,20 +329,16 @@ export default class ChatService extends ApplicationService {
       });
 
       if (response.getFinishReason() == 'tool_calls') {
-        let pcljson: any =
+        const pcljson: any =
           response.data.choices[0].message?.tool_calls?.[0].function.arguments;
 
-        let insertpcls = JSON.parse(pcljson).pcl;
+        const insertpcls = JSON.parse(pcljson).pcl.map( (item: any)=> ({ ...item, report_ID: report.ID }));
+
         console.log(insertpcls);
 
         let newpcls = await this.run(
           INSERT(insertpcls).into(Pcls)
 
-          // INSERT.into(Pcls).entries({
-          //   record_ID: record.ID,
-          //   Text: chat.title === null ? Report.Reports.Text : chat.title,
-          //   fields: Report.fields
-          // })
         );
 
         await this.run(UPDATE(req.subject).with({ isPCLGenerated: true }));
