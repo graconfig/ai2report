@@ -51,7 +51,8 @@ entity Reports : cuid, managed {
  */
 entity ReportFields : cuid, managed {
     report       : Association to Reports; // Reference to the associated report
-    categoryNav  : Association to Category on categoryNav.code = category; // Category of the field (e.g., input, output)
+    categoryNav  : Association to Category
+                       on categoryNav.code = category; // Category of the field (e.g., input, output)
     category     : String(100); // Category of the field (e.g., input, output)
     TabFdPos     : Integer; // Position of the field in a tabular layout
     ParamText    : String(255); // Parameter description or explanation
@@ -67,17 +68,28 @@ entity ReportFields : cuid, managed {
     Seq          : Integer; // Sort field
 }
 
+entity PCLs : cuid,managed {
+    report         : Association to Reports; // Reference to the associated report
+    num            : String(10); // UT number
+    categoryNav    : Association to Category
+                         on categoryNav.code = category; // Category of the field (e.g., input, output)
+    category       : String(100); // Category of the field (e.g., input, output)
+    scene          : String;
+    expectedResult : String;
+}
+
+
 /**
  * Represents a parameter with a key-value pair and its description.
  */
 entity Parameters : managed {
     key name        : String(60); // Parameter key or name
-        value       : LargeString @UI.MultiLineText; // Parameter value
+        value       : LargeString  @UI.MultiLineText; // Parameter value
         description : String(1000) @UI.MultiLineText; // Description of the parameter
 }
 
-entity SingleCheck{
-  key check : String(1);
+entity SingleCheck {
+    key check : String(1);
 }
 
 entity FieldType {

@@ -9,10 +9,12 @@ import { Sender } from './entities.js';
 export default class ChatService extends ApplicationService {
   init() {
     const { Chat, Record, Report } = require('#cds-models/ChatService');
+    const { Chats, Records, Reports, ReportFields, Pcls, Parameters } =
+      this.entities;
+    const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
     //
     // Action newRecord
     //
-    const { Chats, Records, Reports, ReportFields, Parameters } = this.entities;
     const { newRecord } = Chat.actions;
 
     this.on(newRecord, async req => {
@@ -91,8 +93,6 @@ export default class ChatService extends ApplicationService {
       });
 
       if (!chat.title) {
-        const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
-
         let prompt_repname = 'prompt_repname' + req.locale;
 
         if (req.locale == 'zh_CN') {
@@ -264,7 +264,95 @@ export default class ChatService extends ApplicationService {
     //
     // Action generatePCL
     //
-    this.on(generatePCL, async req => {});
+    this.on(generatePCL, async req => {
+
+      //    拼接message
+      const report = await SELECT.one.from(req.subject);
+
+      const fields = await SELECT.from(ReportFields)
+        .where({
+          report_ID: report.ID
+        })
+        .orderBy('Seq');
+
+      const fields_string = JSON.stringify(fields);
+
+      let prompt_pcl = 'prompt_pcl_' + req.locale;
+
+      if (req.locale == 'zh_CN') {
+        prompt_pcl = 'prompt_pcl_zh';
+      }
+
+      let para = await SELECT.one
+        .from(Parameters)
+        .columns('value')
+        .where({ name: prompt_pcl });
+
+      if (!para) {
+        req.reject(404, 'Maintain_Parameter', [prompt_pcl]);
+      }
+
+      let messages: any = [
+        {
+          role: Sender.User,
+          content: para.value.trim().replace(/\n/g, ' ') + fields_string
+        }
+      ];
+      //   拼接message结束
+      let func_pcl = 'func_pcl_' + req.locale;
+
+      if (req.locale == 'zh_CN') {
+        func_pcl = 'func_pcl_zh';
+      }
+
+      para = await SELECT.one
+        .from(Parameters)
+        .columns('value')
+        .where({ name: func_pcl });
+
+      if (!para) {
+        req.reject(404, 'Maintain_Parameter', [func_pcl]);
+      }
+
+      const func_string = para.value.trim().replace(/\n/g, ' ');
+      const func_json = JSON.parse(func_string);
+      const tools = [
+        {
+          type: Tooltype,
+          function: func_json
+        }
+      ];
+      //
+      const response = await new AzureOpenAiChatClient('gpt-4o').run({
+        messages,
+        tools
+      });
+
+      if (response.getFinishReason() == 'tool_calls') {
+        let pcljson: any =
+          response.data.choices[0].message?.tool_calls?.[0].function.arguments;
+
+        let insertpcls = JSON.parse(pcljson).pcl;
+        console.log(insertpcls);
+
+        let newpcls = await this.run(
+          INSERT(insertpcls).into(Pcls)
+
+          // INSERT.into(Pcls).entries({
+          //   record_ID: record.ID,
+          //   Text: chat.title === null ? Report.Reports.Text : chat.title,
+          //   fields: Report.fields
+          // })
+        );
+
+        await this.run(UPDATE(req.subject).with({ isPCLGenerated: true }));
+        return newpcls;
+
+      } else {
+        return response.getContent();
+      }
+
+    });
     return super.init();
   }
 

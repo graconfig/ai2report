@@ -99,6 +99,27 @@ Object.defineProperty(ReportField, 'is_singular', { value: true })
 export class ReportFields extends Array<ReportField> {$count?: number}
 Object.defineProperty(ReportFields, 'name', { value: 'pwc.hand.ai2report.ReportFields' })
 
+export function _PCLAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class PCL extends _._cuidAspect(_._managedAspect(Base)) {
+    declare report?: __.Association.to<Report> | null
+    declare report_ID?: __.Key<string> | null
+    declare num?: string | null
+    declare categoryNav?: __.Association.to<Category> | null
+    declare category?: string | null
+    declare scene?: string | null
+    declare expectedResult?: string | null
+    static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<PCL> & typeof _.cuid.keys;
+    declare static readonly elements: __.ElementsOf<PCL>;
+    declare static readonly actions: typeof _.managed.actions & typeof _.cuid.actions & Record<never, never>;
+  };
+}
+export class PCL extends _PCLAspect(__.Entity) {}
+Object.defineProperty(PCL, 'name', { value: 'pwc.hand.ai2report.PCLs' })
+Object.defineProperty(PCL, 'is_singular', { value: true })
+export class PCLs extends Array<PCL> {$count?: number}
+Object.defineProperty(PCLs, 'name', { value: 'pwc.hand.ai2report.PCLs' })
+
 export function _ParameterAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
   return class Parameter extends _._managedAspect(Base) {
     declare name?: __.Key<string>
