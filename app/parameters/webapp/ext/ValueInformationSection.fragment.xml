@@ -17,7 +17,7 @@
 					<f:formElements>
 						<f:FormElement label="{i18n>value}">
 							<f:fields>
-								<TextArea rows="10" 
+								<TextArea rows="28" 
                           value="{value}"
                           editable="{= ${ui>/editMode} === 'Editable'}">
                     
