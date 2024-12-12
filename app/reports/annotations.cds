@@ -384,6 +384,22 @@ annotate ChatService.ReportFields with @UI: {
 
 };
 
+annotate ChatService.Pcls {
+    category   @Common: {
+        Text           : categoryNav.desc,
+        TextArrangement: #TextOnly,
+        ValueListWithFixedValues,
+        ValueList      : {
+            CollectionPath: 'Category',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'category',
+                ValueListProperty: 'code'
+            }]
+        }
+    };
+}
+
 
 annotate ChatService.Pcls with @UI: {
     LineItem: [
