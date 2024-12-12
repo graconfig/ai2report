@@ -100,6 +100,7 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare DevClass?: string | null
     declare TrKorr?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
+    declare pcls?: __.Composition.of.many<Pcls>
     static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report>;
     declare static readonly elements: __.ElementsOf<Report>;
@@ -210,10 +211,11 @@ export function _PclAspect<TBase extends new (...args: any[]) => object>(Base: T
 * 
 * See https://cap.cloud.sap/docs/cds/common#aspect-managed
 */
-export class Pcl extends _PclAspect(__.Entity) {}
+export class Pcl extends _PclAspect(__.Entity) {static drafts: __.DraftOf<Pcl>}
 Object.defineProperty(Pcl, 'name', { value: 'ChatService.Pcls' })
 Object.defineProperty(Pcl, 'is_singular', { value: true })
-export class Pcls extends Array<Pcl> {$count?: number}
+export class Pcls extends Array<Pcl> {static drafts: __.DraftsOf<Pcl>
+$count?: number}
 Object.defineProperty(Pcls, 'name', { value: 'ChatService.Pcls' })
 
 export function _ParameterAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {

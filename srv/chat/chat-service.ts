@@ -4,6 +4,7 @@ import {
 } from '@sap-ai-sdk/foundation-models';
 import * as cds from '@sap/cds';
 import { ApplicationService } from '@sap/cds';
+import { readFile } from 'fs';
 import { Sender } from './entities.js';
 
 export default class ChatService extends ApplicationService {
@@ -12,6 +13,15 @@ export default class ChatService extends ApplicationService {
     const { Chats, Records, Reports, ReportFields, Pcls, Parameters } =
       this.entities;
     const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
+
+    if (process.env.CDS_ENV == 'hybrid') {
+      readFile('default-env.json', 'utf8', (err: any, vcapservicejson: any) => {
+        if (err) {
+          console.error('Error reading the file:', err);
+        }
+        process.env.VCAP_SERVICES = vcapservicejson;
+      });
+    }
     //
     // Action newRecord
     //
@@ -248,24 +258,92 @@ export default class ChatService extends ApplicationService {
     // Action verify
     //
     this.on(verify, async req => {
-      const zye9001 = await cds.connect.to('zui_zye9001_001');
-      const { Project } = zye9001.entities;
-      const result = await zye9001.run(SELECT(Project));
+      const zye9012 = await cds.connect.to('zui_zye9012_001');
+      const report = await SELECT.one.from(req.subject);
 
-      // zye9001.send({
-      //   event: 'GET'
-      // })
-      console.log(result);
+      const fields = await SELECT.from(ReportFields)
+        .where({
+          report_ID: report.ID
+        })
+        .orderBy('Seq');
+
+      const Selection = fields
+        .filter((field: any) => field.category == '_Selection')
+        .map((Selection: any) => ({
+          TabFdPos: Selection.TabFdPos,
+          ToEntity: Selection.ToEntity,
+          ToField: Selection.ToField,
+          IsActiveEntity: true
+        }));
+
+        const ListField = fields
+        .filter((field: any) => field.category == '_ListField')
+        .map((Selection: any) => ({
+          TabFdPos: Selection.TabFdPos,
+          ToEntity: Selection.ToEntity,
+          ToField: Selection.ToField,
+          IsActiveEntity: true
+        }));
+
+        const HeaderField = fields
+        .filter((field: any) => field.category == '_HeaderField')
+        .map((Selection: any) => ({
+          TabFdPos: Selection.TabFdPos,
+          ToEntity: Selection.ToEntity,
+          ToField: Selection.ToField,
+          IsActiveEntity: true
+        }));
+
+        const ItemField = fields
+        .filter((field: any) => field.category == '_ItemField')
+        .map((Selection: any) => ({
+          TabFdPos: Selection.TabFdPos,
+          ToEntity: Selection.ToEntity,
+          ToField: Selection.ToField,
+          IsActiveEntity: true
+        }));
+     
+      const data =  {
+        IsActiveEntity: true,
+        _Selection: Selection,
+        _ListField: ListField,
+        _HeaderField: HeaderField,
+        _ItemField: ItemField
+      }
+
+       
+
+      const { ZC_ZYE9012_001 } = zye9012.entities;
+
+       const token = await zye9012.run(SELECT(ZC_ZYE9012_001));
+
+      console.log( token );
+
+      const result = await zye9012.post(
+        ZC_ZYE9012_001,data
+        // {
+        //   IsActiveEntity: true
+          // _Selection: Selection,
+          // _ListField: ListField,
+          // _HeaderField: HeaderField,
+          // _ItemField: ItemField
+        // }
+      );
+      
+      console.log( result );
     });
     //
     // Action generateProgram
     //
-    this.on(generateProgram, async req => {});
+    this.on(generateProgram, async req => {
+      // const zye9012 = await cds.connect.to('zui_zye9012_001');
+      // const { Project } = zye9001.entities;
+      // const result = await zye9001.run(SELECT(Project));
+    });
     //
     // Action generatePCL
     //
     this.on(generatePCL, async req => {
-
       //    拼接message
       const report = await SELECT.one.from(req.subject);
 
@@ -332,22 +410,20 @@ export default class ChatService extends ApplicationService {
         const pcljson: any =
           response.data.choices[0].message?.tool_calls?.[0].function.arguments;
 
-        const insertpcls = JSON.parse(pcljson).pcl.map( (item: any)=> ({ ...item, report_ID: report.ID }));
+        const insertpcls = JSON.parse(pcljson).pcl.map((item: any) => ({
+          ...item,
+          report_ID: report.ID
+        }));
 
         console.log(insertpcls);
 
-        let newpcls = await this.run(
-          INSERT(insertpcls).into(Pcls)
-
-        );
+        let newpcls = await this.run(INSERT(insertpcls).into(Pcls));
 
         await this.run(UPDATE(req.subject).with({ isPCLGenerated: true }));
         return newpcls;
-
       } else {
         return response.getContent();
       }
-
     });
     return super.init();
   }
