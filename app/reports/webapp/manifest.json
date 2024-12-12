@@ -130,7 +130,13 @@
                   "tableSettings": {
                     "type": "GridTable",
                     "rowCount": 18
-									}
+                  }
+                },
+                "pcls/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "GridTable",
+                    "rowCount": 18
+                  }
                 }
               }
             }
