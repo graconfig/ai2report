@@ -311,22 +311,20 @@ export default class ChatService extends ApplicationService {
         _ItemField: ItemField
       }
 
-       
-
       const { ZC_ZYE9012_001 } = zye9012.entities;
 
-       const token = await zye9012.run(SELECT(ZC_ZYE9012_001));
+      // const result = await zye9012.run(SELECT(ZC_ZYE9012_001));
 
-      console.log( token );
-
+      // cds.env.features.fetch_csrf = true;
+      // const result = await zye9012.run(INSERT(data).into('0001'));
       const result = await zye9012.post(
-        ZC_ZYE9012_001,data
+        '0001',data
         // {
         //   IsActiveEntity: true
-          // _Selection: Selection,
-          // _ListField: ListField,
-          // _HeaderField: HeaderField,
-          // _ItemField: ItemField
+        //   _Selection: Selection,
+        //   _ListField: ListField,
+        //   _HeaderField: HeaderField,
+        //   _ItemField: ItemField
         // }
       );
       
