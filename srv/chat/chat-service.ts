@@ -4,7 +4,6 @@ import {
 } from '@sap-ai-sdk/foundation-models';
 import * as cds from '@sap/cds';
 import { ApplicationService } from '@sap/cds';
-import { readFile } from 'fs';
 import { Sender } from './entities.js';
 
 export default class ChatService extends ApplicationService {
@@ -14,14 +13,14 @@ export default class ChatService extends ApplicationService {
       this.entities;
     const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
-    if (process.env.CDS_ENV == 'hybrid') {
-      readFile('default-env.json', 'utf8', (err: any, vcapservicejson: any) => {
-        if (err) {
-          console.error('Error reading the file:', err);
-        }
-        process.env.VCAP_SERVICES = vcapservicejson;
-      });
-    }
+    // if (process.env.CDS_ENV == 'hybrid') {
+    //   readFile('default-env.json', 'utf8', (err: any, vcapservicejson: any) => {
+    //     if (err) {
+    //       console.error('Error reading the file:', err);
+    //     }
+    //     process.env.VCAP_SERVICES = vcapservicejson;
+    //   });
+    // }
     //
     // Action newRecord
     //
