@@ -26,6 +26,7 @@ function (Controller, JSONModel, library) {
                         // }
                     ],
                 },
+                showHTMLContent: false,
             });
 
             this.getView().setModel(oUiModel, "ui");
@@ -72,6 +73,7 @@ function (Controller, JSONModel, library) {
                 visible1 : false
             });
             oUiModel.setProperty("/chatbot/messages", oMessages);
+            this._apiGetchat();
         },
 
         // _apiChatLocal: async function (oMessages) {
@@ -117,7 +119,7 @@ function (Controller, JSONModel, library) {
 
         /**
          * Gets the URL prefix of the app
-         * @returns {string} the URL module prefix
+        // * @returns {string} the URL module prefix
          */
         _getUrlModulePrefix() {
             return $.sap.getModulePath(
@@ -175,6 +177,7 @@ function (Controller, JSONModel, library) {
             const Arry = await this._apiNewchat();
             oUiModel.setProperty("/chatID", Arry.ID);
             oUiModel.setProperty("/visible2", true);
+            this._apiGetchat();
 
         },
         _apiNewchat: async function () {
@@ -325,5 +328,8 @@ function (Controller, JSONModel, library) {
             const url = window.location.origin + '/parameters/webapp/index.html';
             window.location.href = url;
         },
+        convertToHTML: function (content) {
+            return marked.parse(content);
+        }
     });
 });

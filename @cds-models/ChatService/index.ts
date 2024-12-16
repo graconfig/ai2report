@@ -18,6 +18,7 @@ export function _ChatAspect<TBase extends new (...args: any[]) => object>(Base: 
     /** Canonical user ID */
     declare modifiedBy?: _.User | null
     declare title?: string | null
+    declare prompt?: string | null
     declare records?: __.Composition.of.many<Records>
     static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Chat>;
@@ -55,7 +56,6 @@ export function _RecordAspect<TBase extends new (...args: any[]) => object>(Base
     declare chat?: __.Association.to<Chat> | null
     declare chat_ID?: __.Key<string> | null
     declare role?: string | null
-    declare prompt?: string | null
     declare content?: string | null
     declare isAdopted?: boolean | null
     static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
@@ -99,8 +99,8 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare Text?: string | null
     declare DevClass?: string | null
     declare TrKorr?: string | null
-    declare jsonPCL?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
+    declare pcls?: __.Association.to.many<Pcls>
     static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report>;
     declare static readonly elements: __.ElementsOf<Report>;
@@ -116,11 +116,11 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
       }
       generatePCL:  {
         // positional
-        (): any
+        (): Array<Pcl>
         // named
-        ({}: Record<never, never>): any
+        ({}: Record<never, never>): Array<Pcl>
         // metadata (do not use)
-        __parameters: Record<never, never>, __returns: any
+        __parameters: Record<never, never>, __returns: Array<Pcl>
         kind: 'action'
       }
       verify:  {
@@ -155,6 +155,7 @@ export function _ReportFieldAspect<TBase extends new (...args: any[]) => object>
     declare modifiedBy?: _.User | null
     declare report?: __.Association.to<Report> | null
     declare report_ID?: __.Key<string> | null
+    declare categoryNav?: __.Association.to<Category> | null
     declare category?: string | null
     declare TabFdPos?: number | null
     declare ParamText?: string | null
@@ -182,6 +183,39 @@ Object.defineProperty(ReportField, 'is_singular', { value: true })
 export class ReportFields extends Array<ReportField> {static drafts: __.DraftsOf<ReportField>
 $count?: number}
 Object.defineProperty(ReportFields, 'name', { value: 'ChatService.ReportFields' })
+
+export function _PclAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class Pcl extends Base {
+    declare ID?: __.Key<string>
+    declare createdAt?: __.CdsTimestamp | null
+    /** Canonical user ID */
+    declare createdBy?: _.User | null
+    declare modifiedAt?: __.CdsTimestamp | null
+    /** Canonical user ID */
+    declare modifiedBy?: _.User | null
+    declare report?: __.Association.to<Report> | null
+    declare report_ID?: __.Key<string> | null
+    declare num?: string | null
+    declare categoryNav?: __.Association.to<Category> | null
+    declare category?: string | null
+    declare scene?: string | null
+    declare expectedResult?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<Pcl>;
+    declare static readonly elements: __.ElementsOf<Pcl>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+/**
+* Aspect to capture changes by user and name
+* 
+* See https://cap.cloud.sap/docs/cds/common#aspect-managed
+*/
+export class Pcl extends _PclAspect(__.Entity) {}
+Object.defineProperty(Pcl, 'name', { value: 'ChatService.Pcls' })
+Object.defineProperty(Pcl, 'is_singular', { value: true })
+export class Pcls extends Array<Pcl> {$count?: number}
+Object.defineProperty(Pcls, 'name', { value: 'ChatService.Pcls' })
 
 export function _ParameterAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
   return class Parameter extends Base {

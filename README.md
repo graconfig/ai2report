@@ -23,3 +23,7 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+
+## 开启代理
+cf ssh captesthrt-srv -L localhost:4004:connectivityproxy.internal.cf.jp10.hana.ondemand.com:20003

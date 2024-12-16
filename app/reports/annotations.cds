@@ -3,106 +3,102 @@ using ChatService from '../../srv/chat/chat-service';
 annotate ChatService.Reports with @odata.draft.enabled;
 
 annotate ChatService.Reports {
-    isPCLGenerated @Common.Label: '{i18n>isPCLGenerated}';
+    isPCLGenerated     @Common.Label: '{i18n>isPCLGenerated}';
     isProgramGenerated @Common.Label: '{i18n>isProgramGenerated}';
 };
 
+annotate ChatService.Category {
+    code @Common: {
+        Text           : desc,
+        TextArrangement: #TextOnly,
+    }
+};
+
+
 annotate ChatService.ReportFields {
-    category @Common : { 
+    category   @Common: {
+        Text           : categoryNav.desc,
+        TextArrangement: #TextOnly,
         ValueListWithFixedValues,
-        ValueList: {
+        ValueList      : {
             CollectionPath: 'Category',
-            Parameters: [
-                {
-                    $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'category',
-                    ValueListProperty: 'desc'
-                }
-            ]
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'category',
+                ValueListProperty: 'code'
+            }]
         }
     };
-    FieldType @Common : { 
+    FieldType  @Common: {
         ValueListWithFixedValues,
         ValueList: {
             CollectionPath: 'FieldType',
-            Parameters: [
-                {
-                    $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'FieldType',
-                    ValueListProperty: 'desc'
-                }
-            ]
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'FieldType',
+                ValueListProperty: 'desc'
+            }]
         }
     };
-    Display @Common : {
+    Display    @Common: {
         ValueListWithFixedValues,
         ValueList: {
             CollectionPath: 'SingleCheck',
-            Parameters: [
-                {
-                    $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'Display',
-                    ValueListProperty: 'check'
-                }
-            ]
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'Display',
+                ValueListProperty: 'check'
+            }]
         }
     };
-    Enterable @Common : {
+    Enterable  @Common: {
         ValueListWithFixedValues,
         ValueList: {
             CollectionPath: 'SingleCheck',
-            Parameters: [
-                {
-                    $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'Enterable',
-                    ValueListProperty: 'check'
-                }
-            ]
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'Enterable',
+                ValueListProperty: 'check'
+            }]
         }
     };
-    Obligatory @Common : {
+    Obligatory @Common: {
         ValueListWithFixedValues,
         ValueList: {
             CollectionPath: 'SingleCheck',
-            Parameters: [
-                {
-                    $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'Obligatory',
-                    ValueListProperty: 'check'
-                }
-            ]
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'Obligatory',
+                ValueListProperty: 'check'
+            }]
         }
     };
-    ValueHelp @Common : {
+    ValueHelp  @Common: {
         ValueListWithFixedValues,
         ValueList: {
             CollectionPath: 'SingleCheck',
-            Parameters: [
-                {
-                    $Type: 'Common.ValueListParameterInOut',
-                    LocalDataProperty: 'ValueHelp',
-                    ValueListProperty: 'check'
-                }
-            ]
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'ValueHelp',
+                ValueListProperty: 'check'
+            }]
         }
     };
-} 
+}
 
 
 annotate ChatService.Reports with @UI: {
-    SelectionFields  : [
+    SelectionFields: [
         isPCLGenerated,
         isProgramGenerated,
     ],
-    
 
-    HeaderInfo : {
-        Title : {
-            $Type : 'UI.DataField',
-            Value : Text 
-        }
-    },
-    Facets        : [
+
+    HeaderInfo     : {Title: {
+        $Type: 'UI.DataField',
+        Value: Text
+    }},
+    Facets         : [
         {
             $Type : 'UI.ReferenceFacet',
             ID    : 'idIdentification',
@@ -111,13 +107,20 @@ annotate ChatService.Reports with @UI: {
         },
 
         {
-            ID    : 'Fields',
-            Target: 'fields/@UI.PresentationVariant',
-            $Type : 'UI.ReferenceFacet',
-            Label : '{i18n>Fields}',
+            ID        : 'Fields',
+            Target    : 'fields/@UI.PresentationVariant',
+            $Type     : 'UI.ReferenceFacet',
+            Label     : '{i18n>Fields}'
+        },
+
+        {
+            ID           : 'Pcls',
+            Target       : 'pcls/@UI.LineItem',
+            $Type        : 'UI.ReferenceFacet',
+            Label        : '{i18n>Pcls}',
         }
     ],
-    LineItem      : [
+    LineItem       : [
         {
             $Type: 'UI.DataField',
             Value: ID,
@@ -169,7 +172,7 @@ annotate ChatService.Reports with @UI: {
             Label : '{i18n>Verify}'
         },
     ],
-    Identification: [
+    Identification : [
         {
             $Type: 'UI.DataField',
             Value: Text,
@@ -203,7 +206,8 @@ annotate ChatService.Reports with @UI: {
         {
             $Type : 'UI.DataFieldForAction',
             Action: 'ChatService.generatePCL',
-            Label : '{i18n>GeneratePCL}'
+            Label : '{i18n>GeneratePCL}',
+            ![@UI.Hidden]: isPCLGenerated
         },
         {
             $Type : 'UI.DataFieldForAction',
@@ -216,41 +220,36 @@ annotate ChatService.Reports with @UI: {
             Label : '{i18n>Verify}'
         }
     ],
+} actions {
+    @Common.SideEffects: {
+        TargetProperties: ['in/isPCLGenerated'],
+        TargetEntities: ['in/pcls']
+    }
+    generatePCL
 };
 
-annotate ChatService.ReportFields with @(
-    UI.PresentationVariant: {
-        SortOrder : [
-            {
-                Property : Seq,
-                Descending : false
-            }
-        ],
-        Visualizations : [
-            '@UI.LineItem'
-        ]
-    },
-);
-
+annotate ChatService.ReportFields with @(UI.PresentationVariant: {
+    SortOrder     : [{
+        Property  : Seq,
+        Descending: false
+    }],
+    Visualizations: ['@UI.LineItem']
+}, );
 
 
 annotate ChatService.ReportFields with @UI: {
 
-    HeaderInfo : {
-        Title : {
-            $Type : 'UI.DataField',
-            Value : TabFdPos 
-        }
-    },
+    HeaderInfo    : {Title: {
+        $Type: 'UI.DataField',
+        Value: TabFdPos
+    }},
 
-    Facets        : [
-        {
-            $Type : 'UI.ReferenceFacet',
-            ID    : 'idIdentification',
-            Label : '{i18n>Basic}',
-            Target: '@UI.Identification'
-        }
-    ],
+    Facets        : [{
+        $Type : 'UI.ReferenceFacet',
+        ID    : 'idIdentification',
+        Label : '{i18n>Basic}',
+        Target: '@UI.Identification'
+    }],
 
     Identification: [
         {
@@ -309,18 +308,17 @@ annotate ChatService.ReportFields with @UI: {
             Label: '{i18n>ToField}',
         },
         {
-            $Type : 'UI.DataField',
-            Value : Seq,
-            Label : '{i18n>Seq}'
+            $Type: 'UI.DataField',
+            Value: Seq,
+            Label: '{i18n>Seq}'
         }
     ],
-    LineItem: 
-    [
+    LineItem      : [
 
         {
-            $Type : 'UI.DataField',
-            Value : Seq,
-            Label : '{i18n>Seq}'
+            $Type: 'UI.DataField',
+            Value: Seq,
+            Label: '{i18n>Seq}'
         },
         {
             $Type: 'UI.DataField',
@@ -384,4 +382,46 @@ annotate ChatService.ReportFields with @UI: {
         }
     ],
 
+};
+
+annotate ChatService.Pcls {
+    category   @Common: {
+        Text           : categoryNav.desc,
+        TextArrangement: #TextOnly,
+        ValueListWithFixedValues,
+        ValueList      : {
+            CollectionPath: 'Category',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'category',
+                ValueListProperty: 'code'
+            }]
+        }
+    };
+}
+
+
+annotate ChatService.Pcls with @UI: {
+    LineItem: [
+        {
+            $Type: 'UI.DataField',
+            Value: num,
+            Label: '{i18n>Num}',
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: category,
+            Label: '{i18n>Category}',
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: scene,
+            Label: '{i18n>Scene}',
+        },
+        {
+            $Type: 'UI.DataField',
+            Value: expectedResult,
+            Label: '{i18n>expectedResult}',
+        }
+    ],
 };
