@@ -186,7 +186,6 @@ prompt_pcl_ja,"あなたはプロのSAPレポートテスターであり、レ�
 4.その他の要求：
 	a.機能設計の最初の行から最後の行までテストシナリオを出力すること。
 	b.行を漏れてはいけません。
-	c.ParamText、ToEntityText、ToFieldTextの意味を無視して、テキスト参照のみを行ってください。
 	
 レポート機能設計ファイルに対応するJSONは：",prompt_pcl
 func_pcl_en,"{""name"":""generate_pcl"",""description"":""生成PCL测试数据，只调用一次"",""parameters"":{""type"":""object"",""properties"":{""pcl"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""num"":{""type"":""string"",""description"":""流水号（UT开头+4位数字，数字从0010开始以10递增，如‘UT0010""},""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)""},""scene"":{""type"":""string"",""description"":""测试人员测试场景""},""expectedResult"":{""type"":""string"",""description"":""测试步骤的预期效果""}}}}}}}",function generate_pcl
