@@ -117,7 +117,7 @@ annotate ChatService.Reports with @UI: {
             ID           : 'Pcls',
             Target       : 'pcls/@UI.LineItem',
             $Type        : 'UI.ReferenceFacet',
-            Label        : 'Pcls',
+            Label        : '{i18n>Pcls}',
         }
     ],
     LineItem       : [
@@ -406,18 +406,22 @@ annotate ChatService.Pcls with @UI: {
         {
             $Type: 'UI.DataField',
             Value: num,
+            Label: '{i18n>Num}',
         },
         {
             $Type: 'UI.DataField',
             Value: category,
+            Label: '{i18n>Category}',
         },
         {
             $Type: 'UI.DataField',
             Value: scene,
+            Label: '{i18n>Scene}',
         },
         {
             $Type: 'UI.DataField',
             Value: expectedResult,
+            Label: '{i18n>expectedResult}',
         }
     ],
 };
