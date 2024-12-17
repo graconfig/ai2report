@@ -4,24 +4,39 @@ import {
 } from '@sap-ai-sdk/foundation-models';
 import * as cds from '@sap/cds';
 import { ApplicationService } from '@sap/cds';
+import { readFile } from 'fs';
 import { Sender } from './entities.js';
 
 export default class ChatService extends ApplicationService {
   init() {
-    const { Chat, Record, Report } = require('#cds-models/ChatService');
+    const {
+      Chat,
+      Record,
+      Report,
+      ReportField
+    } = require('#cds-models/ChatService');
     const { Chats, Records, Reports, ReportFields, Pcls, Parameters } =
       this.entities;
     const Tooltype: AzureOpenAiChatCompletionToolType = 'function';
 
-    // if (process.env.CDS_ENV == 'hybrid') {
-    //   readFile('default-env.json', 'utf8', (err: any, vcapservicejson: any) => {
-    //     if (err) {
-    //       console.error('Error reading the file:', err);
-    //     }
-    //     process.env.VCAP_SERVICES = vcapservicejson;
-    //   });
-    // }
+    if (process.env.CDS_ENV == 'hybrid') {
+      readFile('default-env.json', 'utf8', (err: any, vcapservicejson: any) => {
+        if (err) {
+          console.error('Error reading the file:', err);
+        }
+        process.env.VCAP_SERVICES = vcapservicejson;
+      });
+    }
+
     //
+    
+    this.after ('DELETE', Report, async (_, req)  => {
+
+      await UPDATE(Records).where({ID: req.data.ID}).with({ isAdopted: false });
+
+    })
+  
+  
     // Action newRecord
     //
     const { newRecord } = Chat.actions;
@@ -260,74 +275,155 @@ export default class ChatService extends ApplicationService {
       const zye9012 = await cds.connect.to('zui_zye9012_001');
       const report = await SELECT.one.from(req.subject);
 
-      const fields = await SELECT.from(ReportFields)
-        .where({
-          report_ID: report.ID
-        })
-        .orderBy('Seq');
+      const [params]: any = req.params;
+      const { IsActiveEntity } = params;
+
+      let fields;
+      if (IsActiveEntity) {
+        fields = await SELECT.from(ReportField)
+          .where({
+            report_ID: report.ID
+          })
+          .orderBy('Seq');
+      } else {
+        fields = await SELECT.from(ReportField.drafts)
+          .where({
+            report_ID: report.ID
+          })
+          .orderBy('Seq');
+      }
 
       const Selection = fields
         .filter((field: any) => field.category == '_Selection')
         .map((Selection: any) => ({
-          TabFdPos: Selection.TabFdPos,
+          TabFdPos: Selection.TabFdPos.toString(),
           ToEntity: Selection.ToEntity,
           ToField: Selection.ToField,
-          IsActiveEntity: true
+          IsActiveEntity: IsActiveEntity
         }));
 
-        const ListField = fields
+      const ListField = fields
         .filter((field: any) => field.category == '_ListField')
-        .map((Selection: any) => ({
-          TabFdPos: Selection.TabFdPos,
-          ToEntity: Selection.ToEntity,
-          ToField: Selection.ToField,
-          IsActiveEntity: true
+        .map((ListField: any) => ({
+          TabFdPos: ListField.TabFdPos.toString(),
+          ToEntity: ListField.ToEntity,
+          ToField: ListField.ToField,
+          IsActiveEntity: IsActiveEntity
         }));
 
-        const HeaderField = fields
+      const HeaderField = fields
         .filter((field: any) => field.category == '_HeaderField')
-        .map((Selection: any) => ({
-          TabFdPos: Selection.TabFdPos,
-          ToEntity: Selection.ToEntity,
-          ToField: Selection.ToField,
-          IsActiveEntity: true
+        .map((HeaderField: any) => ({
+          TabFdPos: HeaderField.TabFdPos.toString(),
+          ToEntity: HeaderField.ToEntity,
+          ToField: HeaderField.ToField,
+          IsActiveEntity: IsActiveEntity
         }));
 
-        const ItemField = fields
+      const ItemField = fields
         .filter((field: any) => field.category == '_ItemField')
-        .map((Selection: any) => ({
-          TabFdPos: Selection.TabFdPos,
-          ToEntity: Selection.ToEntity,
-          ToField: Selection.ToField,
-          IsActiveEntity: true
+        .map((ItemField: any) => ({
+          TabFdPos: ItemField.TabFdPos.toString(),
+          ToEntity: ItemField.ToEntity,
+          ToField: ItemField.ToField,
+          IsActiveEntity: IsActiveEntity
         }));
-     
-      const data =  {
-        IsActiveEntity: true,
-        _Selection: Selection,
-        _ListField: ListField,
-        _HeaderField: HeaderField,
-        _ItemField: ItemField
-      }
 
       const { ZC_ZYE9012_001 } = zye9012.entities;
 
       // const result = await zye9012.run(SELECT(ZC_ZYE9012_001));
-
       // cds.env.features.fetch_csrf = true;
-      // const result = await zye9012.run(INSERT(data).into('0001'));
-      const result = await zye9012.post(
-        '0001',data
-        // {
-        //   IsActiveEntity: true
-        //   _Selection: Selection,
-        //   _ListField: ListField,
-        //   _HeaderField: HeaderField,
-        //   _ItemField: ItemField
-        // }
-      );
-      
-      console.log( result );
+      // const result = await zye9012.run(INSERT(data).into(ZC_ZYE9012_001));
+
+      const result = await zye9012.post(ZC_ZYE9012_001, {
+        IsActiveEntity: IsActiveEntity,
+        _Selection: Selection,
+        _ListField: ListField,
+        _HeaderField: HeaderField,
+        _ItemField: ItemField
+      });
+
+      let succeeded = true;
+
+      for (const Return of result._Selection) {
+        if (Return.ReturnCode != 0) {
+          fields
+            .filter(
+              (field: any) =>
+                field.category == '_Selection' &&
+                field.TabFdPos == Number(Return.TabFdPos)
+            )
+            .map((error: any) =>
+              req.error(
+                400,
+                Return.message,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+              )
+            );
+          succeeded = false;
+        }
+      }
+
+      for (const Return of result._ListField) {
+        if (Return.ReturnCode != 0) {
+          fields
+            .filter(
+              (field: any) =>
+                field.category == '_ListField' &&
+                field.TabFdPos == Number(Return.TabFdPos)
+            )
+            .map((error: any) =>
+              req.error(
+                400,
+                Return.message,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+              )
+            );
+          succeeded = false;
+        }
+      }
+
+      for (const Return of result._HeaderField) {
+        if (Return.ReturnCode != 0) {
+          fields
+            .filter(
+              (field: any) =>
+                field.category == '_HeaderField' &&
+                field.TabFdPos == Number(Return.TabFdPos)
+            )
+            .map((error: any) =>
+              req.error(
+                400,
+                Return.message,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+              )
+            );
+          succeeded = false;
+        }
+      }
+
+      for (const Return of result._ItemField) {
+        if (Return.ReturnCode != 0) {
+          fields
+            .filter(
+              (field: any) =>
+                field.category == '_ItemField' &&
+                field.TabFdPos == Number(Return.TabFdPos)
+            )
+            .map((error: any) =>
+              req.error(
+                400,
+                Return.message,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+              )
+            );
+          succeeded = false;
+        }
+      }
+
+      if (succeeded) {
+        req.info(200, 'Verify_Pass');
+      }
     });
     //
     // Action generateProgram

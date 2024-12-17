@@ -1,0 +1,52 @@
+{
+  "connectivity": [
+    {
+      "label": "connectivity",
+      "plan": "lite",
+      "tags": ["connectivity", "conn", "connsvc"],
+      "name": "connectivity",
+      "credentials": {
+        "tenantmode": "dedicated",
+        "clientid": "sb-cloneaec5a0112c9045809607c7609fbb6878!b1169|connectivity!b4",
+        "token_service_domain": "authentication.jp10.hana.ondemand.com",
+        "credential-type": "binding-secret",
+        "token_service_url": "https://cloud-foundry-ctl09cwq.authentication.jp10.hana.ondemand.com",
+        "xsappname": "cloneaec5a0112c9045809607c7609fbb6878!b1169|connectivity!b4",
+        "onpremise_proxy_ldap_port": "20001",
+        "onpremise_socks5_proxy_port": "4004",
+        "clientsecret": "51b01434-0c71-48d1-8b06-2fef79ac1285$opP5H7mrUnmISD-E8il5LhxNnDTiaNQsjzF2krZOgf0=",
+        "onpremise_proxy_http_port": "4004",
+        "url": "https://cloud-foundry-ctl09cwq.authentication.jp10.hana.ondemand.com",
+        "onpremise_proxy_host": "127.0.0.1",
+        "uaadomain": "authentication.jp10.hana.ondemand.com",
+        "onpremise_proxy_port": "20003",
+        "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5toFNL1X6oHJ+FIwoUgJ\ndgYq2Um+JZNEMz43J6hTGCcsUTM62hSqdPedoD9KjKZafgCvZJU18kRD3VVTbyhO\nMLuFJtmLTuI2O7VYl6EaLjCuoMmHJZe/oVRQAtpVc8WNSEBAsOGVjgmiSISJb49q\nCWphcxfzEbvO3p1lbqw4QqYc8DUAhAiLNSvAKybOLgpr+kIlGtECsmY3xJqgVt44\nl5Ysvwcu5o6X86ynsyx5AyRNwbVNCF7nZtYTggGckdqLTODPw9JAVlqnXO2wPUht\nLIKeBcHRdXDcCGdyvsKT14ZJyUNuqeFme2fJtxnn2FsvySQ0hZjb/gszoAh34YSf\nAQIDAQAB\n-----END PUBLIC KEY-----",
+        "identityzone": "cloud-foundry-ctl09cwq",
+        "tenantid": "63528b5e-0a35-4141-86f5-936da54f0859",
+        "onpremise_proxy_rfc_port": "20001"
+      }
+    }
+  ],
+  "destination": [
+    {
+      "label": "destination",
+      "plan": "lite",
+      "tags": ["destination", "conn", "connsvc"],
+      "name": "destinations",
+      "credentials": {
+        "tenantmode": "dedicated",
+        "clientid": "sb-cloneee5968c5b9434d04a36867efb7f0135e!b1169|destination-xsappname!b5",
+        "credential-type": "binding-secret",
+        "xsappname": "cloneee5968c5b9434d04a36867efb7f0135e!b1169|destination-xsappname!b5",
+        "clientsecret": "75478241-c43d-451d-955a-4b752471dde4$xsDgnFt5Wnm-pZffTc9OqUn7YHFUXqPaZslHpYOVXHI=",
+        "uri": "https://destination-configuration.cfapps.jp10.hana.ondemand.com",
+        "url": "https://cloud-foundry-ctl09cwq.authentication.jp10.hana.ondemand.com",
+        "uaadomain": "authentication.jp10.hana.ondemand.com",
+        "instanceid": "ee5968c5-b943-4d04-a368-67efb7f0135e",
+        "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5toFNL1X6oHJ+FIwoUgJ\ndgYq2Um+JZNEMz43J6hTGCcsUTM62hSqdPedoD9KjKZafgCvZJU18kRD3VVTbyhO\nMLuFJtmLTuI2O7VYl6EaLjCuoMmHJZe/oVRQAtpVc8WNSEBAsOGVjgmiSISJb49q\nCWphcxfzEbvO3p1lbqw4QqYc8DUAhAiLNSvAKybOLgpr+kIlGtECsmY3xJqgVt44\nl5Ysvwcu5o6X86ynsyx5AyRNwbVNCF7nZtYTggGckdqLTODPw9JAVlqnXO2wPUht\nLIKeBcHRdXDcCGdyvsKT14ZJyUNuqeFme2fJtxnn2FsvySQ0hZjb/gszoAh34YSf\nAQIDAQAB\n-----END PUBLIC KEY-----",
+        "identityzone": "cloud-foundry-ctl09cwq",
+        "tenantid": "63528b5e-0a35-4141-86f5-936da54f0859"
+      }
+    }
+  ]
+}
