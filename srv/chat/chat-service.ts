@@ -30,9 +30,10 @@ export default class ChatService extends ApplicationService {
 
     //
     
-    this.after ('DELETE', Report, async (_, req)  => {
+    this.on ('DELETE', Report, async req  => {
 
-      await UPDATE(Records).where({ID: req.data.ID}).with({ isAdopted: false });
+     const report = await SELECT.one.from(req.subject);
+    await UPDATE(Records).where({ID: report.record_ID}).with({ isAdopted: false });
 
     })
   
@@ -299,7 +300,7 @@ export default class ChatService extends ApplicationService {
           TabFdPos: Selection.TabFdPos.toString(),
           ToEntity: Selection.ToEntity,
           ToField: Selection.ToField,
-          IsActiveEntity: IsActiveEntity
+          IsActiveEntity: true
         }));
 
       const ListField = fields
@@ -308,7 +309,7 @@ export default class ChatService extends ApplicationService {
           TabFdPos: ListField.TabFdPos.toString(),
           ToEntity: ListField.ToEntity,
           ToField: ListField.ToField,
-          IsActiveEntity: IsActiveEntity
+          IsActiveEntity: true
         }));
 
       const HeaderField = fields
@@ -317,7 +318,7 @@ export default class ChatService extends ApplicationService {
           TabFdPos: HeaderField.TabFdPos.toString(),
           ToEntity: HeaderField.ToEntity,
           ToField: HeaderField.ToField,
-          IsActiveEntity: IsActiveEntity
+          IsActiveEntity: true
         }));
 
       const ItemField = fields
@@ -326,7 +327,7 @@ export default class ChatService extends ApplicationService {
           TabFdPos: ItemField.TabFdPos.toString(),
           ToEntity: ItemField.ToEntity,
           ToField: ItemField.ToField,
-          IsActiveEntity: IsActiveEntity
+          IsActiveEntity: true
         }));
 
       const { ZC_ZYE9012_001 } = zye9012.entities;
@@ -336,7 +337,7 @@ export default class ChatService extends ApplicationService {
       // const result = await zye9012.run(INSERT(data).into(ZC_ZYE9012_001));
 
       const result = await zye9012.post(ZC_ZYE9012_001, {
-        IsActiveEntity: IsActiveEntity,
+        IsActiveEntity: true,
         _Selection: Selection,
         _ListField: ListField,
         _HeaderField: HeaderField,
@@ -356,8 +357,8 @@ export default class ChatService extends ApplicationService {
             .map((error: any) =>
               req.error(
                 400,
-                Return.message,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+                Return.ReturnMessage,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
               )
             );
           succeeded = false;
@@ -375,8 +376,8 @@ export default class ChatService extends ApplicationService {
             .map((error: any) =>
               req.error(
                 400,
-                Return.message,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+                Return.ReturnMessage,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
               )
             );
           succeeded = false;
@@ -394,8 +395,8 @@ export default class ChatService extends ApplicationService {
             .map((error: any) =>
               req.error(
                 400,
-                Return.message,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+                Return.ReturnMessage,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
               )
             );
           succeeded = false;
@@ -413,8 +414,8 @@ export default class ChatService extends ApplicationService {
             .map((error: any) =>
               req.error(
                 400,
-                Return.message,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/Seq`
+                Return.ReturnMessage,
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
               )
             );
           succeeded = false;
