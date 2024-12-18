@@ -116,23 +116,11 @@ function (Controller, JSONModel, library) {
             const resData = await res.text();
             return JSON.parse(resData);
         },
-
-        /**
-         * Gets the URL prefix of the app
-        // * @returns {string} the URL module prefix
-         */
         _getUrlModulePrefix() {
             return $.sap.getModulePath(
                 this.getOwnerComponent().getManifestEntry("/sap.app/id")
             );
         },
-
-        /**
-         * API - fetches CSRF token
-         *
-         * **Note**: For testing/development, you can turn off CSRF protection in the `xs-app.json`
-         * by setting `csrfProtection: false` for `"source": "^/api/(.*)$"` route.
-         */
         _apiFetchCsrfToken: async function () {
             if (!this._sCsrfToken) {
                 const res = await fetch(`${this._getUrlModulePrefix()}/index.html`, {
@@ -147,11 +135,6 @@ function (Controller, JSONModel, library) {
             return this._sCsrfToken;
         },
 
-        /**
-         * API - generates a summary by making an API call to GenAI Hub
-         * @param {Object[]} oMessages an array of messages
-         * @returns {Promise<string>} chat completion
-         */
         _apiChatCompletion: async function (oMessages) {
             const res = await fetch(
                 `${this._getUrlModulePrefix()}/api/chat/completions?api-version=${API_VERSION}`, {

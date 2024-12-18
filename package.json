@@ -14,6 +14,7 @@
     "@sap-ai-sdk/orchestration": "^1.4.0",
     "@sap/cds": "^8.4.2",
     "@sap/xssec": "^4",
+    "ai2report": "file:",
     "express": "^4"
   },
   "devDependencies": {
