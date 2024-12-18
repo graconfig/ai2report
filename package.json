@@ -8,13 +8,12 @@
   "private": true,
   "dependencies": {
     "@cap-js/hana": "^1",
-    "@sap-ai-sdk/ai-api": "^1.3.0",
-    "@sap-ai-sdk/foundation-models": "^1.3.0",
-    "@sap-ai-sdk/langchain": "^1.3.0",
-    "@sap-ai-sdk/orchestration": "^1.3.0",
+    "@sap-ai-sdk/ai-api": "^1.4.0",
+    "@sap-ai-sdk/foundation-models": "^1.4.0",
+    "@sap-ai-sdk/langchain": "^1.4.0",
+    "@sap-ai-sdk/orchestration": "^1.4.0",
     "@sap/cds": "^8.4.2",
     "@sap/xssec": "^4",
-    "ai2report": "file:",
     "express": "^4"
   },
   "devDependencies": {
@@ -64,6 +63,17 @@
         "[production]": {
           "credentials": {
             "path": "/sap/opu/odata4/sap/zui_zye9001_001/srvd/sap/zui_zye9001_001/0001",
+            "destination": "S4A_280_HTTPS"
+          }
+        }
+      },
+      "zui_zye9012_001": {
+        "kind": "odata",
+        "model": "srv/external/zui_zye9012_001",
+        "csrf": true,
+        "[production]": {
+          "credentials": {
+            "path": "/sap/opu/odata4/sap/zui_zye9012_001/srvd_a2x/sap/zui_zye9012_001/0001",
             "destination": "S4A_280_HTTPS"
           }
         }

@@ -137,7 +137,7 @@ prompt_pcl_zh,"你是一名专业的SAP报表测试人员，已知报表功能�
 12.“目标字段说明(ToFieldText)”：该字段对应的数据源实体的字段名称
 13.“目标字段名(ToField)”：该字段对应的数据源实体的字段名
 
-对于测试场景有如下要求：
+针对不同的catgory有如下测试场景清单：
 1.对于category为‘选择项目’：
 	a.需要检查字段名称与设计书名称是否一致;
 	b.对于ValueHelp(搜索帮助)为X的，需要测试搜索帮助功能；
@@ -149,16 +149,18 @@ prompt_pcl_zh,"你是一名专业的SAP报表测试人员，已知报表功能�
 3.对于‘详细画面Header项目’和‘详细画面明细项目’：
 	a.字段的数据内容是否正确展示;
 	b.需要检查字段名称与设计书名称是否一致；
-4.其他要求：
-	a.从功能设计中的第一行开始输出测试场景，直到最后一行
-	b.不能遗漏任何行
+
+要求：
+	a.从功能设计中的第一行开始输出测试场景，直到最后一行；
+	b.根据category对应的测试场景清单，输出测试场景和期望结果；
+	d.不要合并多个测试场景到一个中。
 	
-报表功能设计文档对应的json为：",prompt_pcl
+报表功能设计文档对应的json由用户提示",prompt_pcl
 prompt_pcl_ja,"あなたはプロのSAPレポートテスターであり、レポート機能設計ファイルに対応するJSON文字列を知っていて、テストファイルを作成し、テストするシナリオをを羅列してください。
 
 以下は、機能設計ファイルのJSONフィールド説明です
 1.“シリアルナンバー(Seq)”：グローバルシリアル番号。
-2.“表示区域分類(category)”：フィールドはレポートの表示区域分類である。可能な値は：選択項目（选择项目）、一覧項目(一览项目)、詳細画面ヘッダ項目（详细画面Header项目）、詳細画面明細項目（详细画面明细项目）
+2.“表示区域分類(category)”：フィールドはレポートの表示区域分類である。可能な値は：選択項目（クエリ条件）、一覧項目(リスト表示)、詳細画面ヘッダー項目（詳細ページヘッダーForm表示）、詳細画面明細項目（詳細画面リスト表示）
 3.“フィールド位置(TabFdPos)”：該当表示区域内のフィールドの位置
 4.“項目名称(ParamText)”：レポートのフィールド名
 5.“項目種類(FieldType)”：フィールドのSAP Fioriでよく見られる表示制御コンポーネントタイプであり、値には：TextBox，Checkbox，RadioButtion、DatePicker、TextArea、Currencyなどが含まれます。
@@ -183,12 +185,13 @@ prompt_pcl_ja,"あなたはプロのSAPレポートテスターであり、レ�
 3.「詳細画面Header項目」と「詳細画面明細項目」の場合
 	a.フィールドのデータ内容が正しく表示されていますかを確認すること。
 	b.フィールド名と設計書名が一致しているかどうかを確認すること。
-4.その他の要求：
-	a.機能設計の最初の行から最後の行までテストシナリオを出力すること。
-	b.行を漏れてはいけません。
-	c.ParamText、ToEntityText、ToFieldTextの意味を無視して、テキスト参照のみを行ってください。
-	
-レポート機能設計ファイルに対応するJSONは：",prompt_pcl
+
+必要とする：
+	a. 機能設計の最初の行から最後の行までテスト シナリオの出力を開始します。
+	b. カテゴリに対応するテスト シナリオ リストに従って、テスト シナリオと期待される結果を出力します。
+	d. 複数のテスト シナリオを 1 つに結合しないでください。
+
+レポート機能設計ドキュメントに対応する json がユーザーによって要求されます。",prompt_pcl
 func_pcl_en,"{""name"":""generate_pcl"",""description"":""生成PCL测试数据，只调用一次"",""parameters"":{""type"":""object"",""properties"":{""pcl"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""num"":{""type"":""string"",""description"":""流水号（UT开头+4位数字，数字从0010开始以10递增，如‘UT0010""},""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)""},""scene"":{""type"":""string"",""description"":""测试人员测试场景""},""expectedResult"":{""type"":""string"",""description"":""测试步骤的预期效果""}}}}}}}",function generate_pcl
 func_pcl_zh,"{""name"":""generate_pcl"",""description"":""生成PCL测试数据，只调用一次"",""parameters"":{""type"":""object"",""properties"":{""pcl"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""num"":{""type"":""string"",""description"":""流水号（UT开头+4位数字，数字从0010开始以10递增，如‘UT0010""},""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""字段显示区域的分类：_Selection(选择项目)，_ListField(一览项目)，_HeaderField(详细画面Header项目)，_ItemField(详细画面明细项目)""},""scene"":{""type"":""string"",""description"":""测试人员测试场景""},""expectedResult"":{""type"":""string"",""description"":""测试步骤的预期效果""}}}}}}}",function generate_pcl
 func_pcl_ja,"{""name"":""generate_pcl"",""description"":""PCLテストデータを生成する。 この機能は一度だけ呼び出される。"",""parameters"":{""type"":""object"",""properties"":{""pcl"":{""type"":""array"",""items"":{""type"":""object"",""properties"":{""num"":{""type"":""string"",""description"":""シリアルナンバー（UTから始まり+4桁数字，数字は0010から10で増加し，例えば‘UI0010’""},""category"":{""enum"":[""_Selection"",""_ListField"",""_ItemField""],""description"":""フィールドの表示区域分類：_Selection(選択項目)，_ListField(一覧項目)，_HeaderField(詳細画面ヘッダー項目)，_ItemField(詳細画面明細項目)""},""scene"":{""type"":""string"",""description"":""テスターのテストシナリオ""},""expectedResult"":{""type"":""string"",""description"":""テストステップの期待効果""}}}}}}}",function generate_pcl

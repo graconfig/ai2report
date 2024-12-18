@@ -44,7 +44,6 @@ entity Reports : cuid, managed {
     // jsonPCL            : LargeString; // JSON string containing PCL or structured data for the report
     fields             : Composition of many ReportFields
                              on fields.report = $self; // Composition of report fields for detailed data
-    
     pcls               : Association to many PCLs
                              on pcls.report = $self; // Composition of PCLs for detailed data
 }
@@ -77,8 +76,8 @@ entity PCLs : cuid,managed {
     categoryNav    : Association to Category
                          on categoryNav.code = category; // Category of the field (e.g., input, output)
     category       : String(100); // Category of the field (e.g., input, output)
-    scene          : String;
-    expectedResult : String;
+    scene          : String;  // 
+    expectedResult : String;  //
 }
 
 
