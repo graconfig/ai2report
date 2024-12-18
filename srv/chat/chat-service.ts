@@ -33,7 +33,7 @@ export default class ChatService extends ApplicationService {
     this.on ('DELETE', Report, async req  => {
 
      const report = await SELECT.one.from(req.subject);
-    await UPDATE(Records).where({ID: report.record_ID}).with({ isAdopted: false });
+     await UPDATE(Records).where({ID: report.record_ID}).with({ isAdopted: false });
 
     })
   
@@ -423,7 +423,7 @@ export default class ChatService extends ApplicationService {
       }
 
       if (succeeded) {
-        req.info(200, 'Verify_Pass');
+        req.notify(200, 'Verify_Pass');
       }
     });
     //
