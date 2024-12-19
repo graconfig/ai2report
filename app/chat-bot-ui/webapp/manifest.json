@@ -1,9 +1,9 @@
 {
   "_version": "1.59.0",
   "sap.cloud": {
-        "public": true,
-        "service": "chatbotui"
-    },
+    "public": true,
+    "service": "chatbotui"
+  },
   "sap.app": {
     "id": "chatbotui",
     "type": "application",
@@ -20,7 +20,7 @@
       "toolsId": "b32a58a0-f435-43b8-8fd9-dc85f65f5afc"
     },
     "dataSources": {
-      "mainService": {
+      "ai2report": {
         "uri": "/ai2report/",
         "type": "OData",
         "settings": {
@@ -28,10 +28,24 @@
           "odataVersion": "4.0"
         }
       }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ChatBotUI-display": {
+          "semanticObject": "ChatBotUI",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {
     "technology": "UI5",
+    "fullWidth": true,
     "icons": {
       "icon": "",
       "favIcon": "",
@@ -72,8 +86,9 @@
           "bundleName": "chatbotui.i18n.i18n"
         }
       },
-      "": {
-        "dataSource": "mainService",
+      "ChatUI": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+        "dataSource": "ai2report",
         "preload": true,
         "settings": {
           "synchronizationMode": "None",
