@@ -53,6 +53,7 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare DevClass?: string | null
     declare TrKorr?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
+    declare pcls?: __.Association.to.many<PCLs>
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report> & typeof _.cuid.keys;
     declare static readonly elements: __.ElementsOf<Report>;
