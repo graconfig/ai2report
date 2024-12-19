@@ -93,7 +93,7 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare modifiedBy?: _.User | null
     declare record?: __.Association.to<Record> | null
     declare record_ID?: __.Key<string> | null
-    declare isProgramGenerated?: boolean | null
+    declare isProgramGenerated?: number | null
     declare isPCLGenerated?: boolean | null
     declare ProjectId?: string | null
     declare Text?: string | null
@@ -105,13 +105,31 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare static readonly keys: __.KeysOf<Report>;
     declare static readonly elements: __.ElementsOf<Report>;
     declare static readonly actions: {
-      generateProgram:  {
+      verify:  {
         // positional
         (): any
         // named
         ({}: Record<never, never>): any
         // metadata (do not use)
         __parameters: Record<never, never>, __returns: any
+        kind: 'action'
+      }
+      createProject:  {
+        // positional
+        (): boolean
+        // named
+        ({}: Record<never, never>): boolean
+        // metadata (do not use)
+        __parameters: Record<never, never>, __returns: boolean
+        kind: 'action'
+      }
+      generateProgram:  {
+        // positional
+        (): boolean
+        // named
+        ({}: Record<never, never>): boolean
+        // metadata (do not use)
+        __parameters: Record<never, never>, __returns: boolean
         kind: 'action'
       }
       generatePCL:  {
@@ -121,15 +139,6 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
         ({}: Record<never, never>): Array<Pcl>
         // metadata (do not use)
         __parameters: Record<never, never>, __returns: Array<Pcl>
-        kind: 'action'
-      }
-      verify:  {
-        // positional
-        (): any
-        // named
-        ({}: Record<never, never>): any
-        // metadata (do not use)
-        __parameters: Record<never, never>, __returns: any
         kind: 'action'
       }
     };

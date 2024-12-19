@@ -16,9 +16,11 @@ service ChatService @(path: '/ai2report') {
     @cds.query.limit.default: 100
     entity Reports      as projection on db.Reports
         actions {
-            action generateProgram();
-            action generatePCL() returns array of Pcls;
-            action verify()
+            action verify();
+            action createProject() returns Boolean;
+            action generateProgram() returns Boolean;
+            action generatePCL() returns array of Pcls
+            
         }
 
     @cds.query.limit.max    : 1000

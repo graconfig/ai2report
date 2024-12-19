@@ -46,7 +46,7 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
   return class Report extends _._cuidAspect(_._managedAspect(Base)) {
     declare record?: __.Association.to<Record> | null
     declare record_ID?: __.Key<string> | null
-    declare isProgramGenerated?: boolean | null
+    declare isProgramGenerated?: number | null
     declare isPCLGenerated?: boolean | null
     declare ProjectId?: string | null
     declare Text?: string | null
