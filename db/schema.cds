@@ -35,8 +35,8 @@ entity Records : cuid, managed {
  */
 entity Reports : cuid, managed {
     record             : Association to Records; // Reference to the associated message
-    isProgramGenerated : Integer default 0; // Indicates if the report was generated programmatically
-    isPCLGenerated     : Boolean; // Indicates if the report contains PCL (PostScript Control Language) content
+    isProgramGenerated : Integer default 0 @readonly; // Indicates if the report was generated programmatically
+    isPCLGenerated     : Boolean @readonly; // Indicates if the report contains PCL (PostScript Control Language) content
     ProjectId          : String(32); // Identifier of the project associated with the report
     Text               : String(255); // Summary or textual description of the report
     DevClass           : String(30); // Development class related to the report
@@ -46,6 +46,8 @@ entity Reports : cuid, managed {
                              on fields.report = $self; // Composition of report fields for detailed data
     pcls               : Association to many PCLs
                              on pcls.report = $self; // Composition of PCLs for detailed data
+    isProgramGeneratedNav  : Association to ProgramGenerated
+                       on isProgramGeneratedNav.code = isProgramGenerated;
 }
 
 /**
@@ -101,5 +103,10 @@ entity FieldType {
 
 entity Category {
     key code : String(100);
+        desc : localized String(100);
+}
+
+entity ProgramGenerated {
+    key code : Integer;
         desc : localized String(100);
 }

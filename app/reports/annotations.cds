@@ -86,7 +86,6 @@ annotate ChatService.ReportFields {
     };
 }
 
-
 annotate ChatService.Reports with @UI: {
     SelectionFields: [
         isPCLGenerated,
@@ -107,17 +106,17 @@ annotate ChatService.Reports with @UI: {
         },
 
         {
-            ID        : 'Fields',
-            Target    : 'fields/@UI.PresentationVariant',
-            $Type     : 'UI.ReferenceFacet',
-            Label     : '{i18n>Fields}'
+            ID    : 'Fields',
+            Target: 'fields/@UI.PresentationVariant',
+            $Type : 'UI.ReferenceFacet',
+            Label : '{i18n>Fields}'
         },
 
         {
-            ID           : 'Pcls',
-            Target       : 'pcls/@UI.LineItem',
-            $Type        : 'UI.ReferenceFacet',
-            Label        : '{i18n>Pcls}',
+            ID    : 'Pcls',
+            Target: 'pcls/@UI.PresentationVariant',
+            $Type : 'UI.ReferenceFacet',
+            Label : '{i18n>Pcls}',
         }
     ],
     LineItem       : [
@@ -171,6 +170,11 @@ annotate ChatService.Reports with @UI: {
             Action: 'ChatService.verify',
             Label : '{i18n>Verify}'
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'ChatService.createProject',
+            Label : '{i18n>CreateProject}'
+        }
     ],
     Identification : [
         {
@@ -204,9 +208,9 @@ annotate ChatService.Reports with @UI: {
             Label: '{i18n>isProgramGenerated}',
         },
         {
-            $Type : 'UI.DataFieldForAction',
-            Action: 'ChatService.generatePCL',
-            Label : '{i18n>GeneratePCL}',
+            $Type        : 'UI.DataFieldForAction',
+            Action       : 'ChatService.generatePCL',
+            Label        : '{i18n>GeneratePCL}',
             ![@UI.Hidden]: isPCLGenerated
         },
         {
@@ -218,12 +222,17 @@ annotate ChatService.Reports with @UI: {
             $Type : 'UI.DataFieldForAction',
             Action: 'ChatService.verify',
             Label : '{i18n>Verify}'
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'ChatService.createProject',
+            Label : '{i18n>CreateProject}'
         }
     ],
 } actions {
     @Common.SideEffects: {
-        TargetProperties: ['in/isPCLGenerated'],
-        TargetEntities: ['in/pcls']
+        TargetProperties: ['in/isPCLGenerated', 'in/isProgramGenerated'],
+        TargetEntities  : ['in/pcls']
     }
     generatePCL
 };
@@ -385,7 +394,7 @@ annotate ChatService.ReportFields with @UI: {
 };
 
 annotate ChatService.Pcls {
-    category   @Common: {
+    category @Common: {
         Text           : categoryNav.desc,
         TextArrangement: #TextOnly,
         ValueListWithFixedValues,
@@ -400,28 +409,50 @@ annotate ChatService.Pcls {
     };
 }
 
-
-annotate ChatService.Pcls with @UI: {
-    LineItem: [
-        {
-            $Type: 'UI.DataField',
-            Value: num,
-            Label: '{i18n>Num}',
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: category,
-            Label: '{i18n>Category}',
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: scene,
-            Label: '{i18n>Scene}',
-        },
-        {
-            $Type: 'UI.DataField',
-            Value: expectedResult,
-            Label: '{i18n>expectedResult}',
+annotate ChatService.Reports {
+    isProgramGenerated @Common: {
+        Text           : isProgramGeneratedNav.desc,
+        TextArrangement: #TextOnly,
+        ValueListWithFixedValues,
+        ValueList      : {
+            CollectionPath: 'ProgramGenerated',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'isProgramGenerated',
+                ValueListProperty: 'code'
+            }]
         }
-    ],
-};
+    };
+}
+
+
+annotate ChatService.Pcls with @UI: {LineItem: [
+    {
+        $Type: 'UI.DataField',
+        Value: num,
+        Label: '{i18n>Num}',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: category,
+        Label: '{i18n>Category}',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: scene,
+        Label: '{i18n>Scene}',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: expectedResult,
+        Label: '{i18n>expectedResult}',
+    }
+], };
+
+annotate ChatService.Pcls with @(UI.PresentationVariant: {
+    SortOrder     : [{
+        Property  : num,
+        Descending: false
+    }],
+    Visualizations: ['@UI.LineItem']
+}, );

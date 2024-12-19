@@ -138,6 +138,21 @@
               "variantManagement": "None",
               "editableHeaderContent": false,
               "contextPath": "/Reports",
+              "content": {
+                "header": {
+                  "actions": {
+                    "DataFieldForAction::ChatService.generateProgram": {
+                      "visible": "{= !${ui>/isEditable} && ${isProgramGenerated} === 1}"
+                    },
+                    "DataFieldForAction::ChatService.generatePCL": {
+                      "visible": "{= !${isPCLGenerated} && !${ui>/isEditable}}"
+                    },
+                    "DataFieldForAction::ChatService.createProject": {
+                      "visible": "{= ${isProgramGenerated} === 0}"
+                    }
+                  }
+                }
+              },
               "controlConfiguration": {
                 "fields/@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
