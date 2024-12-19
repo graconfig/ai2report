@@ -5,8 +5,8 @@ _out
 *.sqlite-shm
 *.sqlite-wal
 connection.properties
-default-*.json
-.cdsrc-private.json
+#default-*.json
+#\.cdsrc-private.json
 gen/
 node_modules/
 target/
