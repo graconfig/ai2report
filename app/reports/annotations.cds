@@ -86,7 +86,6 @@ annotate ChatService.ReportFields {
     };
 }
 
-
 annotate ChatService.Reports with @UI: {
     SelectionFields: [
         isPCLGenerated,
@@ -171,6 +170,11 @@ annotate ChatService.Reports with @UI: {
             Action: 'ChatService.verify',
             Label : '{i18n>Verify}'
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'ChatService.createProject',
+            Label : '{i18n>CreateProject}'
+        }
     ],
     Identification : [
         {
@@ -218,11 +222,16 @@ annotate ChatService.Reports with @UI: {
             $Type : 'UI.DataFieldForAction',
             Action: 'ChatService.verify',
             Label : '{i18n>Verify}'
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'ChatService.createProject',
+            Label : '{i18n>CreateProject}'
         }
     ],
 } actions {
     @Common.SideEffects: {
-        TargetProperties: ['in/isPCLGenerated'],
+        TargetProperties: ['in/isPCLGenerated', 'in/isProgramGenerated'],
         TargetEntities  : ['in/pcls']
     }
     generatePCL
@@ -394,6 +403,22 @@ annotate ChatService.Pcls {
             Parameters    : [{
                 $Type            : 'Common.ValueListParameterInOut',
                 LocalDataProperty: 'category',
+                ValueListProperty: 'code'
+            }]
+        }
+    };
+}
+
+annotate ChatService.Reports {
+    isProgramGenerated @Common: {
+        Text           : isProgramGeneratedNav.desc,
+        TextArrangement: #TextOnly,
+        ValueListWithFixedValues,
+        ValueList      : {
+            CollectionPath: 'ProgramGenerated',
+            Parameters    : [{
+                $Type            : 'Common.ValueListParameterInOut',
+                LocalDataProperty: 'isProgramGenerated',
                 ValueListProperty: 'code'
             }]
         }

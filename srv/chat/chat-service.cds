@@ -33,6 +33,7 @@ service ChatService @(path: '/ai2report') {
 
     entity Parameters   as projection on db.Parameters;
     entity SingleCheck  as projection on db.SingleCheck;
+    entity ProgramGenerated  as projection on db.ProgramGenerated;
     entity Category     as projection on db.Category;
     entity FieldType    as projection on db.FieldType;
     action newChat() returns Chats;
