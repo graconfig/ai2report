@@ -50,8 +50,8 @@
         "kind": "odata",
         "model": "srv/external/zui_zye9001_001",
         "credentials": {
-          "path": "",
-          "destination": "S4A_280_HTTPS_zui_zye9001_001"
+          "path": "/sap/opu/odata4/sap/zui_zye9001_001/srvd/sap/zui_zye9001_001/0001",
+          "destination": "S4A_280_HTTPS"
         }
       },
       "zui_zye9009_001": {
@@ -60,7 +60,7 @@
         "csrf": true,
         "credentials": {
           "path": "/sap/opu/odata4/sap/zui_zye9009_001/srvd/sap/zui_zye9009_001/0001",
-          "destination": "S4A_280_HTTP"
+          "destination": "S4A_280_HTTPS"
         }
       },
       "zui_zye9012_001": {
@@ -69,7 +69,7 @@
         "csrf": true,
         "credentials": {
           "path": "/sap/opu/odata4/sap/zui_zye9012_001/srvd_a2x/sap/zui_zye9012_001/0001",
-          "destination": "S4A_280_HTTP"
+          "destination": "S4A_280_HTTPS"
         }
       }
     }

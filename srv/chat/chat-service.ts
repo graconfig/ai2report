@@ -29,15 +29,14 @@ export default class ChatService extends ApplicationService {
     }
 
     //
-    
-    this.on ('DELETE', Report, async req  => {
 
-     const report = await SELECT.one.from(req.subject);
-    await UPDATE(Records).where({ID: report.record_ID}).with({ isAdopted: false });
+    this.on('DELETE', Report, async req => {
+      const report = await SELECT.one.from(req.subject);
+      await UPDATE(Records)
+        .where({ ID: report.record_ID })
+        .with({ isAdopted: false });
+    });
 
-    })
-  
-  
     // Action newRecord
     //
     const { newRecord } = Chat.actions;
@@ -268,7 +267,9 @@ export default class ChatService extends ApplicationService {
       }
     });
 
-    const { verify, generateProgram, generatePCL } = Report.actions;
+    const { verify, createProject, generateProgram, generatePCL } =
+      Report.actions;
+
     //
     // Action verify
     //
@@ -345,9 +346,16 @@ export default class ChatService extends ApplicationService {
       });
 
       let succeeded = true;
+      let err_field: string;
 
       for (const Return of result._Selection) {
         if (Return.ReturnCode != 0) {
+          if (Return.ReturnCode == 1) {
+            err_field = 'ToEntity';
+          } else if (Return.ReturnCode == 2) {
+            err_field = 'ToField';
+          }
+
           fields
             .filter(
               (field: any) =>
@@ -358,7 +366,7 @@ export default class ChatService extends ApplicationService {
               req.error(
                 400,
                 Return.ReturnMessage,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/${err_field}`
               )
             );
           succeeded = false;
@@ -367,6 +375,12 @@ export default class ChatService extends ApplicationService {
 
       for (const Return of result._ListField) {
         if (Return.ReturnCode != 0) {
+          if (Return.ReturnCode == 1) {
+            err_field = 'ToEntity';
+          } else if (Return.ReturnCode == 2) {
+            err_field = 'ToField';
+          }
+
           fields
             .filter(
               (field: any) =>
@@ -377,7 +391,7 @@ export default class ChatService extends ApplicationService {
               req.error(
                 400,
                 Return.ReturnMessage,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/${err_field}`
               )
             );
           succeeded = false;
@@ -386,6 +400,12 @@ export default class ChatService extends ApplicationService {
 
       for (const Return of result._HeaderField) {
         if (Return.ReturnCode != 0) {
+          if (Return.ReturnCode == 1) {
+            err_field = 'ToEntity';
+          } else if (Return.ReturnCode == 2) {
+            err_field = 'ToField';
+          }
+
           fields
             .filter(
               (field: any) =>
@@ -396,7 +416,7 @@ export default class ChatService extends ApplicationService {
               req.error(
                 400,
                 Return.ReturnMessage,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/${err_field}`
               )
             );
           succeeded = false;
@@ -405,6 +425,12 @@ export default class ChatService extends ApplicationService {
 
       for (const Return of result._ItemField) {
         if (Return.ReturnCode != 0) {
+          if (Return.ReturnCode == 1) {
+            err_field = 'ToEntity';
+          } else if (Return.ReturnCode == 2) {
+            err_field = 'ToField';
+          }
+
           fields
             .filter(
               (field: any) =>
@@ -415,7 +441,7 @@ export default class ChatService extends ApplicationService {
               req.error(
                 400,
                 Return.ReturnMessage,
-                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/ToEntity`
+                `in/fields(ID=${error.ID},IsActiveEntity=${IsActiveEntity})/${err_field}`
               )
             );
           succeeded = false;
@@ -423,16 +449,113 @@ export default class ChatService extends ApplicationService {
       }
 
       if (succeeded) {
-        req.info(200, 'Verify_Pass');
+        req.notify(200, 'Verify_Pass');
       }
     });
+
+    //
+    // Action createProject
+    //
+    this.on(createProject, async req => {
+      const report = await SELECT.one.from(req.subject);
+
+      if (report.isProgramGenerated != 0) {
+        req.reject(404, 'Status_error');
+      }
+      const fields = await SELECT.from(ReportField)
+        .where({
+          report_ID: report.ID
+        })
+        .orderBy('Seq');
+
+      const Selection = fields
+        .filter((field: any) => field.category == '_Selection')
+        .map((Selection: any) => ({
+          TabFdPos: Selection.TabFdPos.toString(),
+          ToEntity: Selection.ToEntity,
+          ToField: Selection.ToField,
+          IsActiveEntity: true
+        }));
+
+      const ListField = fields
+        .filter((field: any) => field.category == '_ListField')
+        .map((ListField: any) => ({
+          TabFdPos: ListField.TabFdPos.toString(),
+          ToEntity: ListField.ToEntity,
+          ToField: ListField.ToField,
+          IsActiveEntity: true
+        }));
+
+      const HeaderField = fields
+        .filter((field: any) => field.category == '_HeaderField')
+        .map((HeaderField: any) => ({
+          TabFdPos: HeaderField.TabFdPos.toString(),
+          ToEntity: HeaderField.ToEntity,
+          ToField: HeaderField.ToField,
+          IsActiveEntity: true
+        }));
+
+      const ItemField = fields
+        .filter((field: any) => field.category == '_ItemField')
+        .map((ItemField: any) => ({
+          TabFdPos: ItemField.TabFdPos.toString(),
+          ToEntity: ItemField.ToEntity,
+          ToField: ItemField.ToField,
+          IsActiveEntity: true
+        }));
+
+      const zye9001 = await cds.connect.to('zui_zye9001_001');
+      const { Project } = zye9001.entities;
+
+      const succeeded = await zye9001.run(
+        INSERT({
+          ProjectId: report.ProjectId,
+          Text: report.Text,
+          DevClass: report.DevClass,
+          Trkorr: report.TrKorr,
+          IsActiveEntity: true,
+          _Selection: Selection,
+          _ListField: ListField,
+          _HeaderField: HeaderField,
+          _ItemField: ItemField
+        }).into(Project)
+      );
+
+      if (succeeded) {
+        await UPDATE(req.subject).with({ isProgramGenerated: 1 });
+        return true;
+      } else {
+        return false;
+      }
+    });
+
     //
     // Action generateProgram
     //
     this.on(generateProgram, async req => {
-      // const zye9012 = await cds.connect.to('zui_zye9012_001');
-      // const { Project } = zye9001.entities;
-      // const result = await zye9001.run(SELECT(Project));
+      const report = await SELECT.one.from(req.subject);
+
+      if (report.isProgramGenerated != 1) {
+        req.reject(404, 'Status_error');
+      }
+
+      const zye9009 = await cds.connect.to('zui_zye9009_001');
+      const { ZI_ZYE9009_001 } = zye9009.entities;
+
+      const succeeded = await zye9009.run(
+        SELECT(ZI_ZYE9009_001, {
+          projectid: report.ProjectId,
+          projecttype: '03'
+        })
+      );
+
+      if (succeeded) {
+        await UPDATE(req.subject).with({ isProgramGenerated: 2 });
+        req.notify(200, succeeded.message);
+        return true;
+      } else {
+        return false;
+      }
     });
     //
     // Action generatePCL
