@@ -522,6 +522,7 @@ export default class ChatService extends ApplicationService {
       );
 
       if (succeeded) {
+        req.notify(200, 'Success!');
         await UPDATE(req.subject).with({ isProgramGenerated: 1 });
         return true;
       } else {

@@ -54,6 +54,7 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare TrKorr?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
     declare pcls?: __.Association.to.many<PCLs>
+    declare isProgramGeneratedNav?: __.Association.to<ProgramGenerated> | null
     static override readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report> & typeof _.cuid.keys;
     declare static readonly elements: __.ElementsOf<Report>;
@@ -186,3 +187,19 @@ Object.defineProperty(Category, 'name', { value: 'pwc.hand.ai2report.Category' }
 Object.defineProperty(Category, 'is_singular', { value: true })
 export class Category_ extends Array<Category> {$count?: number}
 Object.defineProperty(Category_, 'name', { value: 'pwc.hand.ai2report.Category' })
+
+export function _ProgramGeneratedAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class ProgramGenerated extends Base {
+    declare code?: __.Key<number>
+    declare desc?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<ProgramGenerated>;
+    declare static readonly elements: __.ElementsOf<ProgramGenerated>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class ProgramGenerated extends _ProgramGeneratedAspect(__.Entity) {}
+Object.defineProperty(ProgramGenerated, 'name', { value: 'pwc.hand.ai2report.ProgramGenerated' })
+Object.defineProperty(ProgramGenerated, 'is_singular', { value: true })
+export class ProgramGenerated_ extends Array<ProgramGenerated> {$count?: number}
+Object.defineProperty(ProgramGenerated_, 'name', { value: 'pwc.hand.ai2report.ProgramGenerated' })

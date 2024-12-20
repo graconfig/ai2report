@@ -26,6 +26,9 @@ module.exports.Parameters = csn.Parameters
 // SingleCheck
 module.exports.SingleCheck = { is_singular: true, __proto__: csn.SingleCheck }
 module.exports.SingleCheck_ = csn.SingleCheck
+// ProgramGenerated
+module.exports.ProgramGenerated = { is_singular: true, __proto__: csn.ProgramGenerated }
+module.exports.ProgramGenerated_ = csn.ProgramGenerated
 // Category
 module.exports.Category = { is_singular: true, __proto__: csn.Category }
 module.exports.Category_ = csn.Category

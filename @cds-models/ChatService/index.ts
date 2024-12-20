@@ -101,6 +101,7 @@ export function _ReportAspect<TBase extends new (...args: any[]) => object>(Base
     declare TrKorr?: string | null
     declare fields?: __.Composition.of.many<ReportFields>
     declare pcls?: __.Association.to.many<Pcls>
+    declare isProgramGeneratedNav?: __.Association.to<ProgramGenerated> | null
     static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
     declare static readonly keys: __.KeysOf<Report>;
     declare static readonly elements: __.ElementsOf<Report>;
@@ -266,6 +267,22 @@ Object.defineProperty(SingleCheck, 'name', { value: 'ChatService.SingleCheck' })
 Object.defineProperty(SingleCheck, 'is_singular', { value: true })
 export class SingleCheck_ extends Array<SingleCheck> {$count?: number}
 Object.defineProperty(SingleCheck_, 'name', { value: 'ChatService.SingleCheck' })
+
+export function _ProgramGeneratedAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
+  return class ProgramGenerated extends Base {
+    declare code?: __.Key<number>
+    declare desc?: string | null
+    static readonly kind: 'entity' | 'type' | 'aspect' = 'entity';
+    declare static readonly keys: __.KeysOf<ProgramGenerated>;
+    declare static readonly elements: __.ElementsOf<ProgramGenerated>;
+    declare static readonly actions: Record<never, never>;
+  };
+}
+export class ProgramGenerated extends _ProgramGeneratedAspect(__.Entity) {}
+Object.defineProperty(ProgramGenerated, 'name', { value: 'ChatService.ProgramGenerated' })
+Object.defineProperty(ProgramGenerated, 'is_singular', { value: true })
+export class ProgramGenerated_ extends Array<ProgramGenerated> {$count?: number}
+Object.defineProperty(ProgramGenerated_, 'name', { value: 'ChatService.ProgramGenerated' })
 
 export function _CategoryAspect<TBase extends new (...args: any[]) => object>(Base: TBase) {
   return class Category extends Base {
