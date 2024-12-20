@@ -2,7 +2,6 @@ specVersion: "2.5"
 metadata:
   name: chatbotui
 type: application
-
 builder:
   customTasks:
     - name: ui5-task-zipper
@@ -11,3 +10,15 @@ builder:
         archiveName: chatbotui
         additionalFiles:
           - xs-app.json
+server:
+  customMiddleware:
+    - name: fiori-tools-servestatic
+      afterMiddleware: compression
+      configuration:
+        paths:
+          - path: /resources/parameters
+            src: ..\parameters\webapp
+          - path: /appconfig
+            src: appconfig
+          - path: /resources/reports
+            src: ..\reports\webapp

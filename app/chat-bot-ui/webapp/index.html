@@ -10,7 +10,8 @@
             height: 100%;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script id="marked" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script id="sap-ushell-bootstrap" src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
     <script
         id="sap-ui-bootstrap"
         src="https://sapui5.hana.ondemand.com/1.130.2/resources/sap-ui-core.js"
@@ -21,8 +22,13 @@
         data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-async="true"
-        data-sap-ui-frameOptions="trusted"
+        data-sap-ui-preload="async"
+        data-sap-ui-frameOptions="allow"
+        data-sap-ui-libs="sap.m, sap.ushell, sap.collaboration, sap.ui.layout"
     ></script>
+	<script>
+		sap.ui.getCore().attachInit(()=> sap.ushell.Container.createRenderer().placeAt("content"))
+	</script>
 </head>
 <body class="sapUiBody sapUiSizeCompact" id="content">
     <div

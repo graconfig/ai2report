@@ -1,7 +1,8 @@
+jQuery.sap.includeScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js");
 sap.ui.define([
-    "sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel",'sap/m/library'
+    "sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel",'sap/m/library','sap/ushell/Container'
 ],
-function (Controller, JSONModel, library) {
+function (Controller, JSONModel, library,Container) {
     "use strict";
     var URLHelper = library.URLHelper;
     return Controller.extend("chatbotui.controller.View1", {
@@ -116,23 +117,11 @@ function (Controller, JSONModel, library) {
             const resData = await res.text();
             return JSON.parse(resData);
         },
-
-        /**
-         * Gets the URL prefix of the app
-        // * @returns {string} the URL module prefix
-         */
         _getUrlModulePrefix() {
             return $.sap.getModulePath(
                 this.getOwnerComponent().getManifestEntry("/sap.app/id")
             );
         },
-
-        /**
-         * API - fetches CSRF token
-         *
-         * **Note**: For testing/development, you can turn off CSRF protection in the `xs-app.json`
-         * by setting `csrfProtection: false` for `"source": "^/api/(.*)$"` route.
-         */
         _apiFetchCsrfToken: async function () {
             if (!this._sCsrfToken) {
                 const res = await fetch(`${this._getUrlModulePrefix()}/index.html`, {
@@ -147,11 +136,6 @@ function (Controller, JSONModel, library) {
             return this._sCsrfToken;
         },
 
-        /**
-         * API - generates a summary by making an API call to GenAI Hub
-         * @param {Object[]} oMessages an array of messages
-         * @returns {Promise<string>} chat completion
-         */
         _apiChatCompletion: async function (oMessages) {
             const res = await fetch(
                 `${this._getUrlModulePrefix()}/api/chat/completions?api-version=${API_VERSION}`, {
@@ -209,6 +193,17 @@ function (Controller, JSONModel, library) {
             );
             const resData = await res.text();
             oUiModel.setProperty("/chatbot/chatlist", JSON.parse(resData).value);
+			// const sUrl = "/Chats?$orderby=createdAt";
+			// const mParameters = {
+			// 	success: function (oData, response) {
+			// 		if (response.statusCode === "200") {
+	
+			// 		}
+			// 	}.bind(this),
+			// 	error: function (oError) {
+			// 	}.bind(this)
+			// };
+			// this.getOwnerComponent().getModel("ChatUI").read(sUrl, mParameters);
         },
         onStandardListItemPress: async function (oEvent) {
             const sPath = oEvent.getSource().oBindingContexts.ui.getPath();
@@ -301,8 +296,19 @@ function (Controller, JSONModel, library) {
             const line = sPath.split("/")[3];
                 await this._apigetReportID(oMessages[line].message_id);
             }else{
-            const url = window.location.origin + '/reports/webapp/index.html#/Reports(ID='+Report_ID+',IsActiveEntity=true)';
-            window.location.href = url;
+            // const url = window.location.origin + '/reports/webapp/index.html#/Reports(ID='+Report_ID+',IsActiveEntity=true)';
+            // window.location.href = url;
+            Container.getServiceAsync("CrossApplicationNavigation").then((Navigation)=>{
+                Navigation.toExternal({
+                    target:{
+                        semanticObject:"Report",action:"Display"
+                    },
+                    params : {
+                      "ID" : Report_ID,
+                      "IsActiveEntity":true
+                    }
+                })
+            })
         }
         },
         _apigetReportID: async function (ID) {
@@ -321,15 +327,37 @@ function (Controller, JSONModel, library) {
             );
             const resData = await res.text();
             const Arry = JSON.parse(resData).value;
-            const url01 = window.location.origin + '/reports/webapp/index.html#/Reports(ID='+Arry[0].ID+',IsActiveEntity=true)';
-            window.location.href = url01;
+
+            // const url01 = window.location.origin + '/reports/webapp/index.html#/Reports(ID='+Arry[0].ID+',IsActiveEntity=true)';
+            // window.location.href = url01;
+
+            Container.getServiceAsync("CrossApplicationNavigation").then((Navigation)=>{
+                Navigation.toExternal({
+                    target:{
+                        semanticObject:"Report",action:"Display"
+                    },
+                    params : {
+                      "ID" : Arry[0].ID,
+                      "IsActiveEntity":true
+                    }
+                })
+            })           
         },
         onBtnParameter: async function () {
-            const url = window.location.origin + '/parameters/webapp/index.html';
-            window.location.href = url;
+            // const url = window.location.origin + '/parameters/webapp/index.html';
+            // window.location.href = url;
+            Container.getServiceAsync("CrossApplicationNavigation").then((Navigation)=>{
+                Navigation.toExternal({
+                    target:{
+                        semanticObject:"Parameters",action:"Display"
+                    }
+                })
+            })
         },
         convertToHTML: function (content) {
-            return marked.parse(content);
+            if(content){
+                return marked.parse(content);
+            }
         }
     });
 });

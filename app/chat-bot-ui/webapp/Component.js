@@ -1,7 +1,7 @@
 /**
  * eslint-disable @sap/ui5-jsdocs/no-jsdoc
  */
-
+jQuery.sap.includeScript("https://cdn.jsdelivr.net/npm/marked/marked.min.js");
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
