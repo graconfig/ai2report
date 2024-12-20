@@ -87,6 +87,8 @@ annotate ChatService.ReportFields {
 }
 
 annotate ChatService.Reports with @UI: {
+    UpdateHidden : {$edmJson: {$If: [{$Eq: [{$Path: 'isProgramGenerated'}, 0]},false,true]}},
+    
     SelectionFields: [
         isPCLGenerated,
         isProgramGenerated,

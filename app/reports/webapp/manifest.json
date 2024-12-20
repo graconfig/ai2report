@@ -129,13 +129,13 @@
                 "header": {
                   "actions": {
                     "DataFieldForAction::ChatService.generateProgram": {
-                      "visible": "{= !${ui>/isEditable} && ${isProgramGenerated} === 1}"
+                      "visible": "reports.ext.CustomActions.generateProgram"
                     },
                     "DataFieldForAction::ChatService.generatePCL": {
-                      "visible": "{= !${isPCLGenerated} && !${ui>/isEditable}}"
+                      "visible": "reports.ext.CustomActions.generatePCL"
                     },
                     "DataFieldForAction::ChatService.createProject": {
-                      "visible": "{= ${isProgramGenerated} === 0}"
+                      "visible": "reports.ext.CustomActions.createProject"
                     }
                   }
                 }
