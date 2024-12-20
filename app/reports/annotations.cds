@@ -217,11 +217,6 @@ annotate ChatService.Reports with @UI: {
         },
         {
             $Type : 'UI.DataFieldForAction',
-            Action: 'ChatService.generateProgram',
-            Label : '{i18n>GenerateProgram}'
-        },
-        {
-            $Type : 'UI.DataFieldForAction',
             Action: 'ChatService.verify',
             Label : '{i18n>Verify}'
         },
@@ -229,7 +224,13 @@ annotate ChatService.Reports with @UI: {
             $Type : 'UI.DataFieldForAction',
             Action: 'ChatService.createProject',
             Label : '{i18n>CreateProject}'
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'ChatService.generateProgram',
+            Label : '{i18n>GenerateProgram}'
         }
+        
     ],
 } actions {
     @Common.SideEffects: {
