@@ -260,7 +260,7 @@ export default class ChatService extends ApplicationService {
           })
         );
 
-        await this.run(UPDATE(req.subject).with({ isAdopted: true }));
+        await UPDATE(req.subject).with({ isAdopted: true });
         return newReport;
       } else {
         return response.getContent();
@@ -635,9 +635,9 @@ export default class ChatService extends ApplicationService {
 
         console.log(insertpcls);
 
-        let newpcls = await this.run(INSERT(insertpcls).into(Pcls));
+        let newpcls = await cds.run(INSERT(insertpcls).into(Pcls));
 
-        await this.run(UPDATE(req.subject).with({ isPCLGenerated: true }));
+        await UPDATE(req.subject).with({ isPCLGenerated: true });
         return newpcls;
       } else {
         return response.getContent();
