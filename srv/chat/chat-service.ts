@@ -28,7 +28,6 @@ export default class ChatService extends ApplicationService {
       });
     }
 
-    //
 
     this.on('DELETE', Report, async req => {
       const report = await SELECT.one.from(req.subject);
@@ -554,6 +553,7 @@ export default class ChatService extends ApplicationService {
         req.notify(200, succeeded.message);
         return true;
       } else {
+        req.error(400, succeeded.message);
         return false;
       }
     });
